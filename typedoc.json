@@ -1,0 +1,23 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "name": "Maptoolkit JS",
+  "entryPoints": ["src/"],
+  "out": "docs/",
+  /* "plugin": ["typedoc-plugin-markdown"], */
+  "excludeExternals": true,
+  "excludeInternal": true,
+  "excludeNotDocumented": true,
+  "navigation": {
+    "includeCategories": false,
+    "includeGroups": true
+  },
+  "githubPages": false,
+  "disableSources": true,
+  /* "hideBreadcrumbs": true,
+  "hidePageHeader": true,
+  "expandParameters": true,
+  "parametersFormat": "list",
+  "textContentMappings": {
+    "title.memberPage": "{name}"
+  } */
+}

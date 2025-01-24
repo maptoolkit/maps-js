@@ -1,0 +1,27 @@
+.maplibregl-ctrl-top-left .maptoolkit-ctrl.maptoolkit-ctrl-logo:first-child {
+  margin: 3px 0 0 6px;
+}
+
+.maplibregl-ctrl-top-right .maptoolkit-ctrl.maptoolkit-ctrl-logo:first-child {
+  margin: 3px 6px 0 0;
+}
+
+.maplibregl-ctrl-bottom-left .maptoolkit-ctrl.maptoolkit-ctrl-logo:last-child {
+  margin: 0 0 3px 6px;
+}
+
+.maplibregl-ctrl-bottom-right .maptoolkit-ctrl.maptoolkit-ctrl-logo:last-child {
+  margin: 0 6px 3px 0;
+}
+
+.maptoolkit-ctrl-logo-anchor {
+  display: block;
+  line-height: 0;
+  cursor: pointer;
+}
+
+.maptoolkit-ctrl-logo-image {
+  pointer-events: none;
+  height: 24px;
+  object-fit: contain;
+}

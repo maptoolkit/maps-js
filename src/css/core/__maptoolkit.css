@@ -1,0 +1,575 @@
+/* MAP */
+/* .maplibregl-map,
+.maplibregl-map button,
+.maplibregl-map select,
+.maplibregl-map textarea,
+.maplibregl-map input {
+  font-family: "commissioner";
+  font-size: 13px;
+} */
+/* MapLibreGL Controls */
+/* .maplibregl-ctrl-top-center .maplibregl-ctrl:not(.maplibregl-ctrl-attrib) {
+  margin: 20px 0 0 0;
+}
+.maplibregl-ctrl-bottom-center .maplibregl-ctrl:not(.maplibregl-ctrl-attrib) {
+  margin: 0 0 20px 0;
+}
+.maplibregl-ctrl-top-left .maplibregl-ctrl:not(.maplibregl-ctrl-attrib) {
+  margin: 10px 0 0 20px;
+}
+.maplibregl-ctrl-top-right .maplibregl-ctrl:not(.maplibregl-ctrl-attrib) {
+  margin: 10px 20px 0 0;
+}
+.maplibregl-ctrl-bottom-left .maplibregl-ctrl:not(.maplibregl-ctrl-attrib) {
+  margin: 0 0 10px 20px;
+}
+.maplibregl-ctrl-bottom-right .maplibregl-ctrl:not(.maplibregl-ctrl-attrib) {
+  margin: 0 20px 10px 0;
+}
+.maplibregl-ctrl-top-left .maplibregl-ctrl:not(.maplibregl-ctrl-attrib):first-child {
+  margin: 20px 0 0 20px;
+}
+.maplibregl-ctrl-top-right .maplibregl-ctrl:not(.maplibregl-ctrl-attrib):first-child {
+  margin: 20px 20px 0 0;
+}
+.maplibregl-ctrl-top-left .maplibregl-ctrl.maplibregl-ctrl-attrib:first-child,
+.maplibregl-ctrl-top-right .maplibregl-ctrl.maplibregl-ctrl-attrib:first-child {
+  margin: 0 0 10px 0;
+}
+.maplibregl-ctrl-bottom-left .maplibregl-ctrl:not(.maplibregl-ctrl-attrib):last-child {
+  margin: 0 0 20px 20px;
+}
+.maplibregl-ctrl-bottom-right .maplibregl-ctrl:not(.maplibregl-ctrl-attrib):last-child {
+  margin: 0 20px 20px 0;
+}
+.maplibregl-ctrl-bottom-left .maplibregl-ctrl.maplibregl-ctrl-attrib:last-child,
+.maplibregl-ctrl-bottom-right .maplibregl-ctrl.maplibregl-ctrl-attrib:last-child {
+  margin: 10px 0 0 0;
+}
+.maplibregl-ctrl-group {
+  border-radius: 10px;
+}
+.maplibregl-ctrl-group:not(:empty) {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+}
+.maplibregl-ctrl-group button {
+  width: 36px;
+  height: 36px;
+}
+.maplibregl-ctrl-group button:first-child,
+.maplibregl-ctrl-group button:focus:first-child {
+  border-radius: 10px 10px 0 0;
+}
+.maplibregl-ctrl-group button:last-child,
+.maplibregl-ctrl-group button:focus:last-child {
+  border-radius: 0 0 10px 10px;
+}
+.maplibregl-ctrl-group button:first-child:last-child {
+  border-radius: 10px;
+}
+.maplibregl-ctrl-group.maplibregl-ctrl-group-inline button:first-child,
+.maplibregl-ctrl-group.maplibregl-ctrl-group-inline button:focus:first-child {
+  border-radius: 10px 0 0 10px;
+}
+.maplibregl-ctrl-group.maplibregl-ctrl-group-inline button:last-child,
+.maplibregl-ctrl-group.maplibregl-ctrl-group-inline button:focus:last-child {
+  border-radius: 0 10px 10px 0;
+}
+.maplibregl-ctrl-group.maplibregl-ctrl-group-inline button:first-child:last-child {
+  border-radius: 10px;
+}
+.maplibregl-ctrl button:not(:disabled):hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.maplibregl-ctrl button:not(:disabled):active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.maplibregl-ctrl-group select,
+.maplibregl-ctrl-group input {
+  border-radius: 10px;
+} */
+/* MapLibreGL Popup */
+/* .maplibregl-popup-content {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px 0 rgb(0, 0, 0, 0.25);
+} */
+/* MapLibreGL Modal */
+/* .maplibregl-modal-container {
+  padding: 20px;
+}
+.maplibregl-modal-window {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px 0 rgb(0, 0, 0, 0.25);
+}
+.maplibregl-modal-close-button {
+  border-radius: 0 10px 0 0;
+} */
+/* NavigationControl */
+.maplibregl-ctrl button.maplibregl-ctrl-compass .maplibregl-ctrl-icon {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='29' height='29' viewBox='0 0 29 29' xmlns='http://www.w3.org/2000/svg' fill='%23f00'%3E%3Cpath d='M10.5 14l4-8 4 8h-8z'/%3E%3Cpath d='M10.5 16l4 8 4-8h-8z' fill='%23292929'/%3E%3C/svg%3E");
+}
+/* Geocoder */
+.mtk-geocoder input {
+  height: 36px;
+  padding: 0 36px 0 36px;
+}
+.mtk-geocoder-magnify {
+  width: 16px;
+  height: 16px;
+  margin: 10px;
+  background-size: 16px 16px;
+}
+.mtk-geocoder-loading::after {
+  margin: 10px;
+  width: 16px;
+  height: 16px;
+}
+.mtk-geocoder-autocomplete {
+  font-size: 14px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+}
+/* Scale */
+.mtk-scale-control:not(:empty) {
+  width: 36px;
+}
+/* Daytime */
+.mtk-daytime-control-label {
+  padding: 4px 7px 5px 7px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px 0 rgb(0, 0, 0, 0.25);
+  font-size: 12px;
+}
+.mtk-daytime-control-label::after {
+  box-shadow: 0 2px 5px 0 rgb(0, 0, 0, 0.25);
+}
+/* Editor GUI */
+.mtk-editor-gui {
+  font-size: 13px;
+}
+.mtk-editor-gui .maplibregl-ctrl-group-inline:first-child {
+  margin: 20px 0 -46px 76px !important;
+}
+/* 3D */
+/* .mtk-3d-control button {
+  font-size: 15px;
+} */
+/* Pitch */
+/* .mtk-pitch-control {
+  width: 36px;
+}
+.maplibregl-ctrl.mtk-pitch-control.mtk-hide {
+  margin-top: -10px;
+}
+.mtk-pitch-control-slide {
+  width: 6px;
+  margin: 0 15px;
+  border-width: 2px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+}
+.mtk-pitch-control-knob {
+  width: 16px;
+  height: 16px;
+  margin: 0px 10px;
+  border-width: 5px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+} */
+/* Compass */
+/* .maplibregl-ctrl-top-left .maplibregl-ctrl.mtk-compass-control,
+.maplibregl-ctrl-bottom-left .maplibregl-ctrl.mtk-compass-control {
+  margin-left: 14px;
+}
+.maplibregl-ctrl-top-right .maplibregl-ctrl.mtk-compass-control,
+.maplibregl-ctrl-bottom-right .maplibregl-ctrl.mtk-compass-control {
+  margin-right: 14px;
+}
+.mtk-compass-control {
+  width: 48px;
+  height: 48px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+}
+.mtk-compass-control-img {
+  width: 48px;
+  height: 48px;
+}
+.mtk-compass-control-arrow-left {
+  background-size: 60px;
+  background-position: -3px -6px;
+}
+.mtk-compass-control-arrow-right {
+  background-size: 60px;
+  background-position: -41px -6px;
+} */
+/* Elevationprofile */
+.maplibregl-ctrl-top-left .mtk-elevation-profile.maplibregl-ctrl,
+.maplibregl-ctrl-top-right .mtk-elevation-profile.maplibregl-ctrl,
+.maplibregl-ctrl-bottom-left .mtk-elevation-profile.maplibregl-ctrl,
+.maplibregl-ctrl-bottom-right .mtk-elevation-profile.maplibregl-ctrl {
+  box-sizing: border-box;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0 20px;
+}
+@media only screen and (max-width: 450px) {
+  .maplibregl-ctrl-top-left .mtk-elevation-profile.maplibregl-ctrl,
+  .maplibregl-ctrl-top-right .mtk-elevation-profile.maplibregl-ctrl,
+  .maplibregl-ctrl-bottom-left .mtk-elevation-profile.maplibregl-ctrl,
+  .maplibregl-ctrl-bottom-right .mtk-elevation-profile.maplibregl-ctrl {
+    padding: 0 10px;
+  }
+}
+/* MTK Logo */
+/* .maplibregl-ctrl-top-left .maplibregl-ctrl.mtk-control-logo:first-child,
+.maplibregl-ctrl-top-right .maplibregl-ctrl.mtk-control-logo:first-child {
+  margin: 0 0 10px 0;
+}
+.maplibregl-ctrl-bottom-left .maplibregl-ctrl.mtk-control-logo:last-child,
+.maplibregl-ctrl-bottom-right .maplibregl-ctrl.mtk-control-logo:last-child {
+  margin: 10px 0 0 0;
+} */
+/* Polygon Editor */
+.mtk-polygon-editor-connector-dropdown .mtk-polygon-editor-connector-dropdown-button {
+  padding: 0 10px;
+}
+.mtk-polygon-editor-connector-map-popup .mtk-polygon-editor-connector-map-popup-list-button {
+  padding: 0 10px;
+  height: 36px;
+}
+/* FONTS */
+/* Noto Serif */
+@font-face {
+  font-family: "noto-serif";
+  src: url("https://static.maptoolkit.net/fonts/NotoSerif/NotoSerif-Regular.ttf");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "noto-serif";
+  src: url("https://static.maptoolkit.net/fonts/NotoSerif/NotoSerif-Italic.ttf");
+  font-display: auto;
+  font-style: italic;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "noto-serif";
+  src: url("https://static.maptoolkit.net/fonts/NotoSerif/NotoSerif-Bold.ttf");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 700;
+}
+@font-face {
+  font-family: "noto-serif";
+  src: url("https://static.maptoolkit.net/fonts/NotoSerif/NotoSerif-BoldItalic.ttf");
+  font-display: auto;
+  font-style: italic;
+  font-weight: 700;
+}
+/* Commissioner */
+@font-face {
+  font-family: "commissioner";
+  font-style: normal;
+  font-weight: 100;
+  font-display: auto;
+  src: url("https://static.maptoolkit.net/fonts/Commissioner/Commissioner-Thin.ttf");
+}
+@font-face {
+  font-family: "commissioner";
+  font-style: normal;
+  font-weight: 200;
+  font-display: auto;
+  src: url("https://static.maptoolkit.net/fonts/Commissioner/Commissioner-ExtraLight.ttf");
+}
+@font-face {
+  font-family: "commissioner";
+  font-style: normal;
+  font-weight: 300;
+  font-display: auto;
+  src: url("https://static.maptoolkit.net/fonts/Commissioner/Commissioner-Light.ttf");
+}
+@font-face {
+  font-family: "commissioner";
+  font-style: normal;
+  font-weight: 400;
+  font-display: auto;
+  src: url("https://static.maptoolkit.net/fonts/Commissioner/Commissioner-Regular.ttf");
+}
+@font-face {
+  font-family: "commissioner";
+  font-style: normal;
+  font-weight: 500;
+  font-display: auto;
+  src: url("https://static.maptoolkit.net/fonts/Commissioner/Commissioner-Medium.ttf");
+}
+@font-face {
+  font-family: "commissioner";
+  font-style: normal;
+  font-weight: 600;
+  font-display: auto;
+  src: url("https://static.maptoolkit.net/fonts/Commissioner/Commissioner-SemiBold.ttf");
+}
+@font-face {
+  font-family: "commissioner";
+  font-style: normal;
+  font-weight: 700;
+  font-display: auto;
+  src: url("https://static.maptoolkit.net/fonts/Commissioner/Commissioner-Bold.ttf");
+}
+@font-face {
+  font-family: "commissioner";
+  font-style: normal;
+  font-weight: 800;
+  font-display: auto;
+  src: url("https://static.maptoolkit.net/fonts/Commissioner/Commissioner-ExtraBold.ttf");
+}
+@font-face {
+  font-family: "commissioner";
+  font-style: normal;
+  font-weight: 800;
+  font-display: auto;
+  src: url("https://static.maptoolkit.net/fonts/Commissioner/Commissioner-Black.ttf");
+}
+
+/* HEADINGS */
+[class*="mtk-heading-"] {
+  font-family: "commissioner";
+  font-weight: 600;
+  color: #333333;
+  margin: 10px 0 16px 0;
+}
+/* Heading 1 */
+.mtk-heading-1 {
+  font-size: 37px;
+}
+/* Heading 2 */
+.mtk-heading-2 {
+  font-size: 31px;
+}
+/* Heading 3 */
+.mtk-heading-3 {
+  font-size: 27px;
+}
+/* Heading 4 */
+.mtk-heading-4 {
+  font-size: 23px;
+}
+/* Heading 5 */
+.mtk-heading-5 {
+  font-size: 19px;
+}
+/* Heading 6 */
+.mtk-heading-6 {
+  font-size: 16px;
+}
+
+/* PARAGRAPHS */
+.mtk-paragraph {
+  font-family: "noto-serif";
+  font-size: 14px;
+  color: #333333;
+  margin: 8px 0 14px 0;
+}
+
+/* BUTTONS */
+[class*="mtk-button-"]:not(.mtk-button-icon) {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  /* font-family: "noto-serif"; */
+  font-family: "commissioner";
+  font-size: 13px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  min-height: 38px;
+  padding: 8px 14px;
+  border-radius: 999px;
+}
+[class*="mtk-button-"]:not(.mtk-button-icon):disabled {
+  cursor: not-allowed;
+}
+[class*="mtk-button-"] > div {
+  display: flex;
+  align-items: center;
+}
+[class*="mtk-button-"] > div > .mtk-button-icon {
+  width: 22px;
+  height: 22px;
+}
+[class*="mtk-button-"] > div > .mtk-button-icon + *,
+[class*="mtk-button-"] > div > * + .mtk-button-icon {
+  margin-left: 6px;
+}
+/* Button Primary */
+.mtk-button-primary {
+  background-color: #303f7e;
+  color: #ffffff;
+}
+.mtk-button-primary .mtk-button-icon {
+  fill: #ffffff;
+  color: #ffffff;
+}
+.mtk-button-primary:hover {
+  background-color: #29366e; /* brightness -25% (0.75) */
+}
+.mtk-button-primary:active {
+  background-color: #202c5b; /* brightness -50% (0.50) */
+}
+.mtk-button-primary:disabled {
+  background-color: #373f5f;
+  color: #dddddd;
+  cursor: not-allowed;
+}
+.mtk-button-primary:disabled > div > .mtk-button-icon {
+  fill: #dddddd;
+  color: #dddddd;
+}
+/* Button Secondary */
+.mtk-button-secondary {
+  background-color: #fa3f38;
+  color: #ffffff;
+}
+.mtk-button-secondary .mtk-button-icon {
+  fill: #ffffff;
+  color: #ffffff;
+}
+.mtk-button-secondary:hover {
+  background-color: #e93a33; /* brightness -25% (0.85) */
+}
+.mtk-button-secondary:active {
+  background-color: #d6342e; /* brightness -50% (0.70) */
+}
+.mtk-button-secondary:disabled {
+  background-color: #b15350;
+  color: #dddddd;
+  cursor: not-allowed;
+}
+.mtk-button-secondary:disabled > div > .mtk-button-icon {
+  fill: #dddddd;
+  color: #dddddd;
+}
+
+/* INPUTS */
+.mtk-input {
+  border: none;
+  outline: none;
+  font-family: "commissioner";
+  font-size: 13px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  min-height: 38px;
+  padding: 8px 14px;
+  border-radius: 999px;
+}
+
+/* MODAL */
+.mtk-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  color: #333333;
+  box-sizing: border-box;
+}
+.mtk-modal-window:not(:empty) {
+  position: relative;
+  width: 500px;
+  max-width: 100%;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 25%);
+  padding: 20px;
+}
+.mtk-modal-window-close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: unset;
+  outline: unset;
+  background: none;
+  width: 14px;
+  height: 14px;
+  margin: 12px;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23303f7e'%3E%3Cpath d='M14.3,12.179a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.442L12.177,9.7a.25.25,0,0,1-.354,0L2.561.442A1.5,1.5,0,0,0,.439,2.563L9.7,11.825a.25.25,0,0,1,0,.354L.439,21.442a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,0,0,2.122-2.121Z' /%3E%3C/svg%3E");
+  background-size: 100%;
+  cursor: pointer;
+}
+
+/* FILEDROP */
+.mtk-filedrop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 2px dashed #303f7e;
+  border-radius: 10px;
+  font-family: "commissioner";
+  font-size: 14px;
+  color: #333333;
+  padding: 25px;
+}
+.mtk-filedrop .mtk-filedrop-icon {
+  width: 72px;
+  height: 72px;
+  fill: #d1d1d1;
+  color: #d1d1d1;
+  pointer-events: none;
+}
+.mtk-filedrop .mtk-filedrop-text {
+  margin: 10px 0 0 0;
+  text-align: center;
+  pointer-events: none;
+}
+.mtk-filedrop .mtk-filedrop-button {
+  margin: 10px 0 0 0;
+}
+.mtk-filedrop.mtk-active {
+  border-style: solid;
+}
+.mtk-filedrop.mtk-active .mtk-filedrop-icon {
+  fill: #303f7e;
+  color: #303f7e;
+}
+.mtk-filedrop input[type="file"] {
+  display: none;
+}
+
+/* LOADING */
+/* Circle 1 */
+.mtk-loading-circle1 {
+  width: 1.2em;
+  height: 1.2em;
+  background: none;
+  border-radius: 50%;
+  border: 0.2em solid transparent;
+  border-top-color: #303f7e;
+  box-sizing: border-box;
+  animation: spin 750ms linear infinite;
+}
+/* Circle 2 */
+.mtk-loading-circle2 {
+  width: 1.2em;
+  height: 1.2em;
+  background: none;
+  border-radius: 50%;
+  border: 0.2em solid #303f7e;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  box-sizing: border-box;
+  animation: spin 750ms linear infinite;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

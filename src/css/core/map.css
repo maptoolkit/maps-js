@@ -1,0 +1,8 @@
+.maplibregl-map,
+.maplibregl-map button,
+.maplibregl-map select,
+.maplibregl-map textarea,
+.maplibregl-map input {
+  font-family: "commissioner", sans-serif;
+  font-size: 13px;
+}

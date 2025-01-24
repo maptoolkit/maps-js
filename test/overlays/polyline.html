@@ -1,0 +1,43 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="./../../dist/mtk.css" />
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script src="./../../dist/mtk.js"></script>
+  <script>
+    MTK.init({ apiKey: "toursprung" });
+    let polyline = new MTK.Polyline();
+    polyline.loadKML("https://maptoolkit.net/export/ts_demo_tours/_1603292819.kml?api_key=toursprung", () => {
+      MTK.createMap("map", {
+        map: {
+          location: { bounds: polyline.getBounds() },
+          mapType: "toursprung-terrain",
+        }
+      }, (map) => {
+        polyline.addTo(map);
+      });
+    });
+  </script>
+</body>
+
+</html>

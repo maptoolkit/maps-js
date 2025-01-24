@@ -1,0 +1,26 @@
+.maptoolkit-ctrl-attrib.maplibregl-ctrl-attrib a {
+  color: rgba(0, 0, 0, 0.75);
+  text-decoration: underline;
+}
+
+.maptoolkit-ctrl-attrib.maplibregl-ctrl-attrib a:hover {
+  color: rgba(0, 0, 0, 0.75);
+  text-decoration: none;
+}
+
+.maptoolkit-ctrl-attrib.maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-inner,
+.maptoolkit-ctrl-attrib.maplibregl-ctrl-attrib .maplibregl-ctrl-scale {
+  float: left;
+}
+
+.maptoolkit-ctrl-attrib.maplibregl-ctrl-attrib .maplibregl-ctrl-scale {
+  background: none;
+  height: 12px;
+  margin: 5px 0 0 7px;
+  line-height: 1;
+  padding: 0 4px;
+}
+
+.maptoolkit-ctrl-attrib.maplibregl-ctrl-attrib.maplibregl-compact .maplibregl-ctrl-scale {
+  display: none;
+}

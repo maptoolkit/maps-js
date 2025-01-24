@@ -1,0 +1,122 @@
+.maplibregl-ctrl-top-left,
+.maplibregl-ctrl-top-right,
+.maplibregl-ctrl-bottom-left,
+.maplibregl-ctrl-bottom-right {
+  max-width: 100%;
+}
+.maplibregl-ctrl-top-left .maplibregl-ctrl:not(.maplibregl-ctrl-attrib) {
+  margin: 10px 0 0 20px;
+}
+.maplibregl-ctrl-top-right .maplibregl-ctrl:not(.maplibregl-ctrl-attrib) {
+  margin: 10px 20px 0 0;
+}
+.maplibregl-ctrl-bottom-left .maplibregl-ctrl:not(.maplibregl-ctrl-attrib) {
+  margin: 0 0 10px 20px;
+}
+.maplibregl-ctrl-bottom-right .maplibregl-ctrl:not(.maplibregl-ctrl-attrib) {
+  margin: 0 20px 10px 0;
+}
+.maplibregl-ctrl-top-left .maplibregl-ctrl:not(.maplibregl-ctrl-attrib):first-child {
+  margin: 20px 0 0 20px;
+}
+.maplibregl-ctrl-top-right .maplibregl-ctrl:not(.maplibregl-ctrl-attrib):first-child {
+  margin: 20px 20px 0 0;
+}
+.maplibregl-ctrl-top-left .maplibregl-ctrl.maplibregl-ctrl-attrib:first-child,
+.maplibregl-ctrl-top-right .maplibregl-ctrl.maplibregl-ctrl-attrib:first-child {
+  margin: 0 0 10px 0;
+}
+.maplibregl-ctrl-bottom-left .maplibregl-ctrl:not(.maplibregl-ctrl-attrib):last-child {
+  margin: 0 0 20px 20px;
+}
+.maplibregl-ctrl-bottom-right .maplibregl-ctrl:not(.maplibregl-ctrl-attrib):last-child {
+  margin: 0 20px 20px 0;
+}
+/* .maplibregl-ctrl-bottom-left .maplibregl-ctrl.maplibregl-ctrl-attrib:last-child,
+.maplibregl-ctrl-bottom-right .maplibregl-ctrl.maplibregl-ctrl-attrib:last-child {
+  margin: 10px 0 0 0;
+} */
+.maplibregl-ctrl-group {
+  border-radius: 10px;
+  overflow: initial;
+}
+.maplibregl-ctrl-group:not(:empty) {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+}
+.maplibregl-ctrl-group button {
+  width: 36px;
+  height: 36px;
+}
+.maplibregl-ctrl-group button:focus {
+  box-shadow: none;
+}
+.maplibregl-ctrl-group > button.active {
+  box-shadow: 0 0 2px 2px #0096ff;
+}
+.maplibregl-ctrl-group button:not(:disabled):hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.maplibregl-ctrl-group button:not(:disabled):active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.maplibregl-ctrl-group button:first-child,
+.maplibregl-ctrl-group button:focus:first-child {
+  border-radius: 10px 10px 0 0;
+}
+.maplibregl-ctrl-group button:last-child,
+.maplibregl-ctrl-group button:focus:last-child {
+  border-radius: 0 0 10px 10px;
+}
+.maplibregl-ctrl-group button:first-child:last-child {
+  border-radius: 10px;
+}
+.maplibregl-ctrl-group button.active:focus:not(:focus-visible) {
+  box-shadow: 0 0 2px 2px #0096ff;
+}
+.maplibregl-ctrl-group select,
+.maplibregl-ctrl-group input {
+  border-radius: 10px;
+}
+/* inline/horizontal control group */
+.maplibregl-ctrl-group.maplibregl-ctrl-group-inline {
+  line-height: 0;
+}
+.maplibregl-ctrl-group.maplibregl-ctrl-group-inline button {
+  display: inline-block;
+}
+.maplibregl-ctrl-group.maplibregl-ctrl-group-inline button + button {
+  border-top: unset;
+  border-left: 1px solid #ddd;
+}
+.maplibregl-ctrl-group.maplibregl-ctrl-group-inline button:first-child,
+.maplibregl-ctrl-group.maplibregl-ctrl-group-inline button:focus:first-child {
+  border-radius: 10px 0 0 10px;
+}
+.maplibregl-ctrl-group.maplibregl-ctrl-group-inline button:last-child,
+.maplibregl-ctrl-group.maplibregl-ctrl-group-inline button:focus:last-child {
+  border-radius: 0 10px 10px 0;
+}
+.maplibregl-ctrl-group.maplibregl-ctrl-group-inline button:first-child:last-child {
+  border-radius: 10px;
+}
+/* centered control position */
+.maplibregl-ctrl-top-center,
+.maplibregl-ctrl-bottom-center {
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.maplibregl-ctrl-top-center {
+  top: 0;
+}
+.maplibregl-ctrl-bottom-center {
+  bottom: 0;
+}
+.maplibregl-ctrl-top-center .maplibregl-ctrl:not(.maplibregl-ctrl-attrib) {
+  margin: 20px 0 0 0;
+}
+.maplibregl-ctrl-bottom-center .maplibregl-ctrl:not(.maplibregl-ctrl-attrib) {
+  margin: 0 0 20px 0;
+}

@@ -1,0 +1,45 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="./../../dist/mtk.css" />
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script src="./../../dist/mtk.js"></script>
+  <script>
+    MTK.init({ apiKey: "toursprung" }).createMap("map", {
+      map: {
+        location: { center: [11.40037, 47.26816], zoom: 12, pitch: 0 },
+        mapType: "toursprung-terrain",
+      }
+    }, (map) => {
+      new MTK.Polygon().setLngLats([
+        [11.393846, 47.285513],
+        [11.342520, 47.264781],
+        [11.390585, 47.233552],
+        [11.454271, 47.266995],
+        [11.393846, 47.285513],
+      ]).addTo(map);
+    });
+  </script>
+</body>
+
+</html>
