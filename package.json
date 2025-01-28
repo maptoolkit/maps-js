@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "mtkjs",
+  "name": "maptoolkit-js",
   "version": "11.0.0-alpha",
   "description": "Maptoolkit Javascript Library",
   "scripts": {
@@ -42,13 +42,11 @@
     "maplibre-gl": "^4.1.2"
   },
   "files": [
-    "./dist/maptoolkit.mjs",
-    "./dist/maptoolkit.d.ts",
-    "./dist/maptoolkit.css"
+    "dist/*"
   ],
-  "main": "./dist/maptoolkit.mjs",
-  "types": "./dist/maptoolkit.d.ts",
-  "style": "./dist/maptoolkit.css",
+  "main": "dist/maptoolkit.mjs",
+  "types": "dist/maptoolkit.d.ts",
+  "style": "dist/maptoolkit.css",
   "exports": {
     ".": {
       "import": "./dist/maptoolkit.mjs",
