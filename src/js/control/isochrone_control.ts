@@ -97,7 +97,6 @@ export class IsochroneControl implements IControl {
     };
 
     this._onDrop = (ev: Event) => {
-      console.log("drop");
       ev.preventDefault();
       if (this._map && this._container) {
         const dragEvent = ev as DragEvent;
@@ -216,7 +215,6 @@ export class IsochroneControl implements IControl {
           .then((r) => r.json())
           .then((pointlist: number[][]) => {
             const coordinates = [pointlist.map((point) => [point[1], point[0]])];
-            console.log("add source " + this._id);
             map.addSource(this._id, {
               type: "geojson",
               data: {
@@ -281,7 +279,6 @@ export class IsochroneControl implements IControl {
       mapCanvas.removeEventListener("dragleave", this._onDrag);
       mapCanvas.removeEventListener("drop", this._onDrop);
       this._map.off("style.set", this._onStyleChange);
-      console.log("remove listener");
     }
 
     if (this._container?.parentNode) {
