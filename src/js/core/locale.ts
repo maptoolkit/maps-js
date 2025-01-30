@@ -34,16 +34,9 @@ export const Locale = {
     "CompassControl.RotateLeft": "-90\u00B0 drehen, versuche Strg + Ziehen",
     "CompassControl.RotateRight": "+90\u00B0 drehen, versuche Strg + Ziehen",
     "StyleControl.Group.Styles": "Styles",
-    "StyleControl.Group.Layers": "Overlays",
-    "StyleControl.Style.terrain": "Terrain",
-    "StyleControl.Style.winter": "Winter",
-    "StyleControl.Style.satellite": "Satellite",
-    "StyleControl.Style.hiking": "Hiking",
-    "StyleControl.Style.cycling": "Cycling",
-    "StyleControl.Style.pistes": "Skiing",
-    "StyleControl.Style.protected": "Protected Areas",
-    "StyleControl.Style.oepnv": "ÖPNV",
-
+    "IsochroneControl.Tooltip.foot": "Zieh' mich auf die Karte, um {range} Min-Fußweg anzuzeigen",
+    "IsochroneControl.Tooltip.bike": "Zieh' mich auf die Karte, um {range} Min-Radweg anzuzeigen",
+    "IsochroneControl.Tooltip.car": "Zieh' mich auf die Karte, um {range} Min-Autofahrt anzuzeigen",
   },
   en: {
     // maplibre-gl
@@ -84,12 +77,9 @@ export const Locale = {
     "StyleControl.Style.City": "CityMaps",
     "StyleControl.Style.Green": "Green",
     "StyleControl.Style.Winter": "Winter",
-    "StyleControl.Style.Satellite": "Satellit",
-    "StyleControl.Style.Hiking": "Wandern",
-    "StyleControl.Style.Cycling": "Fahrrad",
-    "StyleControl.Style.Pistes": "Schi",
-    "StyleControl.Style.Protected": "Naturschutzgebiete",
-    "StyleControl.Style.Oepnv": "ÖPNV",    
+    "IsochroneControl.Tooltip.foot": "Drag me onto the map to show a {range}-min walking area.",
+    "IsochroneControl.Tooltip.bike": "Drag me onto the map to show a {range}-min cycling area.",
+    "IsochroneControl.Tooltip.car": "Drag me onto the map to show a {range}-min driving area.",
   },
 };
 

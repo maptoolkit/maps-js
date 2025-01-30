@@ -15,6 +15,7 @@ import { CompassControl, CompassControlOptions} from "./js/control/compass_contr
 import { TerrainControl, TerrainControlOptions } from "./js/control/terrain_control";
 import { NavigationControl, NavigationControlOptions } from "./js/control/navigation_control";
 import { StyleControl, StyleControlOptions } from "./js/control/style_control";
+import { IsochroneControl, IsochroneControlOptions } from "./js/control/isochrone_control";
 
 export type * from "maplibre-gl";
 
@@ -28,6 +29,7 @@ export {
   type TerrainControlOptions,
   type NavigationControlOptions,
   type StyleControlOptions,
+  type IsochroneControlOptions,
   Map,
   Locale,
   Styles,
@@ -39,4 +41,5 @@ export {
   TerrainControl,
   NavigationControl,
   StyleControl,
+  IsochroneControl,
 };
