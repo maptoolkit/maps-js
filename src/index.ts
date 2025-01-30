@@ -11,15 +11,17 @@ import { Terrain } from "./js/core/terrain";
 import { LogoControl } from "./js/control/logo_control";
 import { AttributionControl, AttributionControlOptions } from "./js/control/attribution_control";
 import { PitchControl, PitchControlOptions } from "./js/control/pitch_control";
-import { CompassControl, CompassControlOptions} from "./js/control/compass_control";
+import { CompassControl, CompassControlOptions } from "./js/control/compass_control";
 import { TerrainControl, TerrainControlOptions } from "./js/control/terrain_control";
 import { NavigationControl, NavigationControlOptions } from "./js/control/navigation_control";
 import { StyleControl, StyleControlOptions } from "./js/control/style_control";
 import { IsochroneControl, IsochroneControlOptions } from "./js/control/isochrone_control";
+import { version } from "../package.json";
 
 export type * from "maplibre-gl";
 
 export {
+  version,
   maplibregl,
   type MapOptions,
   type DataConnectorOptions,

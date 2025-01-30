@@ -1,4 +1,4 @@
-import { ControlPosition as ControlPosition$1, AttributionControlOptions as AttributionControlOptions$1, ScaleControlOptions, AttributionControl as AttributionControl$1, ScaleControl, LayerSpecification, ExpressionFilterSpecification, MapOptions as MapOptions$1, Map as Map$1, StyleSpecification, MapGeoJSONFeature, StyleSwapOptions, StyleOptions, AddLayerObject, SourceSpecification, Listener, NavigationControlOptions as NavigationControlOptions$1, NavigationControl as NavigationControl$1 } from 'maplibre-gl';
+import { ControlPosition as ControlPosition$1, AttributionControlOptions as AttributionControlOptions$1, ScaleControlOptions, AttributionControl as AttributionControl$1, ScaleControl, LayerSpecification, ExpressionFilterSpecification, MapOptions as MapOptions$1, Map as Map$1, StyleSpecification, MapGeoJSONFeature, StyleSwapOptions, StyleOptions, AddLayerObject, SourceSpecification, Listener, NavigationControlOptions as NavigationControlOptions$1, NavigationControl as NavigationControl$1, Marker, LngLatLike } from 'maplibre-gl';
 export * from 'maplibre-gl';
 import * as maplibreGl from 'maplibre-gl';
 export { maplibreGl as maplibregl };
@@ -266,7 +266,9 @@ declare class Map extends Map$1 {
      * @returns The UI string.
      * @private
      */
-    _getUIString(key: string): string;
+    _getUIString(key: string, variables?: {
+        [key: string]: string;
+    }): string;
     /**
      * Adds a control to the map.
      * @param control - The control to add.
@@ -316,14 +318,21 @@ declare const Locale: {
         "CompassControl.RotateRight": string;
         "StyleControl.Group.Styles": string;
         "StyleControl.Group.Layers": string;
-        "StyleControl.Style.terrain": string;
-        "StyleControl.Style.winter": string;
-        "StyleControl.Style.satellite": string;
-        "StyleControl.Style.hiking": string;
-        "StyleControl.Style.cycling": string;
-        "StyleControl.Style.pistes": string;
-        "StyleControl.Style.protected": string;
-        "StyleControl.Style.oepnv": string;
+        "StyleControl.Style.Terrain": string;
+        "StyleControl.Style.Light": string;
+        "StyleControl.Style.Dark": string;
+        "StyleControl.Style.City": string;
+        "StyleControl.Style.Green": string;
+        "StyleControl.Style.Winter": string;
+        "StyleControl.Style.Satellite": string;
+        "StyleControl.Style.Hiking": string;
+        "StyleControl.Style.Cycling": string;
+        "StyleControl.Style.Pistes": string;
+        "StyleControl.Style.Protected": string;
+        "StyleControl.Style.Oepnv": string;
+        "IsochroneControl.Tooltip.foot": string;
+        "IsochroneControl.Tooltip.bike": string;
+        "IsochroneControl.Tooltip.car": string;
     };
     en: {
         "AttributionControl.ToggleAttribution": string;
@@ -368,6 +377,9 @@ declare const Locale: {
         "StyleControl.Style.Pistes": string;
         "StyleControl.Style.Protected": string;
         "StyleControl.Style.Oepnv": string;
+        "IsochroneControl.Tooltip.foot": string;
+        "IsochroneControl.Tooltip.bike": string;
+        "IsochroneControl.Tooltip.car": string;
     };
 };
 
@@ -576,4 +588,53 @@ declare class StyleControl implements IControl {
     _resize(): void;
 }
 
-export { AttributionControl, type AttributionControlOptions, CompassControl, type CompassControlOptions, type DataConnectorOptions, Locale, LogoControl, Map, type MapOptions, NavigationControl, type NavigationControlOptions, PitchControl, type PitchControlOptions, StyleControl, type StyleControlOptions, Styles, Terrain, TerrainControl, type TerrainControlOptions };
+type IsochroneType = "foot" | "bike" | "car";
+/**
+ * Options for configuring the {@link IsochroneControl}.
+ */
+type IsochroneControlOptions = {
+    /**
+     * Time used for isochrone calculation. Value in minutes.
+     * @defaultValue `10` minutes
+     */
+    range: number;
+    /**
+     * Routing type used for isochrone request. Default value is `foot`.
+     * @defaultValue `10` minutes
+     */
+    type: IsochroneType;
+};
+/**
+ * Provides an interactable compass for the map's bearing.
+ *
+ * Used by the {@link NavigationControl} class.
+ */
+declare class IsochroneControl implements IControl {
+    options: IsochroneControlOptions;
+    _id: string;
+    _container: HTMLElement;
+    _tooltip: HTMLElement;
+    _dragging: boolean;
+    _onDrag: EventListener;
+    _onDrop: EventListener;
+    _onStyleChange: EventListener;
+    _map?: Map;
+    _marker?: Marker;
+    /**
+     * @param options - Options for configuring the compass control.
+     */
+    constructor(options?: IsochroneControlOptions);
+    getDefaultPosition(): ControlPosition$1;
+    onAdd(map: Map): HTMLElement;
+    addToMap(lngLat: LngLatLike): void;
+    removeFromMap(): void;
+    _addMarker(lngLat: LngLatLike): void;
+    _removeMarker(): void;
+    _addPolygon(lngLat: LngLatLike): void;
+    _removePolygon(): void;
+    onRemove(): void;
+}
+
+var version = "11.1.0-alpha.1";
+
+export { AttributionControl, type AttributionControlOptions, CompassControl, type CompassControlOptions, type DataConnectorOptions, IsochroneControl, type IsochroneControlOptions, Locale, LogoControl, Map, type MapOptions, NavigationControl, type NavigationControlOptions, PitchControl, type PitchControlOptions, StyleControl, type StyleControlOptions, Styles, Terrain, TerrainControl, type TerrainControlOptions, version };
