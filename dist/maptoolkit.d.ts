@@ -605,7 +605,7 @@ type IsochroneControlOptions = {
     type: IsochroneType;
 };
 /**
- * Provides an interactable compass for the map's bearing.
+ * Provides an draggable isochrone control.
  *
  * Used by the {@link NavigationControl} class.
  */
@@ -621,7 +621,7 @@ declare class IsochroneControl implements IControl {
     _map?: Map;
     _marker?: Marker;
     /**
-     * @param options - Options for configuring the compass control.
+     * @param options - Options for configuring the isochrone control.
      */
     constructor(options?: IsochroneControlOptions);
     getDefaultPosition(): ControlPosition$1;
@@ -635,6 +635,6 @@ declare class IsochroneControl implements IControl {
     onRemove(): void;
 }
 
-var version = "11.1.0-alpha.1";
+var version = "11.1.0-alpha.2";
 
 export { AttributionControl, type AttributionControlOptions, CompassControl, type CompassControlOptions, type DataConnectorOptions, IsochroneControl, type IsochroneControlOptions, Locale, LogoControl, Map, type MapOptions, NavigationControl, type NavigationControlOptions, PitchControl, type PitchControlOptions, StyleControl, type StyleControlOptions, Styles, Terrain, TerrainControl, type TerrainControlOptions, version };
