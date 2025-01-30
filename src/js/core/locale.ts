@@ -34,6 +34,19 @@ export const Locale = {
     "CompassControl.RotateLeft": "-90\u00B0 drehen, versuche Strg + Ziehen",
     "CompassControl.RotateRight": "+90\u00B0 drehen, versuche Strg + Ziehen",
     "StyleControl.Group.Styles": "Styles",
+    "StyleControl.Group.Layers": "Ebenen",
+    "StyleControl.Style.Terrain": "Terrain",
+    "StyleControl.Style.Light": "Light",
+    "StyleControl.Style.Dark": "Dark",
+    "StyleControl.Style.City": "CityMaps",
+    "StyleControl.Style.Green": "Green",
+    "StyleControl.Style.Winter": "Winter",
+    "StyleControl.Style.Satellite": "Satellit",
+    "StyleControl.Style.Hiking": "Wandern",
+    "StyleControl.Style.Cycling": "Fahrrad",
+    "StyleControl.Style.Pistes": "Schi",
+    "StyleControl.Style.Protected": "Naturschutzgebiete",
+    "StyleControl.Style.Oepnv": "ÖPNV",
     "IsochroneControl.Tooltip.foot": "Zieh' mich auf die Karte, um {range} Min-Fußweg anzuzeigen",
     "IsochroneControl.Tooltip.bike": "Zieh' mich auf die Karte, um {range} Min-Radweg anzuzeigen",
     "IsochroneControl.Tooltip.car": "Zieh' mich auf die Karte, um {range} Min-Autofahrt anzuzeigen",
@@ -70,13 +83,19 @@ export const Locale = {
     "CompassControl.RotateLeft": "Rotate -90\u00B0, try Ctrl + mouse drag",
     "CompassControl.RotateRight": "Rotate +90\u00B0, try Ctrl + mouse drag",
     "StyleControl.Group.Styles": "Styles",
-    "StyleControl.Group.Layers": "Ebenen",
+    "StyleControl.Group.Layers": "Overlays",
     "StyleControl.Style.Terrain": "Terrain",
     "StyleControl.Style.Light": "Light",
     "StyleControl.Style.Dark": "Dark",
     "StyleControl.Style.City": "CityMaps",
     "StyleControl.Style.Green": "Green",
     "StyleControl.Style.Winter": "Winter",
+    "StyleControl.Style.Satellite": "Satellite",
+    "StyleControl.Style.Hiking": "Hiking",
+    "StyleControl.Style.Cycling": "Cycling",
+    "StyleControl.Style.Pistes": "Skiing",
+    "StyleControl.Style.Protected": "Protected Areas",
+    "StyleControl.Style.Oepnv": "ÖPNV",
     "IsochroneControl.Tooltip.foot": "Drag me onto the map to show a {range}-min walking area.",
     "IsochroneControl.Tooltip.bike": "Drag me onto the map to show a {range}-min cycling area.",
     "IsochroneControl.Tooltip.car": "Drag me onto the map to show a {range}-min driving area.",
@@ -86,4 +105,5 @@ export const Locale = {
 /**
  * Default locale for the application.
  */
-export const defaultLocale = Locale.en;
+export const defaultLocale = Locale.de;
+// TODO: Add proper multi language support
