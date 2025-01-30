@@ -15,7 +15,7 @@ class DefaultStyles {
   private _terrain: StyleDefSpecification = { id: "Terrain", value: "maptoolkit://style/toursprung/terrain" };
   private _light: StyleDefSpecification = { id: "Light", value: "maptoolkit://style/toursprung/light" };
   private _dark: StyleDefSpecification = { id: "Dark", value: "maptoolkit://style/toursprung/dark" };
-  private _city: StyleDefSpecification = { id: "Dark", value: "maptoolkit://style/ulmon/Ulmon" };
+  private _city: StyleDefSpecification = { id: "City", value: "maptoolkit://style/ulmon/Ulmon" };
   private _green: StyleDefSpecification = { id: "Green", value: "maptoolkit://style/toursprung/printmaps-green" };
   private _winter: StyleDefSpecification = { id: "Winter", value: "maptoolkit://style/toursprung/terrainwinter" };
   
