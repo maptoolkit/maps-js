@@ -11,9 +11,7 @@ export type StyleControlOptions = {
   styles?: Array<StyleDefSpecification>;
 };
 
-export const defaultStyleControlOptions: StyleControlOptions = {
-  styles: Styles.toArray(),
-};
+export const defaultStyleControlOptions: StyleControlOptions = {};
 
 export class StyleControl implements IControl {
   options: StyleControlOptions;
@@ -22,7 +20,7 @@ export class StyleControl implements IControl {
   _groups?: HTMLElement;
 
   constructor(options?: StyleControlOptions) {
-    this.options = Object.assign(defaultStyleControlOptions, options);
+    this.options = Object.assign({}, defaultStyleControlOptions, { styles: Styles.toArray() }, options);
 
     if (this.options.styles) {
       this.options.styles = this.options.styles.filter(

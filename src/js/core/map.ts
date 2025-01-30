@@ -157,8 +157,7 @@ export type MapOptions = Omit<maplibreMapOptions, "container" | "attributionCont
   logoControl?: false | LogoControlOptions;
 };
 
-export const defaultMapOptions = {
-  style: Styles.Terrain,
+export const defaultMapOptions: MapOptions = {
   maxPitch: 75,
   center: { lng: 11.40037, lat: 47.26816 },
   zoom: 12,
@@ -181,6 +180,11 @@ export class Map extends maplibreMap {
   constructor(options?: MapOptions) {
     options = Object.assign({}, defaultMapOptions, options);
 
+    if (options.apiKey) {
+      config.apiKey = options.apiKey;
+    }
+    options.style = Styles.Terrain.value;
+
     const container = document.createElement("div");
     container.classList.add("maptoolkit-map");
     container.style.width = container.style.height = "100%";
@@ -191,12 +195,6 @@ export class Map extends maplibreMap {
       attributionControl: false,
       maplibreLogo: false,
     });
-
-    if (!options.apiKey) {
-      console.warn("Maptoolkit API key is not set.");
-    } else {
-      config.apiKey = options.apiKey;
-    }
 
     this._locale = Object.assign({}, defaultLocale, options.locale);
 
@@ -547,8 +545,15 @@ export class Map extends maplibreMap {
    * @returns The UI string.
    * @private
    */
-  _getUIString(key: string): string {
-    return super._getUIString(key as any);
+  _getUIString(key: string, variables?: { [key: string]: string }): string {
+    const str = super._getUIString(key as any);
+    if (variables && typeof variables === "object") {
+      return str.replace(/{(.*?)}/g, (match, val) => {
+        return val in variables ? variables[val] : match;
+      });
+    } else {
+      return str;
+    }
   }
 
   /**
