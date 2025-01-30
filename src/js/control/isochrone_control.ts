@@ -31,7 +31,7 @@ export const defaultIsochroneControlOptions: IsochroneControlOptions = {
 };
 
 /**
- * Provides an interactable compass for the map's bearing.
+ * Provides an draggable isochrone control.
  *
  * Used by the {@link NavigationControl} class.
  */
@@ -50,7 +50,7 @@ export class IsochroneControl implements IControl {
   _marker?: Marker;
 
   /**
-   * @param options - Options for configuring the compass control.
+   * @param options - Options for configuring the isochrone control.
    */
   constructor(options?: IsochroneControlOptions) {
     this.options = Object.assign({}, defaultIsochroneControlOptions, options);
