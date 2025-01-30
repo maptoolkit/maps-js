@@ -105,5 +105,5 @@ export const Locale = {
 /**
  * Default locale for the application.
  */
-export const defaultLocale = Locale.de;
+export const defaultLocale = Locale.en;
 // TODO: Add proper multi language support
