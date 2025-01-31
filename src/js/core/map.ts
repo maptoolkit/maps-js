@@ -192,6 +192,8 @@ export class Map extends maplibreMap {
       maplibreLogo: false,
     });
 
+    config.pixelRatio = this.getPixelRatio();
+
     this._locale = Object.assign({}, defaultLocale, options.locale);
 
     this._style = undefined;
