@@ -662,6 +662,6 @@ declare class SearchControl implements IControl {
     onRemove(): void;
 }
 
-var version = "11.0.0-alpha.5";
+var version = "11.0.0-alpha.6";
 
 export { AttributionControl, type AttributionControlOptions, CompassControl, type CompassControlOptions, type DataConnectorOptions, IsochroneControl, type IsochroneControlOptions, Locale, LogoControl, Map, type MapOptions, NavigationControl, type NavigationControlOptions, PitchControl, type PitchControlOptions, SearchControl, type SearchControlOptions, StyleControl, type StyleControlOptions, Styles, Terrain, TerrainControl, type TerrainControlOptions, version };

@@ -481,9 +481,9 @@ export class Map extends maplibreMap {
     if (update !== true) {
       this.fire("style.set", { style });
     }
-    this._truncateStates();
     super.setStyle(style, options);
     if (update !== true) {
+      this._truncateStates();
       this._styleId = getStringChecksum(typeof style === "string" ? style : JSON.stringify(style));
       this.once("styledata", () => {
         this._parseStates();
