@@ -7,8 +7,16 @@ export type StyleDefSpecification = {
   image?: string;
 };
 
-function createStaticImage(accountName: string, styleName: string) {
-  return `https://staticmap.maptoolkit.net/?style=${accountName}-${styleName}&size=166x166&center=47.329,12.787&zoom=12&api_key=${config.apiKey}`;
+export function createStaticImage(accountName: string, styleName: string) {
+  const url = new URL(config.staticmapHost);
+
+  url.searchParams.set("api_key", config.apiKey);
+  url.searchParams.set("maptype", `${accountName}-${styleName}`);
+  url.searchParams.set("size", "166x166");
+  url.searchParams.set("center", "47.329,12.787");
+  url.searchParams.set("zoom", "12");
+
+  return url.toString();
 }
 
 class DefaultStyles {

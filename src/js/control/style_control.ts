@@ -3,9 +3,11 @@ import { IControl } from "./control";
 
 import { ControlPosition as maplibreControlPosition } from "maplibre-gl";
 
-import { Styles, StyleDefSpecification } from "../core/styles";
+import { Styles, StyleDefSpecification, createStaticImage } from "../core/styles";
 
 import { getStringChecksum } from "../core/utils";
+
+import { config } from "../core/config";
 
 export type StyleControlOptions = {
   styles?: Array<StyleDefSpecification>;
@@ -27,8 +29,9 @@ export class StyleControl implements IControl {
         (style) => (style.id && style.value && typeof style.value === "object") || typeof style.value === "string"
       );
       for (const style of this.options.styles) {
-        if (!style.image) {
-          style.image = `https://staticmap.maptoolkit.net/?maptype=${style.value}&size=166x166&center=47.329,12.787&zoom=12&api_key=toursprung`;
+        if (!style.image && typeof style.value === "string" && /^maptoolkit:\/\/style\/[A-z0-9_-]+\/[A-z0-9_-]+$/.test(style.value)) {
+          const [account, name] = style.value.split("/").slice(-2);
+          style.image = createStaticImage(account, name);
         }
       }
     }
