@@ -476,7 +476,7 @@ export class Map extends maplibreMap {
     super.setStyle(style, options);
     if (update !== true) {
       this._styleId = getStringChecksum(typeof style === "string" ? style : JSON.stringify(style));
-      this.style.once("style.load", () => {
+      this.once("styledata", () => {
         this._parseStates();
         this._style = this.style ? this.style.serialize() : undefined;
         this._applyStates();

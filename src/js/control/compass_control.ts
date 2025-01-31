@@ -59,7 +59,7 @@ export class CompassControl implements IControl {
     arrowR.addEventListener("click", () => map.easeTo({ bearing: map.getBearing() - 90 }));
 
     this._onRotate = () => {
-      let angle = map.transform.angle * (180 / Math.PI);
+      let angle = map.transform.bearing * (180 / Math.PI);
       img.style.transform = `rotate(${angle}deg)`;
       if (angle < 0) angle += 360;
       if (angle > 315 || angle <= 45) label.innerText = "N";
