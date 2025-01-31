@@ -178,12 +178,8 @@ export class Map extends maplibreMap {
    * @param options - The {@link MapOptions} object.
    */
   constructor(options?: MapOptions) {
-    options = Object.assign({}, defaultMapOptions, options);
-
-    if (options.apiKey) {
-      config.apiKey = options.apiKey;
-    }
-    options.style = Styles.Terrain.value;
+    config.apiKey = options?.apiKey || "";
+    options = Object.assign({ style: Styles.Terrain.value }, defaultMapOptions, options);
 
     const container = document.createElement("div");
     container.classList.add("maptoolkit-map");
