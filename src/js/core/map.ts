@@ -317,7 +317,7 @@ export class Map extends maplibreMap {
     const style = this.style.serialize();
 
     if (style) {
-      this._states = { global: {} as StateParentSpecification, feature: {} as StateParentSpecification };
+      this._truncateStates();
 
       for (const layer of style.layers) {
         const metadata: any = layer.metadata;
@@ -334,6 +334,14 @@ export class Map extends maplibreMap {
     }
   }
 
+  /**
+   * Truncate parsed states
+   * @private
+   */
+  private _truncateStates(): void {
+    this._states = { global: {} as StateParentSpecification, feature: {} as StateParentSpecification };
+  }
+  
   /**
    * Applies the parsed states to the style.
    * @private
@@ -473,6 +481,7 @@ export class Map extends maplibreMap {
     if (update !== true) {
       this.fire("style.set", { style });
     }
+    this._truncateStates();
     super.setStyle(style, options);
     if (update !== true) {
       this._styleId = getStringChecksum(typeof style === "string" ? style : JSON.stringify(style));
