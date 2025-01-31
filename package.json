@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "maptoolkit-js",
-  "version": "11.0.0-alpha.6",
+  "version": "11.0.0-alpha.7",
   "description": "Maptoolkit Javascript Library",
   "scripts": {
     "build": "npm run build-js && npm run build-css",
