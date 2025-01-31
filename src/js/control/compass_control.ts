@@ -59,13 +59,14 @@ export class CompassControl implements IControl {
     arrowR.addEventListener("click", () => map.easeTo({ bearing: map.getBearing() - 90 }));
 
     this._onRotate = () => {
-      let angle = map.transform.bearing * (180 / Math.PI);
-      img.style.transform = `rotate(${angle}deg)`;
-      if (angle < 0) angle += 360;
-      if (angle > 315 || angle <= 45) label.innerText = "N";
-      else if (angle > 45 && angle <= 135) label.innerText = "E";
-      else if (angle > 135 && angle <= 225) label.innerText = "S";
-      else if (angle > 225 && angle <= 315) label.innerText = "W";
+      let bearing = (map.transform.bearing + 360) % 360; // change range from [-180, 180] to [0, 360]
+      img.style.transform = `rotate(${bearing * -1}deg)`;
+
+      if (bearing < 0) bearing += 360;
+      if (bearing > 315 || bearing <= 45) label.innerText = "N";
+      else if (bearing > 45 && bearing <= 135) label.innerText = "E";
+      else if (bearing > 135 && bearing <= 225) label.innerText = "S";
+      else if (bearing > 225 && bearing <= 315) label.innerText = "W";
     };
     map.on("rotate", this._onRotate);
     this._onRotate({} as Event);
