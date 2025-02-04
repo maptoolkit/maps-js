@@ -3,8 +3,8 @@ import { config } from "./config";
 
 maplibreAddProtocol("maptoolkit", (params, abortController) => {
   return new Promise((resolve) => {
-    const [service, account, name] = params.url.slice(13).split("/");
-    const searchParams = new URLSearchParams(params.url.split("?")[1]);
+    const [service, account, name] = params.url.slice(13).split("?")[0].split("/");
+    const searchParams = new URLSearchParams(params.url.split("#")[0].split("?")[1]);
 
     let requestUrl: URL | null = null;
     if (service === "style") {
