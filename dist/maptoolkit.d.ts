@@ -640,28 +640,6 @@ declare class IsochroneControl implements IControl {
     onRemove(): void;
 }
 
-/**
- * Options for configuring the {@link SearchControl}.
- */
-type SearchControlOptions = {};
-/**
- * Provides a search input.
- */
-declare class SearchControl implements IControl {
-    options: SearchControlOptions;
-    _container: HTMLElement;
-    _map?: Map;
-    _onInput?: EventListener;
-    _onKeyDown?: EventListener;
-    /**
-     * @param options - Options for configuring the search control.
-     */
-    constructor(options?: SearchControlOptions);
-    getDefaultPosition(): ControlPosition$1;
-    onAdd(map: Map): HTMLElement;
-    onRemove(): void;
-}
+var version = "11.0.0-alpha.10";
 
-var version = "11.0.0-alpha.9";
-
-export { AttributionControl, type AttributionControlOptions, CompassControl, type CompassControlOptions, type DataConnectorOptions, IsochroneControl, type IsochroneControlOptions, Locale, LogoControl, Map, type MapOptions, NavigationControl, type NavigationControlOptions, PitchControl, type PitchControlOptions, SearchControl, type SearchControlOptions, StyleControl, type StyleControlOptions, Styles, Terrain, TerrainControl, type TerrainControlOptions, version };
+export { AttributionControl, type AttributionControlOptions, CompassControl, type CompassControlOptions, type DataConnectorOptions, IsochroneControl, type IsochroneControlOptions, Locale, LogoControl, Map, type MapOptions, NavigationControl, type NavigationControlOptions, PitchControl, type PitchControlOptions, StyleControl, type StyleControlOptions, Styles, Terrain, TerrainControl, type TerrainControlOptions, version };
