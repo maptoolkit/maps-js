@@ -3,8 +3,9 @@ import { config } from "./config";
 
 maplibreAddProtocol("maptoolkit", (params, abortController) => {
   return new Promise((resolve) => {
-    const maptoolkitUrl = new URL(params.url);
-    const [service, account, name] = maptoolkitUrl.pathname.slice(2).split("/");
+    const [service, account, name] = params.url.slice(13).split("/");
+    const searchParams = new URLSearchParams(params.url.split("?")[1]);
+
     let requestUrl: URL | null = null;
     if (service === "style") {
       requestUrl = new URL(`/${account}/${name}.json`, config.stylesHost);
@@ -14,10 +15,11 @@ maplibreAddProtocol("maptoolkit", (params, abortController) => {
       requestUrl = new URL(`/${account}${ratio}.${format}`, config.iconsHost);
     } else if (service === "dataconnector") {
       requestUrl = new URL(`/${account}/${name}.json`, config.dataconnectorHost);
-      maptoolkitUrl.searchParams.forEach((value, key) => {
+      searchParams.forEach((value, key) => {
         requestUrl?.searchParams.set(key, value);
       });
     }
+
     if (requestUrl) {
       requestUrl.searchParams.set("api_key", config.apiKey);
       fetch(requestUrl)
