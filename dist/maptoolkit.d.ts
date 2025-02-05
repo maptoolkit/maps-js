@@ -1,4 +1,4 @@
-import { ControlPosition as ControlPosition$1, AttributionControlOptions as AttributionControlOptions$1, ScaleControlOptions, AttributionControl as AttributionControl$1, ScaleControl, LayerSpecification, ExpressionFilterSpecification, MapOptions as MapOptions$1, Map as Map$1, StyleSpecification, MapGeoJSONFeature, StyleSwapOptions, StyleOptions, AddLayerObject, SourceSpecification, Listener, NavigationControlOptions as NavigationControlOptions$1, NavigationControl as NavigationControl$1, Marker, LngLatLike } from 'maplibre-gl';
+import { ControlPosition as ControlPosition$1, AttributionControlOptions as AttributionControlOptions$1, ScaleControlOptions, AttributionControl as AttributionControl$1, ScaleControl, LayerSpecification, ExpressionFilterSpecification, MapOptions as MapOptions$1, Map as Map$1, StyleSpecification, MapGeoJSONFeature, StyleSwapOptions, StyleOptions, AddLayerObject, SourceSpecification, Listener, NavigationControlOptions as NavigationControlOptions$1, NavigationControl as NavigationControl$1, FitBoundsOptions, Marker, LngLatLike } from 'maplibre-gl';
 export * from 'maplibre-gl';
 import * as maplibreGl from 'maplibre-gl';
 export { maplibreGl as maplibregl };
@@ -608,6 +608,11 @@ type IsochroneControlOptions = {
      * @defaultValue `10` minutes
      */
     type: IsochroneType;
+    /**
+     * Whether the map bounds should fit the isochrone area. Alternatively accepts {@link FitBoundsOptions} object.
+     * @defaultValue `true`
+     */
+    fitBounds: boolean | FitBoundsOptions;
 };
 /**
  * Provides an draggable isochrone control.
@@ -640,6 +645,6 @@ declare class IsochroneControl implements IControl {
     onRemove(): void;
 }
 
-var version = "11.0.0-alpha.11";
+var version = "11.0.0-alpha.12";
 
 export { AttributionControl, type AttributionControlOptions, CompassControl, type CompassControlOptions, type DataConnectorOptions, IsochroneControl, type IsochroneControlOptions, Locale, LogoControl, Map, type MapOptions, NavigationControl, type NavigationControlOptions, PitchControl, type PitchControlOptions, StyleControl, type StyleControlOptions, Styles, Terrain, TerrainControl, type TerrainControlOptions, version };
