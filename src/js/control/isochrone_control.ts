@@ -20,17 +20,17 @@ export type IsochroneControlOptions = {
    * Time used for isochrone calculation. Value in minutes.
    * @defaultValue `10` minutes
    */
-  range: number;
+  range?: number;
   /**
    * Routing type used for isochrone request. Default value is `foot`.
    * @defaultValue `10` minutes
    */
-  type: IsochroneType;
+  type?: IsochroneType;
   /**
    * Whether the map bounds should fit the isochrone area. Alternatively accepts {@link FitBoundsOptions} object.
    * @defaultValue `true`
    */
-  fitBounds: boolean | maplibreFitBoundsOptions;
+  fitBounds?: boolean | maplibreFitBoundsOptions;
 };
 
 /**
@@ -143,7 +143,9 @@ export class IsochroneControl implements IControl {
     this._map = map;
 
     try {
-      this._tooltip.innerText = map._getUIString(`IsochroneControl.Tooltip.${this.options.type}`, { range: this.options.range.toString() });
+      if (this.options.range) {
+        this._tooltip.innerText = map._getUIString(`IsochroneControl.Tooltip.${this.options.type}`, { range: this.options.range.toString() });
+      }
     } catch (err) {
       this._tooltip.remove();
       console.warn(err);
