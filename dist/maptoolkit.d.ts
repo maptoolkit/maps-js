@@ -602,17 +602,17 @@ type IsochroneControlOptions = {
      * Time used for isochrone calculation. Value in minutes.
      * @defaultValue `10` minutes
      */
-    range: number;
+    range?: number;
     /**
      * Routing type used for isochrone request. Default value is `foot`.
      * @defaultValue `10` minutes
      */
-    type: IsochroneType;
+    type?: IsochroneType;
     /**
      * Whether the map bounds should fit the isochrone area. Alternatively accepts {@link FitBoundsOptions} object.
      * @defaultValue `true`
      */
-    fitBounds: boolean | FitBoundsOptions;
+    fitBounds?: boolean | FitBoundsOptions;
 };
 /**
  * Provides an draggable isochrone control.
@@ -645,6 +645,6 @@ declare class IsochroneControl implements IControl {
     onRemove(): void;
 }
 
-var version = "11.0.0-alpha.12";
+var version = "11.0.0-alpha.13";
 
 export { AttributionControl, type AttributionControlOptions, CompassControl, type CompassControlOptions, type DataConnectorOptions, IsochroneControl, type IsochroneControlOptions, Locale, LogoControl, Map, type MapOptions, NavigationControl, type NavigationControlOptions, PitchControl, type PitchControlOptions, StyleControl, type StyleControlOptions, Styles, Terrain, TerrainControl, type TerrainControlOptions, version };
