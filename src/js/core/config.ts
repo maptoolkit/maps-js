@@ -28,9 +28,6 @@ class Config extends Evented {
     this.fire("config.pixelRatio.set");
   }
   get pixelRatio(): number {
-    if (!this._pixelRatio) {
-      console.warn("Maptoolkit API key is not set.");
-    }
     return this._pixelRatio;
   }
 
