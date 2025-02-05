@@ -1,4 +1,4 @@
-import { ControlPosition as ControlPosition$1, AttributionControlOptions as AttributionControlOptions$1, ScaleControlOptions, AttributionControl as AttributionControl$1, ScaleControl, LayerSpecification, ExpressionFilterSpecification, MapOptions as MapOptions$1, Map as Map$1, StyleSpecification, MapGeoJSONFeature, StyleSwapOptions, StyleOptions, AddLayerObject, SourceSpecification, Listener, NavigationControlOptions as NavigationControlOptions$1, NavigationControl as NavigationControl$1, FitBoundsOptions, Marker, LngLatLike } from 'maplibre-gl';
+import { ControlPosition as ControlPosition$1, AttributionControlOptions as AttributionControlOptions$1, ScaleControlOptions, AttributionControl as AttributionControl$1, ScaleControl, LayerSpecification, ExpressionFilterSpecification, MapOptions as MapOptions$1, Map as Map$1, StyleSpecification, MapGeoJSONFeature, StyleSwapOptions, StyleOptions, AddLayerObject, Evented, SourceSpecification, Listener, NavigationControlOptions as NavigationControlOptions$1, NavigationControl as NavigationControl$1, FitBoundsOptions, Marker, LngLatLike } from 'maplibre-gl';
 export * from 'maplibre-gl';
 import * as maplibreGl from 'maplibre-gl';
 export { maplibreGl as maplibregl };
@@ -288,103 +288,40 @@ declare class Map extends Map$1 {
     _setupContainer(): void;
 }
 
+declare class Config extends Evented {
+    private _locale;
+    set locale(k: string);
+    get locale(): string;
+    private _apiKey;
+    set apiKey(k: string);
+    get apiKey(): string;
+    private _pixelRatio;
+    set pixelRatio(k: number);
+    get pixelRatio(): number;
+    private _stylesHost;
+    set stylesHost(k: string);
+    get stylesHost(): string;
+    private _iconsHost;
+    set iconsHost(k: string);
+    get iconsHost(): string;
+    private _dataconnectorHost;
+    set dataconnectorHost(k: string);
+    get dataconnectorHost(): string;
+    private _routingHost;
+    set routingHost(k: string);
+    get routingHost(): string;
+    private _staticmapHost;
+    set staticmapHost(k: string);
+    get staticmapHost(): string;
+}
+declare const config: Config;
+
 /**
  * Locale translations for the application.
  */
 declare const Locale: {
-    de: {
-        "AttributionControl.ToggleAttribution": string;
-        "AttributionControl.MapFeedback": string;
-        "FullscreenControl.Enter": string;
-        "FullscreenControl.Exit": string;
-        "GeolocateControl.FindMyLocation": string;
-        "GeolocateControl.LocationNotAvailable": string;
-        "LogoControl.Title": string;
-        "Map.Title": string;
-        "Marker.Title": string;
-        "NavigationControl.ResetBearing": string;
-        "NavigationControl.ZoomIn": string;
-        "NavigationControl.ZoomOut": string;
-        "Popup.Close": string;
-        "ScaleControl.Feet": string;
-        "ScaleControl.Meters": string;
-        "ScaleControl.Kilometers": string;
-        "ScaleControl.Miles": string;
-        "ScaleControl.NauticalMiles": string;
-        "TerrainControl.Enable": string;
-        "TerrainControl.Disable": string;
-        "CooperativeGesturesHandler.WindowsHelpText": string;
-        "CooperativeGesturesHandler.MacHelpText": string;
-        "CooperativeGesturesHandler.MobileHelpText": string;
-        "TerrainControl.ToggleTilt": string;
-        "PitchControl.ChangePitch": string;
-        "CompassControl.ResetBearing": string;
-        "CompassControl.RotateLeft": string;
-        "CompassControl.RotateRight": string;
-        "StyleControl.Group.Styles": string;
-        "StyleControl.Group.Layers": string;
-        "StyleControl.Style.Terrain": string;
-        "StyleControl.Style.Light": string;
-        "StyleControl.Style.Dark": string;
-        "StyleControl.Style.City": string;
-        "StyleControl.Style.Green": string;
-        "StyleControl.Style.Winter": string;
-        "StyleControl.Style.Satellite": string;
-        "StyleControl.Style.Hiking": string;
-        "StyleControl.Style.Cycling": string;
-        "StyleControl.Style.Pistes": string;
-        "StyleControl.Style.Protected": string;
-        "StyleControl.Style.Oepnv": string;
-        "IsochroneControl.Tooltip.foot": string;
-        "IsochroneControl.Tooltip.bike": string;
-        "IsochroneControl.Tooltip.car": string;
-    };
-    en: {
-        "AttributionControl.ToggleAttribution": string;
-        "AttributionControl.MapFeedback": string;
-        "FullscreenControl.Enter": string;
-        "FullscreenControl.Exit": string;
-        "GeolocateControl.FindMyLocation": string;
-        "GeolocateControl.LocationNotAvailable": string;
-        "LogoControl.Title": string;
-        "Map.Title": string;
-        "Marker.Title": string;
-        "NavigationControl.ResetBearing": string;
-        "NavigationControl.ZoomIn": string;
-        "NavigationControl.ZoomOut": string;
-        "Popup.Close": string;
-        "ScaleControl.Feet": string;
-        "ScaleControl.Meters": string;
-        "ScaleControl.Kilometers": string;
-        "ScaleControl.Miles": string;
-        "ScaleControl.NauticalMiles": string;
-        "TerrainControl.Enable": string;
-        "TerrainControl.Disable": string;
-        "CooperativeGesturesHandler.WindowsHelpText": string;
-        "CooperativeGesturesHandler.MacHelpText": string;
-        "CooperativeGesturesHandler.MobileHelpText": string;
-        "TerrainControl.ToggleTilt": string;
-        "PitchControl.ChangePitch": string;
-        "CompassControl.ResetBearing": string;
-        "CompassControl.RotateLeft": string;
-        "CompassControl.RotateRight": string;
-        "StyleControl.Group.Styles": string;
-        "StyleControl.Group.Layers": string;
-        "StyleControl.Style.Terrain": string;
-        "StyleControl.Style.Light": string;
-        "StyleControl.Style.Dark": string;
-        "StyleControl.Style.City": string;
-        "StyleControl.Style.Green": string;
-        "StyleControl.Style.Winter": string;
-        "StyleControl.Style.Satellite": string;
-        "StyleControl.Style.Hiking": string;
-        "StyleControl.Style.Cycling": string;
-        "StyleControl.Style.Pistes": string;
-        "StyleControl.Style.Protected": string;
-        "StyleControl.Style.Oepnv": string;
-        "IsochroneControl.Tooltip.foot": string;
-        "IsochroneControl.Tooltip.bike": string;
-        "IsochroneControl.Tooltip.car": string;
+    [_: string]: {
+        [_: string]: string;
     };
 };
 
@@ -645,6 +582,6 @@ declare class IsochroneControl implements IControl {
     onRemove(): void;
 }
 
-var version = "11.0.0-alpha.13";
+var version = "11.0.0-alpha.14";
 
-export { AttributionControl, type AttributionControlOptions, CompassControl, type CompassControlOptions, type DataConnectorOptions, IsochroneControl, type IsochroneControlOptions, Locale, LogoControl, Map, type MapOptions, NavigationControl, type NavigationControlOptions, PitchControl, type PitchControlOptions, StyleControl, type StyleControlOptions, Styles, Terrain, TerrainControl, type TerrainControlOptions, version };
+export { AttributionControl, type AttributionControlOptions, CompassControl, type CompassControlOptions, type DataConnectorOptions, IsochroneControl, type IsochroneControlOptions, Locale, LogoControl, Map, type MapOptions, NavigationControl, type NavigationControlOptions, PitchControl, type PitchControlOptions, StyleControl, type StyleControlOptions, Styles, Terrain, TerrainControl, type TerrainControlOptions, config, version };
