@@ -1,4 +1,4 @@
-import { defaultLocale } from "./locale";
+import { getDefaultLocale } from "./locale";
 import { config } from "./config";
 import { ControlPosition, IControl } from "../control/control";
 import { AttributionControl, AttributionControlOptions } from "../control/attribution_control";
@@ -179,6 +179,11 @@ export class Map extends maplibreMap {
    */
   constructor(options?: MapOptions) {
     config.apiKey = options?.apiKey || "";
+  
+    if (options && typeof options.locale === "string") {
+      config.locale = options?.locale;
+    }
+
     options = Object.assign({ style: Styles.Terrain.value }, defaultMapOptions, options);
 
     const container = document.createElement("div");
@@ -194,7 +199,7 @@ export class Map extends maplibreMap {
 
     config.pixelRatio = this.getPixelRatio();
 
-    this._locale = Object.assign({}, defaultLocale, options.locale);
+    this._locale = Object.assign({}, getDefaultLocale(), typeof options.locale !== "string" ? options.locale : null);
 
     this._style = undefined;
     this._states = { global: {}, feature: {} };

@@ -1,6 +1,15 @@
 import { Evented } from "maplibre-gl";
 
 class Config extends Evented {
+  private _locale: string = "en";
+  set locale(k: string) {
+    this._locale = k;
+    this.fire("config.locale.set");
+  }
+  get locale(): string {
+    return this._locale;
+  }
+
   private _apiKey: string = "";
   set apiKey(k: string) {
     this._apiKey = k;

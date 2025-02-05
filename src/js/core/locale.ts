@@ -1,7 +1,8 @@
+import { config } from "./config";
 /**
  * Locale translations for the application.
  */
-export const Locale = {
+export const Locale: { [_: string]: { [_: string]: string } } = {
   de: {
     // maplibre-gl
     "AttributionControl.ToggleAttribution": "Attribution ein-/ausblenden",
@@ -105,5 +106,6 @@ export const Locale = {
 /**
  * Default locale for the application.
  */
-export const defaultLocale = Locale.en;
-// TODO: Add proper multi language support
+export function getDefaultLocale() {
+  return Locale[config.locale || "en"];
+}

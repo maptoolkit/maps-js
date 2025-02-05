@@ -4,6 +4,7 @@ import * as maplibregl from "maplibre-gl";
 
 import { Map, MapOptions, DataConnectorOptions } from "./js/core/map";
 
+import { config } from "./js/core/config";
 import { Locale } from "./js/core/locale";
 import { Styles } from "./js/core/styles";
 import { Terrain } from "./js/core/terrain";
@@ -16,6 +17,7 @@ import { TerrainControl, TerrainControlOptions } from "./js/control/terrain_cont
 import { NavigationControl, NavigationControlOptions } from "./js/control/navigation_control";
 import { StyleControl, StyleControlOptions } from "./js/control/style_control";
 import { IsochroneControl, IsochroneControlOptions } from "./js/control/isochrone_control";
+/* import { SearchControl, SearchControlOptions } from "./js/control/search_control"; */
 import { version } from "../package.json";
 
 export type * from "maplibre-gl";
@@ -32,7 +34,9 @@ export {
   type NavigationControlOptions,
   type StyleControlOptions,
   type IsochroneControlOptions,
+  /* type SearchControlOptions, */
   Map,
+  config,
   Locale,
   Styles,
   Terrain,
@@ -44,4 +48,5 @@ export {
   NavigationControl,
   StyleControl,
   IsochroneControl,
+  /* SearchControl, */
 };
