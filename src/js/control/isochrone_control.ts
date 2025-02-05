@@ -2,7 +2,13 @@ import { Map } from "../core/map";
 import { config } from "../core/config";
 import { IControl } from "./control";
 
-import { LngLatLike, ControlPosition as maplibreControlPosition, Marker } from "maplibre-gl";
+import {
+  FitBoundsOptions as maplibreFitBoundsOptions,
+  LngLatLike as maplibreLngLatLike,
+  ControlPosition as maplibreControlPosition,
+  Marker as maplibreMarker,
+  LngLatBounds as maplibreLngLatBounds,
+} from "maplibre-gl";
 
 export type IsochroneType = "foot" | "bike" | "car";
 
@@ -20,6 +26,11 @@ export type IsochroneControlOptions = {
    * @defaultValue `10` minutes
    */
   type: IsochroneType;
+  /**
+   * Whether the map bounds should fit the isochrone area. Alternatively accepts {@link FitBoundsOptions} object.
+   * @defaultValue `true`
+   */
+  fitBounds: boolean | maplibreFitBoundsOptions;
 };
 
 /**
@@ -28,6 +39,7 @@ export type IsochroneControlOptions = {
 export const defaultIsochroneControlOptions: IsochroneControlOptions = {
   range: 10,
   type: "foot",
+  fitBounds: true,
 };
 
 /**
@@ -47,7 +59,7 @@ export class IsochroneControl implements IControl {
   _onStyleChange: EventListener;
 
   _map?: Map;
-  _marker?: Marker;
+  _marker?: maplibreMarker;
 
   /**
    * @param options - Options for configuring the isochrone control.
@@ -84,7 +96,7 @@ export class IsochroneControl implements IControl {
     });
 
     // Tooltip
-    const tooltip = this._tooltip = document.createElement("div");
+    const tooltip = (this._tooltip = document.createElement("div"));
     this._tooltip.classList.add("maplibregl-ctrl-group", "maptoolkit-ctrl-isochrone-tooltip");
 
     // Append children
@@ -147,7 +159,7 @@ export class IsochroneControl implements IControl {
     return this._container;
   }
 
-  addToMap(lngLat: LngLatLike) {
+  addToMap(lngLat: maplibreLngLatLike) {
     this._addMarker(lngLat);
     this._addPolygon(lngLat);
     if (this._container) {
@@ -163,14 +175,14 @@ export class IsochroneControl implements IControl {
     }
   }
 
-  _addMarker(lngLat: LngLatLike) {
+  _addMarker(lngLat: maplibreLngLatLike) {
     if (this._map) {
       this._removeMarker();
       if (lngLat) {
         const element = document.createElement("div");
         element.classList.add("maptoolkit-ctrl-isochrone-chronee", `maptoolkit-ctrl-isochrone-chronee-${this.options.type}`);
 
-        this._marker = new Marker({ element, anchor: "center", draggable: true });
+        this._marker = new maplibreMarker({ element, anchor: "center", draggable: true });
 
         this._marker.on("dragend", (ev) => this._addPolygon(ev.target.getLngLat()));
         this._marker.on("click", (ev) => ev.preventDefault());
@@ -186,7 +198,7 @@ export class IsochroneControl implements IControl {
     }
   }
 
-  _addPolygon(lngLat: LngLatLike) {
+  _addPolygon(lngLat: maplibreLngLatLike) {
     this._removePolygon();
 
     if (config.apiKey && this._map && lngLat) {
@@ -248,6 +260,13 @@ export class IsochroneControl implements IControl {
                 "line-width": 1.4,
               },
             });
+
+            if (this.options.fitBounds) {
+              const bounds = new maplibreLngLatBounds();
+              const fitBoundsOptions = Object.assign({ padding: 100 }, this.options.fitBounds);
+              coordinates.forEach((lngLatArr) => lngLatArr.forEach((lngLat) => bounds.extend(lngLat as maplibreLngLatLike)));
+              map.fitBounds(bounds, fitBoundsOptions);
+            }
           });
       }
     }
