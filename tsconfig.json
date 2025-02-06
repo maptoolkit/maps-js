@@ -12,6 +12,6 @@
       "*": ["./node_modules/*"]
     }
   },
-  "include": ["rollup.config.*", "src/**/*", "src.old/__zoom_control.ts"],
+  "include": ["rollup.config.*", "src/**/*"],
   "exclude": ["node_modules", "dist", "test/**/*"]
 }
