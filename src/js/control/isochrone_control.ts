@@ -182,7 +182,18 @@ export class IsochroneControl implements IControl {
       this._removeMarker();
       if (lngLat) {
         const element = document.createElement("div");
-        element.classList.add("maptoolkit-ctrl-isochrone-chronee", `maptoolkit-ctrl-isochrone-chronee-${this.options.type}`);
+
+        const chronee = document.createElement("div");
+        chronee.classList.add("maptoolkit-ctrl-isochrone-chronee", `maptoolkit-ctrl-isochrone-chronee-${this.options.type}`);
+
+        const remove = document.createElement("button");
+        remove.classList.add("maptoolkit-ctrl-isochrone-chronee-remove");
+        remove.addEventListener("click", () => {
+          this.removeFromMap();
+        });
+        
+        element.appendChild(remove);
+        element.appendChild(chronee);
 
         this._marker = new maplibreMarker({ element, anchor: "center", draggable: true });
 
