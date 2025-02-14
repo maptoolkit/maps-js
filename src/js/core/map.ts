@@ -241,14 +241,14 @@ export class Map extends maplibreMap {
     }
   }
 
-  set selectedFeature(feature: maplibreMapGeoJSONFeature | undefined) {
+  set selectedFeature(feature: maplibreMapGeoJSONFeature | null) {
     this._setStateFeature("select", !feature ? undefined : feature);
   }
-  get selectedFeature(): maplibreMapGeoJSONFeature | undefined {
+  get selectedFeature(): maplibreMapGeoJSONFeature | null {
     return this._statesActive.feature.select;
   }
 
-  set hoveredFeature(feature: maplibreMapGeoJSONFeature | undefined) {
+  set hoveredFeature(feature: maplibreMapGeoJSONFeature | null) {
     this._setStateFeature("hover", !feature ? undefined : feature);
   }
   get hoveredFeature(): maplibreMapGeoJSONFeature | undefined {
