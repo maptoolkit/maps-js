@@ -37,7 +37,7 @@ class DefaultStyles {
     return { ...this._dark, image: createStaticImage("toursprung", "dark") };
   }
   get City() {
-    return { ...this._city, image: createStaticImage("ulmon", "Ulmon") };
+    return { ...this._city, image: createStaticImage("citymaps2go", "Ulmon") };
   }
   get Green() {
     return { ...this._green, image: createStaticImage("toursprung", "printmaps-green") };
