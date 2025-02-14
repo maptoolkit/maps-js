@@ -7,21 +7,24 @@ import { Styles } from "./styles";
 
 import { getStringChecksum } from "./utils";
 
-import {
-  Map as maplibreMap,
+import type {
   MapOptions as maplibreMapOptions,
   StyleSpecification as maplibreStyleSpecification,
   StyleSwapOptions as maplibreStyleSwapOptions,
   StyleOptions as maplibreStyleOptions,
   AddLayerObject as maplibreAddLayerObject,
   PointLike as maplibrePointLike,
-  MapMouseEvent as maplibreMapMouseEvent,
-  MapTouchEvent as maplibreMapTouchEvent,
   MapGeoJSONFeature as maplibreMapGeoJSONFeature,
   LayerSpecification as maplibreLayerSpecification,
   ExpressionFilterSpecification as maplibreExpressionFilterSpecification,
-  IControl as maplibreIControl,
   ControlPosition as maplibreControlPosition,
+} from "maplibre-gl";
+
+import {
+  Map as maplibreMap,
+  MapMouseEvent as maplibreMapMouseEvent,
+  MapTouchEvent as maplibreMapTouchEvent,
+  IControl as maplibreIControl,
 } from "maplibre-gl";
 
 import {
@@ -137,7 +140,6 @@ export type DataConnectorOptions = {
 export type MapOptions = Omit<maplibreMapOptions, "container" | "attributionControl"> & {
   /**
    * The HTML element in which the map will be rendered, or the element's string `id`. The specified element must have no children.
-   *
    * Alternatively the container can be set using the {@link Map.setContainer} method after initialization.
    */
   container?: HTMLElement | string;
