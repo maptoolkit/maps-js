@@ -154,7 +154,6 @@ type DataConnectorOptions = {
 type MapOptions = Omit<MapOptions$1, "container" | "attributionControl"> & {
     /**
      * The HTML element in which the map will be rendered, or the element's string `id`. The specified element must have no children.
-     *
      * Alternatively the container can be set using the {@link Map.setContainer} method after initialization.
      */
     container?: HTMLElement | string;
@@ -187,9 +186,9 @@ declare class Map extends Map$1 {
      * @param options - The {@link MapOptions} object.
      */
     constructor(options?: MapOptions);
-    set selectedFeature(feature: MapGeoJSONFeature | undefined);
-    get selectedFeature(): MapGeoJSONFeature | undefined;
-    set hoveredFeature(feature: MapGeoJSONFeature | undefined);
+    set selectedFeature(feature: MapGeoJSONFeature | null);
+    get selectedFeature(): MapGeoJSONFeature | null;
+    set hoveredFeature(feature: MapGeoJSONFeature | null);
     get hoveredFeature(): MapGeoJSONFeature | undefined;
     /**
      * Get active feature for given point and state.
@@ -582,6 +581,6 @@ declare class IsochroneControl implements IControl {
     onRemove(): void;
 }
 
-var version = "11.0.0-alpha.15";
+var version = "11.0.0-alpha.16";
 
 export { AttributionControl, type AttributionControlOptions, CompassControl, type CompassControlOptions, type DataConnectorOptions, IsochroneControl, type IsochroneControlOptions, Locale, LogoControl, Map, type MapOptions, NavigationControl, type NavigationControlOptions, PitchControl, type PitchControlOptions, StyleControl, type StyleControlOptions, Styles, Terrain, TerrainControl, type TerrainControlOptions, config, version };
