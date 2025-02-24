@@ -560,13 +560,18 @@ export class Map extends maplibreMap {
    * @private
    */
   _getUIString(key: string, variables?: { [key: string]: string }): string {
-    const str = super._getUIString(key as any);
-    if (variables && typeof variables === "object") {
-      return str.replace(/{(.*?)}/g, (match, val) => {
-        return val in variables ? variables[val] : match;
-      });
-    } else {
-      return str;
+    try {
+      const str = super._getUIString(key as any);
+      if (variables && typeof variables === "object") {
+        return str.replace(/{(.*?)}/g, (match, val) => {
+          return val in variables ? variables[val] : match;
+        });
+      } else {
+        return str;
+      }
+    } catch(e) {
+      console.warn(e);
+      return "";
     }
   }
 
