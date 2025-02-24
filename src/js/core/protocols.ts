@@ -10,9 +10,13 @@ maplibreAddProtocol("maptoolkit", (params, abortController) => {
     if (service === "style") {
       requestUrl = new URL(`/${account}/${name}.json`, config.stylesHost);
     } else if (service === "sprite") {
-      const ratio = config.pixelRatio > 1 ? `@${config.pixelRatio}x` : "";
-      const format = params.type === "json" ? "json" : "png";
-      requestUrl = new URL(`/${account}${ratio}.${format}`, config.iconsHost);
+      if (/@\dx\.(json|png)$/.test(account)) {
+        requestUrl = new URL(`/${account}`, config.iconsHost);
+      } else {
+        const ratio = config.pixelRatio > 1 ? `@${config.pixelRatio}x` : "";
+        const format = params.type === "json" ? "json" : "png";
+        requestUrl = new URL(`/${account}${ratio}.${format}`, config.iconsHost);
+      }
     } else if (service === "dataconnector") {
       requestUrl = new URL(`/${account}/${name}.json`, config.dataconnectorHost);
       searchParams.forEach((value, key) => {
