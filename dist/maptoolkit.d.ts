@@ -581,6 +581,6 @@ declare class IsochroneControl implements IControl {
     onRemove(): void;
 }
 
-var version = "11.0.0-alpha.19";
+var version = "11.0.0-alpha.20";
 
 export { AttributionControl, type AttributionControlOptions, CompassControl, type CompassControlOptions, type DataConnectorOptions, IsochroneControl, type IsochroneControlOptions, Locale, LogoControl, Map, type MapOptions, NavigationControl, type NavigationControlOptions, PitchControl, type PitchControlOptions, StyleControl, type StyleControlOptions, Styles, Terrain, TerrainControl, type TerrainControlOptions, config, version };
