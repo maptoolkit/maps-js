@@ -326,13 +326,16 @@ export class Map extends maplibreMap {
 
       for (const layer of style.layers) {
         const metadata: any = layer.metadata;
-        if (metadata && metadata["maptoolkit:states"]) {
-          for (const state in metadata["maptoolkit:states"]) {
-            let states = !FeatureStateList.includes(state as FeatureState) ? this._states.global : this._states.feature;
-            if (!states[state]) {
-              states[state] = {} as StateChildSpecification;
+        if (metadata) {
+          const maptoolkitStates = metadata["maptoolkit:states"] || metadata["mtk:states"];
+          if (maptoolkitStates) {
+            for (const state in maptoolkitStates) {
+              let states = !FeatureStateList.includes(state as FeatureState) ? this._states.global : this._states.feature;
+              if (!states[state]) {
+                states[state] = {} as StateChildSpecification;
+              }
+              states[state][layer.id] = maptoolkitStates[state];
             }
-            states[state][layer.id] = metadata["maptoolkit:states"][state];
           }
         }
       }
