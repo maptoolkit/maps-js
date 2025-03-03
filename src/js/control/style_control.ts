@@ -7,8 +7,6 @@ import { Styles, StyleDefSpecification, createStaticImage } from "../core/styles
 
 import { getStringChecksum } from "../core/utils";
 
-import { config } from "../core/config";
-
 export type StyleControlOptions = {
   styles?: Array<StyleDefSpecification>;
 };

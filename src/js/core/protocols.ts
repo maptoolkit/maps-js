@@ -7,20 +7,20 @@ maplibreAddProtocol("maptoolkit", (params, abortController) => {
     const searchParams = new URLSearchParams(params.url.split("#")[0].split("?")[1]);
 
     let requestUrl: URL | null = null;
-    if (service === "style") {
+    if (service === "style" || service === "styles") {
       requestUrl = new URL(`/${account}/${name}.json`, config.stylesHost);
-    } else if (service === "sprite") {
+    } else if (service === "sprite" || service === "icons") {
       const ratio = config.pixelRatio > 1 ? `@${config.pixelRatio}x` : "";
       const format = params.type === "json" ? "json" : "png";
       requestUrl = new URL(`/${account.replace(/(@\dx)?\.(json|png)$/, "")}${ratio}.${format}`, config.iconsHost);
     } else if (service === "dataconnector") {
       requestUrl = new URL(`/${account}/${name}.json`, config.dataconnectorHost);
-      searchParams.forEach((value, key) => {
-        requestUrl?.searchParams.set(key, value);
-      });
     }
 
     if (requestUrl) {
+      searchParams.forEach((value, key) => {
+        requestUrl?.searchParams.set(key, value);
+      });
       requestUrl.searchParams.set("api_key", config.apiKey);
       fetch(requestUrl)
         .then((response) => (params.type === "json" ? response.json() : response.arrayBuffer()))

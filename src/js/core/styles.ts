@@ -20,12 +20,12 @@ export function createStaticImage(accountName: string, styleName: string) {
 }
 
 class DefaultStyles {
-  private _terrain: StyleDefSpecification = { id: "Terrain", value: "maptoolkit://style/toursprung/terrain" };
-  private _light: StyleDefSpecification = { id: "Light", value: "maptoolkit://style/toursprung/light" };
-  private _dark: StyleDefSpecification = { id: "Dark", value: "maptoolkit://style/toursprung/dark" };
-  private _city: StyleDefSpecification = { id: "City", value: "maptoolkit://style/citymaps2go/Ulmon" };
-  private _green: StyleDefSpecification = { id: "Green", value: "maptoolkit://style/toursprung/printmaps-green" };
-  private _winter: StyleDefSpecification = { id: "Winter", value: "maptoolkit://style/toursprung/terrainwinter" };
+  private _terrain: StyleDefSpecification = { id: "Terrain", value: "maptoolkit://styles/toursprung/terrain" };
+  private _light: StyleDefSpecification = { id: "Light", value: "maptoolkit://styles/toursprung/light" };
+  private _dark: StyleDefSpecification = { id: "Dark", value: "maptoolkit://styles/toursprung/dark" };
+  private _city: StyleDefSpecification = { id: "City", value: "maptoolkit://styles/citymaps2go/Ulmon" };
+  private _green: StyleDefSpecification = { id: "Green", value: "maptoolkit://styles/toursprung/printmaps-green" };
+  private _winter: StyleDefSpecification = { id: "Winter", value: "maptoolkit://styles/toursprung/terrainwinter" };
   
   get Terrain() {
     return { ...this._terrain, image: createStaticImage("toursprung", "terrain") };
