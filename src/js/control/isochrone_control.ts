@@ -60,6 +60,7 @@ export class IsochroneControl implements IControl {
 
   _map?: Map;
   _marker?: maplibreMarker;
+  _abortController?: AbortController;
 
   /**
    * @param options - Options for configuring the isochrone control.
@@ -236,9 +237,16 @@ export class IsochroneControl implements IControl {
       if (point) {
         url.searchParams.set("point", point.join(","));
 
-        fetch(url.toString())
+        if (this._abortController) {
+          this._abortController.abort();
+        }
+        this._abortController = new AbortController();
+
+        fetch(url.toString(), { signal: this._abortController.signal })
           .then((r) => r.json())
           .then((pointlist: number[][]) => {
+            this._removePolygon();
+            
             const coordinates = [pointlist.map((point) => [point[1], point[0]])];
             map.addSource(this._id, {
               type: "geojson",
@@ -279,6 +287,10 @@ export class IsochroneControl implements IControl {
               const fitBoundsOptions = Object.assign({ padding: 100 }, this.options.fitBounds);
               coordinates.forEach((lngLatArr) => lngLatArr.forEach((lngLat) => bounds.extend(lngLat as maplibreLngLatLike)));
               map.fitBounds(bounds, fitBoundsOptions);
+            }
+          }).catch((err) => {
+            if (err.name !== "AbortError") {
+              console.error(err);
             }
           });
       }
