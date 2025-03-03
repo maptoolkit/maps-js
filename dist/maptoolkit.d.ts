@@ -566,6 +566,7 @@ declare class IsochroneControl implements IControl {
     _onStyleChange: EventListener;
     _map?: Map;
     _marker?: Marker;
+    _abortController?: AbortController;
     /**
      * @param options - Options for configuring the isochrone control.
      */
@@ -581,6 +582,6 @@ declare class IsochroneControl implements IControl {
     onRemove(): void;
 }
 
-var version = "11.0.0-alpha.21";
+var version = "11.0.0-alpha.22";
 
 export { AttributionControl, type AttributionControlOptions, CompassControl, type CompassControlOptions, type DataConnectorOptions, IsochroneControl, type IsochroneControlOptions, Locale, LogoControl, Map, type MapOptions, NavigationControl, type NavigationControlOptions, PitchControl, type PitchControlOptions, StyleControl, type StyleControlOptions, Styles, Terrain, TerrainControl, type TerrainControlOptions, config, version };
