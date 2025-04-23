@@ -25,9 +25,8 @@
   <div id="map"></div>
   <script src="./../../dist/maptoolkit.js"></script>
   <script>
-    const map = new maptoolkit.Map({ style: "maptoolkit://style/toursprung/terrain", apiKey: "toursprung" });
-    map.setContainer("map");
-    const ctrl = new maptoolkit.IsochroneControl({ type: "foot", range: 30 });
+    const map = new maptoolkit.Map({ apiKey: "e140284b-fc55-4c33-aebb-f1bd529c1b51" }).setContainer("map");
+    const ctrl = new maptoolkit.IsochroneControl({ type: "bike" });
     map.addControl(ctrl);
   </script>
 </body>
