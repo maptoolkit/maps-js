@@ -1,7 +1,9 @@
-import { ControlPosition as ControlPosition$1, AttributionControlOptions as AttributionControlOptions$1, ScaleControlOptions, AttributionControl as AttributionControl$1, ScaleControl, LayerSpecification, ExpressionFilterSpecification, MapOptions as MapOptions$1, Map as Map$1, StyleSpecification, MapGeoJSONFeature, StyleSwapOptions, StyleOptions, AddLayerObject, Evented, SourceSpecification, Listener, NavigationControlOptions as NavigationControlOptions$1, NavigationControl as NavigationControl$1, FitBoundsOptions, Marker, LngLatLike } from 'maplibre-gl';
+import { ControlPosition as ControlPosition$1, AttributionControlOptions as AttributionControlOptions$1, ScaleControlOptions, AttributionControl as AttributionControl$1, ScaleControl, LayerSpecification, ExpressionFilterSpecification, MapOptions as MapOptions$1, Map as Map$1, StyleSpecification, MapGeoJSONFeature, StyleSwapOptions, StyleOptions, AddLayerObject, Evented, SourceSpecification, Listener, ProjectionSpecification, NavigationControlOptions as NavigationControlOptions$1, NavigationControl as NavigationControl$1, FitBoundsOptions, Marker, LngLatLike } from 'maplibre-gl';
 export * from 'maplibre-gl';
 import * as maplibreGl from 'maplibre-gl';
 export { maplibreGl as maplibregl };
+
+var version = "11.0.0-alpha.23";
 
 /**
  * A position defintion for the control to be placed.
@@ -461,6 +463,11 @@ type TerrainControlOptions = {
      * @defaultValue `60` degrees
      */
     pitch?: number;
+    /**
+     * Globe projection used on toggle.
+     * @defaultValue `false`
+     */
+    globe?: boolean;
 };
 /**
  * Provides a button to toggle the map's terrain.
@@ -474,8 +481,10 @@ declare class TerrainControl implements IControl {
     _active: boolean;
     _enabled: boolean;
     _loaded: boolean;
+    _projection?: ProjectionSpecification;
     _onPitch?: Listener;
     _onPitchEnd?: Listener;
+    _onStyleSet?: Listener;
     /**
      * @param options - Options for configuring the terrain control.
      */
@@ -483,7 +492,9 @@ declare class TerrainControl implements IControl {
     getDefaultPosition(): ControlPosition$1;
     onAdd(map: Map): HTMLElement;
     onRemove(): void;
+    _update(): void;
     _terrain(enable: boolean): void;
+    _globe(enable: boolean): void;
     enable(): this;
     disable(): this;
     isEnabled(): boolean;
@@ -582,6 +593,4 @@ declare class IsochroneControl implements IControl {
     onRemove(): void;
 }
 
-var version = "11.0.0-alpha.22";
-
-export { AttributionControl, type AttributionControlOptions, CompassControl, type CompassControlOptions, type DataConnectorOptions, IsochroneControl, type IsochroneControlOptions, Locale, LogoControl, Map, type MapOptions, NavigationControl, type NavigationControlOptions, PitchControl, type PitchControlOptions, StyleControl, type StyleControlOptions, Styles, Terrain, TerrainControl, type TerrainControlOptions, config, version };
+export { AttributionControl, type AttributionControlOptions, CompassControl, type CompassControlOptions, type ControlPosition, type DataConnectorOptions, IsochroneControl, type IsochroneControlOptions, Locale, LogoControl, Map, type MapOptions, NavigationControl, type NavigationControlOptions, PitchControl, type PitchControlOptions, StyleControl, type StyleControlOptions, Styles, Terrain, TerrainControl, type TerrainControlOptions, config, version };
