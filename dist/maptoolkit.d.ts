@@ -1,9 +1,17 @@
-import { ControlPosition as ControlPosition$1, AttributionControlOptions as AttributionControlOptions$1, ScaleControlOptions, AttributionControl as AttributionControl$1, ScaleControl, LayerSpecification, ExpressionFilterSpecification, MapOptions as MapOptions$1, Map as Map$1, StyleSpecification, MapGeoJSONFeature, StyleSwapOptions, StyleOptions, AddLayerObject, Evented, SourceSpecification, Listener, ProjectionSpecification, NavigationControlOptions as NavigationControlOptions$1, NavigationControl as NavigationControl$1, FitBoundsOptions, Marker, LngLatLike } from 'maplibre-gl';
+import { ControlPosition as ControlPosition$1, AttributionControlOptions as AttributionControlOptions$1, ScaleControlOptions, AttributionControl as AttributionControl$1, ScaleControl, Map as Map$1, StyleSpecification, MapGeoJSONFeature, MapOptions as MapOptions$1, StyleSwapOptions, StyleOptions, AddLayerObject, LayerSpecification, ExpressionFilterSpecification, Evented, SourceSpecification, Listener, ProjectionSpecification, NavigationControlOptions as NavigationControlOptions$1, NavigationControl as NavigationControl$1, FitBoundsOptions, Marker, LngLatLike } from 'maplibre-gl';
 export * from 'maplibre-gl';
-import * as maplibreGl from 'maplibre-gl';
-export { maplibreGl as maplibregl };
 
-var version = "11.0.0-alpha.23";
+declare let version: string;
+
+type LocaleSpecification = {
+    [_: string]: {
+        [_: string]: string;
+    };
+};
+/**
+ * Locale translations for the application.
+ */
+declare const locale: LocaleSpecification;
 
 /**
  * A position defintion for the control to be placed.
@@ -173,6 +181,12 @@ type MapOptions = Omit<MapOptions$1, "container" | "attributionControl"> & {
      * @defaultValue See {@link LogoControlOptions}.
      */
     logoControl?: false | LogoControlOptions;
+    /**
+     * A locale string that specifies the language for string translations. Currently supported locales are `en` and `de`.
+     * Alternatively, it can be an object mapping string IDs to translations, allowing you to override or add to the default localization table.
+     * @defaultValue See {@link Config}
+     */
+    locale?: LocaleSpecification | string;
 };
 /**
  * Extends the maplibre-gl map class with additional functionality.
@@ -289,91 +303,259 @@ declare class Map extends Map$1 {
     _setupContainer(): void;
 }
 
+/**
+ * The `Config` class manages configuration settings for the whole library.
+ * It provides access to settings such as API key, locale, and host URLs for various services.
+ */
 declare class Config extends Evented {
+    /**
+     * @private
+     * The current locale.
+     * @type {string}
+     * @default "en"
+     */
     private _locale;
-    set locale(k: string);
+    /**
+     * Gets the current locale.
+     * @returns {string} The current locale.
+     */
     get locale(): string;
+    /**
+     * Sets the locale.
+     * @param {string} value - The new locale to set.
+     * @fires config.locale.set
+     */
+    set locale(value: string);
+    /**
+     * @private
+     * The Maptoolkit API key.
+     * @type {string}
+     */
     private _apiKey;
-    set apiKey(k: string);
+    /**
+     * Gets the current Maptoolkit API key.
+     * @returns {string} The current API key.
+     * @throws {void} Logs a warning to the console if the API key is not set.
+     */
     get apiKey(): string;
+    /**
+     * Sets the Maptoolkit API key.
+     * @param {string} value - The new API key to set.
+     * @fires config.apiKey.set
+     */
+    set apiKey(value: string);
+    /**
+     * @private
+     * The pixel ratio (for high DPI screens).
+     * @type {number}
+     * @default 1
+     */
     private _pixelRatio;
-    set pixelRatio(k: number);
+    /**
+     * Gets the current pixel ratio setting.
+     * @returns {number} The current pixel ratio.
+     */
     get pixelRatio(): number;
+    /**
+     * Sets the pixel ratio setting.
+     * @param {number} value - The new pixel ratio to set.
+     * @fires config.pixelRatio.set
+     */
+    set pixelRatio(value: number);
+    /**
+     * @private
+     * The base URL for the Maptoolkit website.
+     * @type {string}
+     * @default "https://www.maptoolkit.net"
+     */
+    private _webHost;
+    /**
+     * Gets the base URL for the Maptoolkit website.
+     * @returns {string} The base web host URL.
+     */
+    get webHost(): string;
+    /**
+     * Sets the base URL for the Maptoolkit website.
+     * @param {string} value - The new web host URL to set.
+     * @fires config.webHost.set
+     */
+    set webHost(value: string);
+    /**
+     * @private
+     * The base URL for serving static resources.
+     * @type {string}
+     * @default "https://static.maptoolkit.net"
+     */
+    private _staticHost;
+    /**
+     * Gets the base URL for static resources.
+     * @returns {string} The base static host URL.
+     */
+    get staticHost(): string;
+    /**
+     * Sets the base URL for static resources.
+     * @param {string} value - The new static host URL to set.
+     * @fires config.staticHost.set
+     */
+    set staticHost(value: string);
+    /**
+     * @private
+     * The base URL for Maptoolkit style resources.
+     * @type {string}
+     * @default "https://styles.maptoolkit.net"
+     */
     private _stylesHost;
-    set stylesHost(k: string);
+    /**
+     * Gets the base URL for Maptoolkit style resources.
+     * @returns {string} The base styles host URL.
+     */
     get stylesHost(): string;
+    /**
+     * Sets the base URL for Maptoolkit style resources.
+     * @param {string} value - The new styles host URL to set.
+     * @fires config.stylesHost.set
+     */
+    set stylesHost(value: string);
+    /**
+     * @private
+     * The base URL for Maptoolkit icons.
+     * @type {string}
+     * @default "https://icons.maptoolkit.net"
+     */
     private _iconsHost;
-    set iconsHost(k: string);
+    /**
+     * Gets the base URL for Maptoolkit icons.
+     * @returns {string} The base icons host URL.
+     */
     get iconsHost(): string;
+    /**
+     * Sets the base URL for Maptoolkit icons.
+     * @param {string} value - The new icons host URL to set.
+     * @fires config.iconsHost.set
+     */
+    set iconsHost(value: string);
+    /**
+     * @private
+     * The base URL for the Maptoolkit data connector service.
+     * @type {string}
+     * @default "https://dataconnector.maptoolkit.net"
+     */
     private _dataconnectorHost;
-    set dataconnectorHost(k: string);
+    /**
+     * Gets the base URL for the Maptoolkit data connector service.
+     * @returns {string} The base data connector host URL.
+     */
     get dataconnectorHost(): string;
+    /**
+     * Sets the base URL for the Maptoolkit data connector service.
+     * @param {string} value - The new data connector host URL to set.
+     * @fires config.dataconnectorHost.set
+     */
+    set dataconnectorHost(value: string);
+    /**
+     * @private
+     * The base URL for the Maptoolkit routing service.
+     * @type {string}
+     * @default "https://routing.maptoolkit.net"
+     */
     private _routingHost;
-    set routingHost(k: string);
+    /**
+     * Gets the base URL for the Maptoolkit routing service.
+     * @returns {string} The base routing host URL.
+     */
     get routingHost(): string;
+    /**
+     * Sets the base URL for the Maptoolkit routing service.
+     * @param {string} value - The new routing host URL to set.
+     * @fires config.routingHost.set
+     */
+    set routingHost(value: string);
+    /**
+     * @private
+     * The base URL for the Maptoolkit static map service.
+     * @type {string}
+     * @default "https://staticmap.maptoolkit.net"
+     */
     private _staticmapHost;
-    set staticmapHost(k: string);
+    /**
+     * Gets the base URL for the Maptoolkit static map service.
+     * @returns {string} The base static map host URL.
+     */
     get staticmapHost(): string;
+    /**
+     * Sets the base URL for the Maptoolkit static map service.
+     * @param {string} value - The new static map host URL to set.
+     * @fires config.staticmapHost.set
+     */
+    set staticmapHost(value: string);
+    /**
+     * @private
+     * The base URL for the VTC CDN service.
+     * @type {string}
+     * @default "https://vtc-cdn.maptoolkit.net"
+     */
+    private _vtcCdnHost;
+    /**
+     * Gets the base URL for the VTC CDN service.
+     * @returns {string} The base VTC CDN host URL.
+     */
+    get vtcCdnHost(): string;
+    /**
+     * Sets the base URL for the VTC CDN service.
+     * @param {string} value - The new VTC CDN host URL to set.
+     * @fires config.vtcCdnHost.set
+     */
+    set vtcCdnHost(value: string);
+    /**
+     * @private
+     * The base URL for the VTC service.
+     * @type {string}
+     * @default "https://vtc.maptoolkit.net"
+     */
+    private _vtcHost;
+    /**
+     * Gets the base URL for the VTC service.
+     * @returns {string} The base VTC host URL.
+     */
+    get vtcHost(): string;
+    /**
+     * Sets the base URL for the VTC service.
+     * @param {string} value - The new VTC host URL to set.
+     * @fires config.vtcHost.set
+     */
+    set vtcHost(value: string);
+    /**
+     * @private
+     * The base URL for the RTC CDN service.
+     * @type {string}
+     * @default "https://rtc-cdn.maptoolkit.net"
+     */
+    private _rtcCdnHost;
+    /**
+     * Gets the base URL for the RTC CDN service.
+     * @returns {string} The base RTC CDN host URL.
+     */
+    get rtcCdnHost(): string;
+    /**
+     * Sets the base URL for the RTC CDN service.
+     * @param {string} value - The new RTC CDN host URL to set.
+     * @fires config.rtcCdnHost.set
+     */
+    set rtcCdnHost(value: string);
 }
 declare const config: Config;
 
 /**
- * Locale translations for the application.
- */
-declare const Locale: {
-    [_: string]: {
-        [_: string]: string;
-    };
-};
-
-type StyleDefSpecification = {
-    id: string;
-    value: string | StyleSpecification;
-    image?: string;
-};
-declare class DefaultStyles {
-    private _terrain;
-    private _light;
-    private _dark;
-    private _city;
-    private _green;
-    private _winter;
-    get Terrain(): {
-        image: string;
-        id: string;
-        value: string | StyleSpecification;
-    };
-    get Light(): {
-        image: string;
-        id: string;
-        value: string | StyleSpecification;
-    };
-    get Dark(): {
-        image: string;
-        id: string;
-        value: string | StyleSpecification;
-    };
-    get City(): {
-        image: string;
-        id: string;
-        value: string | StyleSpecification;
-    };
-    get Green(): {
-        image: string;
-        id: string;
-        value: string | StyleSpecification;
-    };
-    get Winter(): {
-        image: string;
-        id: string;
-        value: string | StyleSpecification;
-    };
-    toArray(): StyleDefSpecification[];
-}
-/**
  * Collection of pre-defined map styles.
  */
-declare const Styles: DefaultStyles;
+declare const STYLES: {
+    TERRAIN: string;
+    LIGHT: string;
+    DARK: string;
+    CITY: string;
+    GREEN: string;
+    WINTER: string;
+};
 
 /**
  * @module Terrain
@@ -382,7 +564,7 @@ declare const Styles: DefaultStyles;
 /**
  * Terrain source specification.
  */
-declare const Terrain: SourceSpecification;
+declare const TERRAIN: SourceSpecification;
 
 /**
  * Options for configuring the {@link PitchControl}.
@@ -526,6 +708,11 @@ declare class NavigationControl implements IControl {
 type StyleControlOptions = {
     styles?: Array<StyleDefSpecification>;
 };
+type StyleDefSpecification = {
+    id: string;
+    value: string | StyleSpecification;
+    image?: string;
+};
 declare class StyleControl implements IControl {
     options: StyleControlOptions;
     _map?: Map;
@@ -593,4 +780,5 @@ declare class IsochroneControl implements IControl {
     onRemove(): void;
 }
 
-export { AttributionControl, type AttributionControlOptions, CompassControl, type CompassControlOptions, type ControlPosition, type DataConnectorOptions, IsochroneControl, type IsochroneControlOptions, Locale, LogoControl, Map, type MapOptions, NavigationControl, type NavigationControlOptions, PitchControl, type PitchControlOptions, StyleControl, type StyleControlOptions, Styles, Terrain, TerrainControl, type TerrainControlOptions, config, version };
+export { AttributionControl, CompassControl, IsochroneControl, LogoControl, Map, NavigationControl, PitchControl, STYLES, StyleControl, TERRAIN, TerrainControl, config, locale, version };
+export type { AttributionControlOptions, CompassControlOptions, ControlPosition, DataConnectorOptions, IControl, IsochroneControlOptions, LogoControlOptions, MapOptions, NavigationControlOptions, PitchControlOptions, StyleControlOptions, TerrainControlOptions };
