@@ -1,7 +1,5 @@
 import "./js/core/protocols"; // Register custom protocols
 
-import * as maplibregl from "maplibre-gl";
-
 import { version } from "../package.json";
 
 import { Map, MapOptions, DataConnectorOptions } from "./js/core/map";

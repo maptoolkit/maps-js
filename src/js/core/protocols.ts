@@ -24,7 +24,6 @@ maplibreAddProtocol("maptoolkit", (params, abortController) => {
         requestUrl = new URL(`/${path.slice(1).join("/")}`, config[`${service}CdnHost`]);
       }
     } else if (service === "dataconnector") {
-      const [account, name] = path;
       requestUrl = new URL(`/${account}/${name}.json`, config.dataconnectorHost);
     }
 

@@ -35,7 +35,7 @@ export const defaultPitchControlOptions: PitchControlOptions = {
 
 /**
  * Provides an interactable slider for the map's pitch.
- * 
+ *
  * Used by the {@link NavigationControl} class.
  */
 export class PitchControl implements IControl {
@@ -92,7 +92,7 @@ export class PitchControl implements IControl {
     };
     this._onMouseMove = (ev: MouseEvent | TouchEvent) => {
       if (this._active) {
-        let pageYdiff = pageY - (ev instanceof TouchEvent ? ev.touches[0]?.pageY : ev.pageY);
+        const pageYdiff = pageY - (ev instanceof TouchEvent ? ev.touches[0]?.pageY : ev.pageY);
         pitch2 = Math.max(0, Math.min(sliderSize - knobSize, pitch + pageYdiff));
         map.setPitch((pitch2 / (sliderSize - knobSize)) * map.getMaxPitch());
       }
@@ -110,7 +110,7 @@ export class PitchControl implements IControl {
 
     let _pitchDebounce: ReturnType<typeof setTimeout>;
     this._onPitch = () => {
-      knob.style.top = sliderSize - (map.getPitch() / map.getMaxPitch()) * sliderSize + "px";
+      knob.style.top = `${sliderSize - (map.getPitch() / map.getMaxPitch()) * sliderSize}px`;
 
       clearTimeout(_pitchDebounce);
       if (this.options.autoHide) {

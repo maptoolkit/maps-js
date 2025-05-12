@@ -20,12 +20,7 @@ import type {
   ControlPosition as maplibreControlPosition,
 } from "maplibre-gl";
 
-import {
-  Map as maplibreMap,
-  MapMouseEvent as maplibreMapMouseEvent,
-  MapTouchEvent as maplibreMapTouchEvent,
-  IControl as maplibreIControl,
-} from "maplibre-gl";
+import { Map as maplibreMap, MapMouseEvent as maplibreMapMouseEvent, MapTouchEvent as maplibreMapTouchEvent, IControl as maplibreIControl } from "maplibre-gl";
 
 import {
   v8 as maplibreV8,
@@ -158,7 +153,7 @@ export type MapOptions = Omit<maplibreMapOptions, "container" | "attributionCont
    */
   logoControl?: false | LogoControlOptions;
   /**
-   * A locale string that specifies the language for string translations. Currently supported locales are `en` and `de`. 
+   * A locale string that specifies the language for string translations. Currently supported locales are `en` and `de`.
    * Alternatively, it can be an object mapping string IDs to translations, allowing you to override or add to the default localization table.
    * @defaultValue See {@link Config}
    */
@@ -187,7 +182,7 @@ export class Map extends maplibreMap {
    */
   constructor(options?: MapOptions) {
     config.apiKey = options?.apiKey || "";
-  
+
     if (typeof options?.locale === "string") {
       config.locale = options?.locale;
     }
@@ -230,7 +225,7 @@ export class Map extends maplibreMap {
         const feature = this._getStateFeature("select", point);
         this._canvasContainer.style.cursor = feature ? "pointer" : "";
       }
-      
+
       if ("hover" in this._states.feature) {
         const feature = this._getStateFeature("hover", point);
         this._setStateFeature("hover", feature, ev);
@@ -272,8 +267,8 @@ export class Map extends maplibreMap {
   private _getStateFeature(state: string, point: maplibrePointLike | [maplibrePointLike, maplibrePointLike]): maplibreMapGeoJSONFeature | undefined {
     if (state in this._states.global || state in this._states.feature) {
       const ids = Object.keys(this._states.global[state] || this._states.feature[state]);
-      const f = this.queryRenderedFeatures(point, { layers: ids }).filter((f) => !isLayerHidden(f.layer))[0];
-      return f;
+      const feature = this.queryRenderedFeatures(point, { layers: ids }).filter((f) => !isLayerHidden(f.layer))[0];
+      return feature;
     }
   }
 
@@ -306,7 +301,8 @@ export class Map extends maplibreMap {
       if (feature.id !== undefined) {
         this.setFeatureState(feature, { [state]: true }); // TODO: improvate feature states (currently replacing feature id with .setStyle)
       } else {
-        console.warn(`${feature.layer ? feature.layer.id + ": " : ""}Feature state '${state}' couldn't be set, source feature must provide an id.`);
+        const prefix = feature.layer ? `${feature.layer.id}: ` : "";
+        console.warn(`${prefix}Feature state '${state}' couldn't be set, source feature must provide an id.`);
       }
       this._statesActive.feature[state] = feature;
       if (event) {
@@ -338,7 +334,7 @@ export class Map extends maplibreMap {
           const maptoolkitStates = metadata["maptoolkit:states"] || metadata["mtk:states"];
           if (maptoolkitStates) {
             for (const state in maptoolkitStates) {
-              let states = !FeatureStateList.includes(state as FeatureState) ? this._states.global : this._states.feature;
+              const states = !FeatureStateList.includes(state as FeatureState) ? this._states.global : this._states.feature;
               if (!states[state]) {
                 states[state] = {} as StateChildSpecification;
               }
@@ -357,7 +353,7 @@ export class Map extends maplibreMap {
   private _truncateStates(): void {
     this._states = { global: {} as StateParentSpecification, feature: {} as StateParentSpecification };
   }
-  
+
   /**
    * Applies the parsed states to the style.
    * @private
@@ -412,7 +408,7 @@ export class Map extends maplibreMap {
               style.layers[i][prop][lapa] = createFeatureStateCase(
                 /* this._statesActive.feature[state]?.id || "" */ state,
                 stateValue,
-                currentValue === undefined ? defaultValue : currentValue
+                currentValue === undefined ? defaultValue : currentValue,
               );
             }
           }
@@ -431,7 +427,7 @@ export class Map extends maplibreMap {
    */
   setContainer(container: HTMLElement | string): this {
     if (typeof container === "string") {
-      let el = document.getElementById(container);
+      const el = document.getElementById(container);
       if (el) {
         this._parent = el;
       } else {
@@ -580,7 +576,7 @@ export class Map extends maplibreMap {
       } else {
         return str;
       }
-    } catch(e) {
+    } catch (e) {
       console.warn(e);
       return "";
     }

@@ -15,7 +15,7 @@ export const defaultCompassControlOptions: CompassControlOptions = {};
 
 /**
  * Provides an interactable compass for the map's bearing.
- * 
+ *
  * Used by the {@link NavigationControl} class.
  */
 export class CompassControl implements IControl {
@@ -48,12 +48,12 @@ export class CompassControl implements IControl {
     label.title = map._getUIString("CompassControl.ResetBearing");
     label.addEventListener("click", () => map.resetNorth());
 
-    let arrowL = document.createElement("div");
+    const arrowL = document.createElement("div");
     arrowL.classList.add("maptoolkit-ctrl-compass-arrow-left");
     arrowL.title = map._getUIString("CompassControl.RotateLeft");
     arrowL.addEventListener("click", () => map.easeTo({ bearing: map.getBearing() + 90 }));
 
-    let arrowR = document.createElement("div");
+    const arrowR = document.createElement("div");
     arrowR.classList.add("maptoolkit-ctrl-compass-arrow-right");
     arrowR.title = map._getUIString("CompassControl.RotateRight");
     arrowR.addEventListener("click", () => map.easeTo({ bearing: map.getBearing() - 90 }));

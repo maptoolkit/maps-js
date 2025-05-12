@@ -56,13 +56,7 @@ export class StyleControl implements IControl {
   onAdd(map: Map) {
     this._map = map;
     this._container = document.createElement("div");
-    this._container.classList.add(
-      "maplibregl-ctrl",
-      "maplibregl-ctrl-group",
-      "maptoolkit-ctrl",
-      "maptoolkit-ctrl-style",
-      "maptoolkit-ctrl-style-bottom-left"
-    );
+    this._container.classList.add("maplibregl-ctrl", "maplibregl-ctrl-group", "maptoolkit-ctrl", "maptoolkit-ctrl-style", "maptoolkit-ctrl-style-bottom-left");
 
     /* if (this._map && !this.options.styles?.map((style) => style.value).includes(this._map.mapType)) {
       this.maptypes.unshift({

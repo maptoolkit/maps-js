@@ -193,7 +193,7 @@ export class IsochroneControl implements IControl {
         remove.addEventListener("click", () => {
           this.removeFromMap();
         });
-        
+
         element.appendChild(remove);
         element.appendChild(chronee);
 
@@ -229,11 +229,7 @@ export class IsochroneControl implements IControl {
         url.searchParams.set("time", this.options.range.toString());
       }
 
-      const point = Array.isArray(lngLat)
-        ? [lngLat[1], lngLat[0]]
-        : "lat" in lngLat
-        ? [lngLat.lat, "lon" in lngLat ? lngLat.lon : lngLat.lng]
-        : undefined;
+      const point = Array.isArray(lngLat) ? [lngLat[1], lngLat[0]] : "lat" in lngLat ? [lngLat.lat, "lon" in lngLat ? lngLat.lon : lngLat.lng] : undefined;
 
       if (point) {
         url.searchParams.set("point", point.join(","));
@@ -247,8 +243,8 @@ export class IsochroneControl implements IControl {
           .then((r) => r.json())
           .then((pointlist: number[][]) => {
             this._removePolygon();
-            
-            const coordinates = [pointlist.map((point) => [point[1], point[0]])];
+
+            const coordinates = [pointlist.map((p) => [p[1], p[0]])];
             map.addSource(this._id, {
               type: "geojson",
               data: {
@@ -264,7 +260,7 @@ export class IsochroneControl implements IControl {
             });
 
             map.addLayer({
-              id: this._id + "-fill",
+              id: `${this._id}-fill`,
               type: "fill",
               source: this._id,
               paint: {
@@ -273,7 +269,7 @@ export class IsochroneControl implements IControl {
               },
             });
             map.addLayer({
-              id: this._id + "-line",
+              id: `${this._id}-line`,
               type: "line",
               source: this._id,
               paint: {
@@ -286,10 +282,11 @@ export class IsochroneControl implements IControl {
             if (this.options.fitBounds) {
               const bounds = new maplibreLngLatBounds();
               const fitBoundsOptions = Object.assign({ padding: 100 }, this.options.fitBounds);
-              coordinates.forEach((lngLatArr) => lngLatArr.forEach((lngLat) => bounds.extend(lngLat as maplibreLngLatLike)));
+              coordinates.forEach((lngLatArr) => lngLatArr.forEach((ll) => bounds.extend(ll as maplibreLngLatLike)));
               map.fitBounds(bounds, fitBoundsOptions);
             }
-          }).catch((err) => {
+          })
+          .catch((err) => {
             if (err.name !== "AbortError") {
               console.error(err);
             }
@@ -300,12 +297,12 @@ export class IsochroneControl implements IControl {
 
   _removePolygon() {
     if (this._map && this._container) {
-      if (this._map.getLayer(this._id + "-fill")) {
-        this._map.removeLayer(this._id + "-fill");
+      if (this._map.getLayer(`${this._id}-fill`)) {
+        this._map.removeLayer(`${this._id}-fill`);
       }
 
-      if (this._map.getLayer(this._id + "-line")) {
-        this._map.removeLayer(this._id + "-line");
+      if (this._map.getLayer(`${this._id}-line`)) {
+        this._map.removeLayer(`${this._id}-line`);
       }
 
       if (this._map.getSource(this._id)) {
