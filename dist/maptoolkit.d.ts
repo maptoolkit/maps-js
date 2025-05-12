@@ -1,4 +1,4 @@
-import { ControlPosition as ControlPosition$1, AttributionControlOptions as AttributionControlOptions$1, ScaleControlOptions, AttributionControl as AttributionControl$1, ScaleControl, Map as Map$1, StyleSpecification, MapGeoJSONFeature, MapOptions as MapOptions$1, StyleSwapOptions, StyleOptions, AddLayerObject, LayerSpecification, ExpressionFilterSpecification, Evented, SourceSpecification, Listener, ProjectionSpecification, NavigationControlOptions as NavigationControlOptions$1, NavigationControl as NavigationControl$1, FitBoundsOptions, Marker, LngLatLike } from 'maplibre-gl';
+import maplibregl__default, { ControlPosition as ControlPosition$1, AttributionControlOptions as AttributionControlOptions$1, ScaleControlOptions, AttributionControl as AttributionControl$1, ScaleControl as ScaleControl$1, Map as Map$1, StyleSpecification, MapGeoJSONFeature, MapOptions as MapOptions$1, StyleSwapOptions, StyleOptions, AddLayerObject, LayerSpecification, ExpressionFilterSpecification, Evented as Evented$1, SourceSpecification, Listener, ProjectionSpecification, NavigationControlOptions as NavigationControlOptions$1, NavigationControl as NavigationControl$1, FitBoundsOptions, Marker as Marker$1, LngLatLike } from 'maplibre-gl';
 export * from 'maplibre-gl';
 
 declare let version: string;
@@ -97,7 +97,7 @@ declare class AttributionControl implements IControl {
     _map?: Map;
     _container?: HTMLElement;
     _attribCtrl: AttributionControl$1;
-    _scaleCtrl?: ScaleControl;
+    _scaleCtrl?: ScaleControl$1;
     /**
      * @param options - Options for configuring the attribution control.
      */
@@ -307,7 +307,7 @@ declare class Map extends Map$1 {
  * The `Config` class manages configuration settings for the whole library.
  * It provides access to settings such as API key, locale, and host URLs for various services.
  */
-declare class Config extends Evented {
+declare class Config extends Evented$1 {
     /**
      * @private
      * The current locale.
@@ -763,7 +763,7 @@ declare class IsochroneControl implements IControl {
     _onDrop: EventListener;
     _onStyleChange: EventListener;
     _map?: Map;
-    _marker?: Marker;
+    _marker?: Marker$1;
     _abortController?: AbortController;
     /**
      * @param options - Options for configuring the isochrone control.
@@ -780,5 +780,65 @@ declare class IsochroneControl implements IControl {
     onRemove(): void;
 }
 
-export { AttributionControl, CompassControl, IsochroneControl, LogoControl, Map, NavigationControl, PitchControl, STYLES, StyleControl, TERRAIN, TerrainControl, config, locale, version };
+declare const MapMLGL: typeof maplibregl__default.Map;
+declare const NavigationControlMLGL: typeof maplibregl__default.NavigationControl;
+declare const AttributionControlMLGL: typeof maplibregl__default.AttributionControl;
+declare const LogoControlMLGL: typeof maplibregl__default.LogoControl;
+declare const TerrainControlMLGL: typeof maplibregl__default.TerrainControl;
+declare const configMLGL: maplibregl__default.Config;
+declare const GeolocateControl: typeof maplibregl__default.GeolocateControl;
+declare const ScaleControl: typeof maplibregl__default.ScaleControl;
+declare const FullscreenControl: typeof maplibregl__default.FullscreenControl;
+declare const GlobeControl: typeof maplibregl__default.GlobeControl;
+declare const Hash: typeof maplibregl__default.Hash;
+declare const Popup: typeof maplibregl__default.Popup;
+declare const Marker: typeof maplibregl__default.Marker;
+declare const Style: typeof maplibregl__default.Style;
+declare const LngLat: typeof maplibregl__default.LngLat;
+declare const LngLatBounds: typeof maplibregl__default.LngLatBounds;
+declare const Point: typeof maplibregl__default.Point;
+declare const MercatorCoordinate: typeof maplibregl__default.MercatorCoordinate;
+declare const Evented: typeof maplibregl__default.Evented;
+declare const Event: typeof maplibregl__default.Event;
+declare const AJAXError: typeof maplibregl__default.AJAXError;
+declare const CanvasSource: typeof maplibregl__default.CanvasSource;
+declare const GeoJSONSource: typeof maplibregl__default.GeoJSONSource;
+declare const ImageSource: typeof maplibregl__default.ImageSource;
+declare const RasterDEMTileSource: typeof maplibregl__default.RasterDEMTileSource;
+declare const RasterTileSource: typeof maplibregl__default.RasterTileSource;
+declare const VectorTileSource: typeof maplibregl__default.VectorTileSource;
+declare const VideoSource: typeof maplibregl__default.VideoSource;
+declare const EdgeInsets: typeof maplibregl__default.EdgeInsets;
+declare const BoxZoomHandler: typeof maplibregl__default.BoxZoomHandler;
+declare const DragRotateHandler: typeof maplibregl__default.DragRotateHandler;
+declare const DragPanHandler: typeof maplibregl__default.DragPanHandler;
+declare const ScrollZoomHandler: typeof maplibregl__default.ScrollZoomHandler;
+declare const TwoFingersTouchZoomRotateHandler: typeof maplibregl__default.TwoFingersTouchZoomRotateHandler;
+declare const CooperativeGesturesHandler: typeof maplibregl__default.CooperativeGesturesHandler;
+declare const DoubleClickZoomHandler: typeof maplibregl__default.DoubleClickZoomHandler;
+declare const KeyboardHandler: typeof maplibregl__default.KeyboardHandler;
+declare const TwoFingersTouchZoomHandler: typeof maplibregl__default.TwoFingersTouchZoomHandler;
+declare const TwoFingersTouchRotateHandler: typeof maplibregl__default.TwoFingersTouchRotateHandler;
+declare const TwoFingersTouchPitchHandler: typeof maplibregl__default.TwoFingersTouchPitchHandler;
+declare const MapWheelEvent: typeof maplibregl__default.MapWheelEvent;
+declare const MapTouchEvent: typeof maplibregl__default.MapTouchEvent;
+declare const MapMouseEvent: typeof maplibregl__default.MapMouseEvent;
+declare const setRTLTextPlugin: typeof maplibregl__default.setRTLTextPlugin;
+declare const getRTLTextPluginStatus: typeof maplibregl__default.getRTLTextPluginStatus;
+declare const prewarm: typeof maplibregl__default.prewarm;
+declare const clearPrewarmedResources: typeof maplibregl__default.clearPrewarmedResources;
+declare const getVersion: typeof maplibregl__default.getVersion;
+declare const getWorkerCount: typeof maplibregl__default.getWorkerCount;
+declare const setWorkerCount: typeof maplibregl__default.setWorkerCount;
+declare const getMaxParallelImageRequests: typeof maplibregl__default.getMaxParallelImageRequests;
+declare const setMaxParallelImageRequests: typeof maplibregl__default.setMaxParallelImageRequests;
+declare const getWorkerUrl: typeof maplibregl__default.getWorkerUrl;
+declare const setWorkerUrl: typeof maplibregl__default.setWorkerUrl;
+declare const addProtocol: typeof maplibregl__default.addProtocol;
+declare const removeProtocol: typeof maplibregl__default.removeProtocol;
+declare const addSourceType: (name: string, SourceType: maplibregl__default.SourceClass) => Promise<void>;
+declare const importScriptInWorkers: typeof maplibregl__default.importScriptInWorkers;
+declare const createTileMesh: typeof maplibregl__default.createTileMesh;
+
+export { AJAXError, AttributionControl, AttributionControlMLGL, BoxZoomHandler, CanvasSource, CompassControl, CooperativeGesturesHandler, DoubleClickZoomHandler, DragPanHandler, DragRotateHandler, EdgeInsets, Event, Evented, FullscreenControl, GeoJSONSource, GeolocateControl, GlobeControl, Hash, ImageSource, IsochroneControl, KeyboardHandler, LngLat, LngLatBounds, LogoControl, LogoControlMLGL, Map, MapMLGL, MapMouseEvent, MapTouchEvent, MapWheelEvent, Marker, MercatorCoordinate, NavigationControl, NavigationControlMLGL, PitchControl, Point, Popup, RasterDEMTileSource, RasterTileSource, STYLES, ScaleControl, ScrollZoomHandler, Style, StyleControl, TERRAIN, TerrainControl, TerrainControlMLGL, TwoFingersTouchPitchHandler, TwoFingersTouchRotateHandler, TwoFingersTouchZoomHandler, TwoFingersTouchZoomRotateHandler, VectorTileSource, VideoSource, addProtocol, addSourceType, clearPrewarmedResources, config, configMLGL, createTileMesh, getMaxParallelImageRequests, getRTLTextPluginStatus, getVersion, getWorkerCount, getWorkerUrl, importScriptInWorkers, locale, prewarm, removeProtocol, setMaxParallelImageRequests, setRTLTextPlugin, setWorkerCount, setWorkerUrl, version };
 export type { AttributionControlOptions, CompassControlOptions, ControlPosition, DataConnectorOptions, IControl, IsochroneControlOptions, LogoControlOptions, MapOptions, NavigationControlOptions, PitchControlOptions, StyleControlOptions, TerrainControlOptions };
