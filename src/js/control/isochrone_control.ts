@@ -8,6 +8,7 @@ import {
   ControlPosition as maplibreControlPosition,
   Marker as maplibreMarker,
   LngLatBounds as maplibreLngLatBounds,
+  PointLike as maplibrePointLike,
 } from "maplibre-gl";
 
 export type IsochroneType = "foot" | "bike" | "car";
@@ -115,7 +116,7 @@ export class IsochroneControl implements IControl {
         const dragEvent = ev as DragEvent;
         const isIsochrone = dragEvent.dataTransfer?.getData("maptoolkit-ctrl-isochrone") === this._id;
         if (isIsochrone) {
-          const lngLat = this._map.unproject({ x: dragEvent.offsetX, y: dragEvent.offsetY });
+          const lngLat = this._map.unproject({ x: dragEvent.offsetX, y: dragEvent.offsetY } as maplibrePointLike);
           this.addToMap(lngLat);
         }
       }
