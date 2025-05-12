@@ -1,6 +1,6 @@
 import { Map } from "../core/map";
 import { IControl } from "./control";
-import { Terrain } from "../core/terrain";
+import { TERRAIN } from "../core/terrain";
 
 import {
   ControlPosition as maplibreControlPosition,
@@ -168,7 +168,7 @@ export class TerrainControl implements IControl {
       if (this._map.style._loaded) {
         if (enable === true) {
           if (!this._map.getSource("maptoolkit-terrain")) {
-            this._map.addSource("maptoolkit-terrain", Terrain);
+            this._map.addSource("maptoolkit-terrain", TERRAIN);
           }
           this._map.setTerrain({ source: "maptoolkit-terrain" });
         } else {

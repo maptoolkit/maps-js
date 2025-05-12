@@ -1,9 +1,9 @@
-import { getDefaultLocale } from "./locale";
+import { getDefaultLocale, type LocaleSpecification } from "./locale";
 import { config } from "./config";
 import { ControlPosition, IControl } from "../control/control";
 import { AttributionControl, AttributionControlOptions } from "../control/attribution_control";
 import { LogoControl, LogoControlOptions } from "../control/logo_control";
-import { Styles } from "./styles";
+import { STYLES } from "./styles";
 
 import { getStringChecksum } from "./utils";
 
@@ -157,6 +157,12 @@ export type MapOptions = Omit<maplibreMapOptions, "container" | "attributionCont
    * @defaultValue See {@link LogoControlOptions}.
    */
   logoControl?: false | LogoControlOptions;
+  /**
+   * A locale string that specifies the language for string translations. Currently supported locales are `en` and `de`. 
+   * Alternatively, it can be an object mapping string IDs to translations, allowing you to override or add to the default localization table.
+   * @defaultValue See {@link Config}
+   */
+  locale?: LocaleSpecification | string;
 };
 
 export const defaultMapOptions: MapOptions = {
@@ -182,11 +188,11 @@ export class Map extends maplibreMap {
   constructor(options?: MapOptions) {
     config.apiKey = options?.apiKey || "";
   
-    if (options && typeof options.locale === "string") {
+    if (typeof options?.locale === "string") {
       config.locale = options?.locale;
     }
 
-    options = Object.assign({ style: Styles.Terrain.value }, defaultMapOptions, options);
+    options = Object.assign({ style: STYLES.TERRAIN }, defaultMapOptions, options);
 
     const container = document.createElement("div");
     container.classList.add("maptoolkit-map");
@@ -201,7 +207,7 @@ export class Map extends maplibreMap {
 
     config.pixelRatio = this.getPixelRatio();
 
-    this._locale = Object.assign({}, getDefaultLocale(), typeof options.locale !== "string" ? options.locale : null);
+    this._locale = Object.assign({}, getDefaultLocale(), typeof options.locale === "object" ? options.locale : null);
 
     this._style = undefined;
     this._states = { global: {}, feature: {} };
@@ -219,10 +225,12 @@ export class Map extends maplibreMap {
         [ev.point.x - 3, ev.point.y - 3],
         [ev.point.x + 3, ev.point.y + 3],
       ] as [maplibrePointLike, maplibrePointLike];
+
       if ("select" in this._states.feature) {
         const feature = this._getStateFeature("select", point);
         this._canvasContainer.style.cursor = feature ? "pointer" : "";
       }
+      
       if ("hover" in this._states.feature) {
         const feature = this._getStateFeature("hover", point);
         this._setStateFeature("hover", feature, ev);

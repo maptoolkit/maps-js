@@ -1,5 +1,6 @@
 import { Map } from "../core/map";
 import { IControl } from "./control";
+import { config } from "../core/config";
 
 import { ControlPosition as maplibreControlPosition } from "maplibre-gl";
 
@@ -39,7 +40,7 @@ export class LogoControl implements IControl {
     this._container.classList.add("maplibregl-ctrl", "maptoolkit-ctrl", "maptoolkit-ctrl-logo");
     const anchor = document.createElement("a");
     anchor.classList.add("maptoolkit-ctrl-logo-anchor");
-    anchor.href = "https://www.maptoolkit.com";
+    anchor.href = config.webHost;
     anchor.target = "_blank";
     const image = document.createElement("img");
     image.classList.add("maptoolkit-ctrl-logo-image");

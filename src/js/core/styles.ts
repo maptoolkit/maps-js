@@ -1,11 +1,4 @@
-import { StyleSpecification as maplibreStyleSpecification } from "maplibre-gl";
 import { config } from "./config";
-
-export type StyleDefSpecification = {
-  id: string;
-  value: string | maplibreStyleSpecification;
-  image?: string;
-};
 
 export function createStaticImage(accountName: string, styleName: string) {
   const url = new URL(config.staticmapHost);
@@ -19,39 +12,14 @@ export function createStaticImage(accountName: string, styleName: string) {
   return url.toString();
 }
 
-class DefaultStyles {
-  private _terrain: StyleDefSpecification = { id: "Terrain", value: "maptoolkit://styles/toursprung/terrain" };
-  private _light: StyleDefSpecification = { id: "Light", value: "maptoolkit://styles/toursprung/light" };
-  private _dark: StyleDefSpecification = { id: "Dark", value: "maptoolkit://styles/toursprung/dark" };
-  private _city: StyleDefSpecification = { id: "City", value: "maptoolkit://styles/citymaps2go/Ulmon" };
-  private _green: StyleDefSpecification = { id: "Green", value: "maptoolkit://styles/toursprung/printmaps-green" };
-  private _winter: StyleDefSpecification = { id: "Winter", value: "maptoolkit://styles/toursprung/terrainwinter" };
-  
-  get Terrain() {
-    return { ...this._terrain, image: createStaticImage("toursprung", "terrain") };
-  }
-  get Light() {
-    return { ...this._light, image: createStaticImage("toursprung", "light") };
-  }
-  get Dark() {
-    return { ...this._dark, image: createStaticImage("toursprung", "dark") };
-  }
-  get City() {
-    return { ...this._city, image: createStaticImage("citymaps2go", "Ulmon") };
-  }
-  get Green() {
-    return { ...this._green, image: createStaticImage("toursprung", "printmaps-green") };
-  }
-  get Winter() {
-    return { ...this._winter, image: createStaticImage("toursprung", "terrainwinter") };
-  }
-
-  toArray(): StyleDefSpecification[] {
-    return [this.Terrain, this.Light, this.Dark, this.City, this.Green, this.Winter];
-  }
-}
-
 /**
  * Collection of pre-defined map styles.
  */
-export const Styles = new DefaultStyles();
+export const STYLES = {
+  TERRAIN: "maptoolkit://styles/toursprung/terrain",
+  LIGHT: "maptoolkit://styles/toursprung/light",
+  DARK: "maptoolkit://styles/toursprung/dark",
+  CITY: "maptoolkit://styles/citymaps2go/Ulmon",
+  GREEN: "maptoolkit://styles/toursprung/printmaps-green",
+  WINTER: "maptoolkit://styles/toursprung/terrainwinter",
+};

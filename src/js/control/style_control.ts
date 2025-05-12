@@ -1,9 +1,9 @@
 import { Map } from "../core/map";
 import { IControl } from "./control";
 
-import { ControlPosition as maplibreControlPosition } from "maplibre-gl";
+import { ControlPosition as maplibreControlPosition, StyleSpecification as maplibreStyleSpecification } from "maplibre-gl";
 
-import { Styles, StyleDefSpecification, createStaticImage } from "../core/styles";
+import { STYLES, createStaticImage } from "../core/styles";
 
 import { getStringChecksum } from "../core/utils";
 
@@ -11,8 +11,22 @@ export type StyleControlOptions = {
   styles?: Array<StyleDefSpecification>;
 };
 
-export const defaultStyleControlOptions: StyleControlOptions = {};
+export type StyleDefSpecification = {
+  id: string;
+  value: string | maplibreStyleSpecification;
+  image?: string;
+};
 
+export const defaultStyleControlOptions: StyleControlOptions = {
+  styles: [
+    { id: "Terrain", value: STYLES.TERRAIN },
+    { id: "Light", value: STYLES.LIGHT },
+    { id: "Dark", value: STYLES.DARK },
+    { id: "City", value: STYLES.CITY },
+    { id: "Green", value: STYLES.GREEN },
+    { id: "Winter", value: STYLES.WINTER },
+  ],
+};
 export class StyleControl implements IControl {
   options: StyleControlOptions;
   _map?: Map;
@@ -20,19 +34,19 @@ export class StyleControl implements IControl {
   _groups?: HTMLElement;
 
   constructor(options?: StyleControlOptions) {
-    this.options = Object.assign({}, defaultStyleControlOptions, { styles: Styles.toArray() }, options);
+    console.log(defaultStyleControlOptions);
+    this.options = Object.assign({}, defaultStyleControlOptions, options);
 
     if (this.options.styles) {
-      this.options.styles = this.options.styles.filter(
-        (style) => (style.id && style.value && typeof style.value === "object") || typeof style.value === "string"
-      );
+      this.options.styles = this.options.styles.filter((style) => style.id && style.value);
       for (const style of this.options.styles) {
-        if (!style.image && typeof style.value === "string" && /^maptoolkit:\/\/style\/[A-z0-9_-]+\/[A-z0-9_-]+$/.test(style.value)) {
+        if (!style.image && typeof style.value === "string" && /^maptoolkit:\/\/styles\/[A-z0-9_-]+\/[A-z0-9_-]+$/.test(style.value)) {
           const [account, name] = style.value.split("/").slice(-2);
           style.image = createStaticImage(account, name);
         }
       }
     }
+    console.log(this.options);
   }
 
   getDefaultPosition(): maplibreControlPosition {
@@ -53,7 +67,7 @@ export class StyleControl implements IControl {
     /* if (this._map && !this.options.styles?.map((style) => style.value).includes(this._map.mapType)) {
       this.maptypes.unshift({
         id: this.map.mapType,
-        image: `https://staticmap.maptoolkit.net/?maptype=${this.map.mapType}&size=166x166&center=47.329,12.787&zoom=12&api_key=${MTK.apiKey}`,
+        image: `${config.staticmapHost}/?maptype=${this.map.mapType}&size=166x166&center=47.329,12.787&zoom=12&api_key=${MTK.apiKey}`,
         value: this.map.mapType,
       });
       MTK.i18n[`styles-style-${this.map.mapType}`] = this.map.mapType.split("-").slice(1).join("-");
@@ -97,7 +111,7 @@ export class StyleControl implements IControl {
         const $groupItem = document.createElement("li");
         $groupItem.classList.add("maptoolkit-ctrl-style-group-list-item");
 
-        if (this._map && this._map._styleId === getStringChecksum(typeof groupStyle.value === "string" ? groupStyle.value : JSON.stringify(groupStyle.value))) {
+        if (this._map?._styleId === getStringChecksum(typeof groupStyle.value === "string" ? groupStyle.value : JSON.stringify(groupStyle.value))) {
           $groupItem.classList.add("maptoolkit-ctrl-style-group-list-item-active");
           if (groupStyle.image) $styleImage.style.setProperty("background-image", `url(${groupStyle.image})`);
           $styleName.textContent = map._getUIString(`StyleControl.Style.${groupStyle.id}`) || groupStyle.id;
@@ -138,7 +152,13 @@ export class StyleControl implements IControl {
           else $li.classList.remove("maptoolkit-ctrl-style-group-list-item-active");
         });
         if (ev.style) {
-          if (this._map && ev.style.value && this._map._styleId !== getStringChecksum(typeof ev.style.value === "string" ? ev.style.value : JSON.stringify(ev.style.value))) this._map.setStyle(ev.style.value);
+          if (
+            this._map &&
+            ev.style.value &&
+            this._map._styleId !== getStringChecksum(typeof ev.style.value === "string" ? ev.style.value : JSON.stringify(ev.style.value))
+          ) {
+            this._map.setStyle(ev.style.value);
+          }
           $styleImage.style.removeProperty("background-image");
           if (ev.style.image) $styleImage.style.setProperty("background-image", `url(${ev.style.image})`);
           $styleName.textContent = map._getUIString(`StyleControl.Style.${ev.style.id}`) || ev.style.id;

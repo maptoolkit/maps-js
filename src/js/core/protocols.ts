@@ -3,17 +3,28 @@ import { config } from "./config";
 
 maplibreAddProtocol("maptoolkit", (params, abortController) => {
   return new Promise((resolve) => {
-    const [service, account, name] = params.url.slice(13).split("?")[0].split("/");
+    const path = params.url.slice(13).split("?")[0].split("/");
     const searchParams = new URLSearchParams(params.url.split("#")[0].split("?")[1]);
 
     let requestUrl: URL | null = null;
-    if (service === "style" || service === "styles") {
+    const [service, account, name] = path;
+
+    if (service === "styles") {
       requestUrl = new URL(`/${account}/${name}.json`, config.stylesHost);
-    } else if (service === "sprite" || service === "icons") {
-      const ratio = config.pixelRatio > 1 ? `@${config.pixelRatio}x` : "";
+    } else if (service === "icons") {
+      const ratio = config.pixelRatio > 1 ? `@${Math.min(Math.ceil(config.pixelRatio), 4)}x` : "";
       const format = params.type === "json" ? "json" : "png";
       requestUrl = new URL(`/${account.replace(/(@\dx)?\.(json|png)$/, "")}${ratio}.${format}`, config.iconsHost);
+    } else if (service === "fonts") {
+      requestUrl = new URL(`/fonts/${path.slice(2).join("/")}`, config.staticHost);
+    } else if (service === "vtc" || service === "rtc") {
+      if (params.type === "json") {
+        requestUrl = new URL(`/${path.slice(1).join("/")}.json`, config[`${service}CdnHost`]);
+      } else {
+        requestUrl = new URL(`/${path.slice(1).join("/")}`, config[`${service}CdnHost`]);
+      }
     } else if (service === "dataconnector") {
+      const [account, name] = path;
       requestUrl = new URL(`/${account}/${name}.json`, config.dataconnectorHost);
     }
 

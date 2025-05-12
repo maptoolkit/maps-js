@@ -1,8 +1,11 @@
 import { config } from "./config";
+
+export type LocaleSpecification = { [_: string]: { [_: string]: string } };
+
 /**
  * Locale translations for the application.
  */
-export const Locale: { [_: string]: { [_: string]: string } } = {
+export const locale: LocaleSpecification = {
   de: {
     // maplibre-gl
     "AttributionControl.ToggleAttribution": "Attribution ein-/ausblenden",
@@ -107,5 +110,5 @@ export const Locale: { [_: string]: { [_: string]: string } } = {
  * Default locale for the application.
  */
 export function getDefaultLocale() {
-  return Locale[config.locale || "en"];
+  return locale[config.locale || "en"];
 }
