@@ -33,7 +33,7 @@ export default [
   },
   // Types
   {
-    plugins: [dts(), json()],
+    plugins: [json(), dts()],
     output: {
       file: "dist/maptoolkit.d.ts",
       format: "es",
