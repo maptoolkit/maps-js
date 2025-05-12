@@ -8,9 +8,6 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "paths": {
-      "*": ["./node_modules/*"]
-    },
     "skipLibCheck": true
   },
   "include": ["rollup.config.*", "src/**/*"],
