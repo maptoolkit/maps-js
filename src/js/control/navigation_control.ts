@@ -55,6 +55,8 @@ export class NavigationControl implements IControl {
   onAdd(map: Map) {
     this._container = document.createElement("div");
 
+    this._container.classList.add("maptoolkit-ctrl-navigation");
+
     this._container.appendChild(this._navigationControl.onAdd(map));
 
     if (this._compassControl instanceof CompassControl) {
