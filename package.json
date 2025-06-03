@@ -1,7 +1,7 @@
 {
   "type": "module",
-  "name": "maptoolkit-js",
-  "version": "11.0.0-alpha.25",
+  "name": "@maptoolkit/maptoolkit-js",
+  "version": "11.0.0-alpha.26",
   "description": "Maptoolkit Javascript Library",
   "scripts": {
     "build": "npm run build-js && npm run build-css",
@@ -9,9 +9,11 @@
     "watch-js": "rollup -c -w --environment BUILD:development",
     "build-css": "postcss --use postcss-import -o dist/maptoolkit.css src/index.css",
     "watch-css": "postcss -w --use postcss-import -o dist/maptoolkit.css src/index.css",
-    "generate-docs": "typedoc",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest",
+    "lint": "eslint ./src/",
     "pretty": "prettier ./src/**/*.{ts,js,json,css} ./test/**/*.html --write",
-    "lint": "eslint ./src/"
+    "check": "npm run test && npm run lint",
+    "generate-docs": "typedoc"
   },
   "author": "Daniel Böck",
   "license": "ISC",
@@ -30,6 +32,13 @@
       "import": "./dist/maptoolkit.css"
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maptoolkit/maptoolkit-js.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-json": "^6.1.0",
@@ -42,6 +51,7 @@
     "eslint": "^9.26.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-import": "^2.31.0",
+    "jest": "^29.7.0",
     "postcss": "^8.5.3",
     "postcss-cli": "^11.0.1",
     "postcss-import": "^16.1.0",

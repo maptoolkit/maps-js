@@ -1,23 +1,28 @@
 {
   "$schema": "https://typedoc.org/schema.json",
   "name": "Maptoolkit JS",
-  "entryPoints": ["src/"],
+  "entryPoints": ["./src/index.ts"],
+  "entryPointStrategy": "expand",
   "out": "docs/",
-  /* "plugin": ["typedoc-plugin-markdown"], */
+  "plugin": ["typedoc-plugin-markdown"],
+  "readme": "none",
+  "groupOrder": ["Main", "Markers and Controls", "Geography and Geometry", "Handlers", "Sources", "Event Related"],
   "excludeExternals": true,
+  "externalPattern": ["**/node_modules/(?!maplibre-gl)"],
   "excludeInternal": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
   "excludeNotDocumented": true,
-  "navigation": {
-    "includeCategories": false,
-    "includeGroups": true
-  },
-  "githubPages": false,
+  "includeHierarchySummary": false,
+  "includeVersion": true,
+  "cleanOutputDir": true,
   "disableSources": true,
-  /* "hideBreadcrumbs": true,
+  /* typedoc-plugin-markdown */
   "hidePageHeader": true,
+  "indexFormat": "list",
   "expandParameters": true,
-  "parametersFormat": "list",
+  "parametersFormat": "table",
   "textContentMappings": {
     "title.memberPage": "{name}"
-  } */
+  }
 }
