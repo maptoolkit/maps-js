@@ -3,7 +3,6 @@
   "name": "@maptoolkit/maps-sdk",
   "version": "11.0.0-alpha.27",
   "description": "Maps SDK by Maptoolkit powered by MapLibre GL JS",
-  "private": true,
   "scripts": {
     "build": "npm run build-js && npm run build-css",
     "build-js": "rollup -c --environment BUILD:production",
