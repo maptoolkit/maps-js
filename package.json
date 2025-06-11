@@ -1,8 +1,9 @@
 {
   "type": "module",
-  "name": "@maptoolkit/maptoolkit-js",
-  "version": "11.0.0-alpha.26",
-  "description": "Maptoolkit Javascript Library",
+  "name": "@maptoolkit/maps-sdk",
+  "version": "11.0.0-alpha.27",
+  "description": "Maps SDK by Maptoolkit powered by MapLibre GL JS",
+  "private": true,
   "scripts": {
     "build": "npm run build-js && npm run build-css",
     "build-js": "rollup -c --environment BUILD:production",
@@ -35,9 +36,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/maptoolkit/maptoolkit-js.git"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.3",
