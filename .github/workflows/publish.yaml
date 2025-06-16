@@ -3,7 +3,7 @@ name: Publish to npm and GitHub Packages
 on:
   push:
     tags:
-      - "[0-9]+.[0-9]+.[0-9]+*"
+      - "v[0-9]+.[0-9]+.[0-9]+*"
 
 jobs:
   publish-github:
@@ -27,16 +27,11 @@ jobs:
       - name: Publish to GitHub Packages  
         run: |
           echo "@maptoolkit:registry=https://npm.pkg.github.com/" > .npmrc
-          echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
           npm publish
-
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       #- name: Publish to npm
       #  run: |
       #    echo "registry=https://registry.npmjs.org/" > .npmrc
-      #    echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
+      #    echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
       #    npm publish
-      #  env:
-      #    NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
