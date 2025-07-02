@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "@maptoolkit/maps-sdk",
-  "version": "11.0.0-alpha.28",
+  "version": "11.0.0-alpha.beta",
   "description": "Maps SDK by Maptoolkit powered by MapLibre GL JS",
   "scripts": {
     "build": "npm run build-js && npm run build-css",
@@ -70,6 +70,7 @@
     "@turf/distance": "^7.2.0",
     "@turf/length": "^7.2.0",
     "@turf/union": "^7.2.0",
-    "maplibre-gl": "^5.4.0"
+    "maplibre-gl": "^5.6.1",
+    "pbf": "^4.0.1"
   }
 }
