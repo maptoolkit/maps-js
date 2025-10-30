@@ -181,7 +181,9 @@ export class Map extends maplibreMap {
    * @param options - The {@link MapOptions} object.
    */
   constructor(options?: MapOptions) {
-    config.apiKey = options?.apiKey || "";
+    if (options?.apiKey) {
+      config.apiKey = options.apiKey;
+    }
 
     if (typeof options?.locale === "string") {
       config.locale = options?.locale;
