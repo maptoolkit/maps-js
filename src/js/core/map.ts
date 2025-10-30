@@ -604,12 +604,12 @@ export class Map extends maplibreMap {
 
     const topCenter = document.createElement("div");
     topCenter.classList.add("maplibregl-ctrl-top-center");
-    this._controlContainer.insertBefore(topCenter, this._controlPositions["top-right"]);
-    this._controlPositions["top-center"] = topCenter;
+    this._controlContainer.insertBefore(topCenter, this._controlPositions["top-right"]!);
+    this._controlPositions["top-center" as maplibreControlPosition] = topCenter;
 
     const bottomCenter = document.createElement("div");
     bottomCenter.classList.add("maplibregl-ctrl-bottom-center");
-    this._controlContainer.insertBefore(bottomCenter, this._controlPositions["bottom-right"]);
-    this._controlPositions["bottom-center"] = bottomCenter;
+    this._controlContainer.insertBefore(bottomCenter, this._controlPositions["bottom-right"]!);
+    this._controlPositions["bottom-center" as maplibreControlPosition] = bottomCenter;
   }
 }

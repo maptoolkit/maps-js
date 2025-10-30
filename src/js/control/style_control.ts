@@ -258,7 +258,7 @@ export class StyleControl implements IControl {
       let maxWidth = mapRect.width;
       let maxHeight = mapRect.height;
       for (const position in this._map._controlPositions) {
-        if (this._map._controlPositions[position].contains(this._container)) {
+        if (this._map._controlPositions[position as maplibreControlPosition]?.contains(this._container)) {
           if (/^top/.test(position)) maxHeight -= ctrlPosition.top + parseFloat(ctrlStyle.marginTop);
           if (/^bottom/.test(position)) maxHeight -= ctrlPosition.bottom + parseFloat(ctrlStyle.marginBottom);
           if (/left$/.test(position)) maxWidth -= ctrlPosition.left + parseFloat(ctrlStyle.marginLeft);
