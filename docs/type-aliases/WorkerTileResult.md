@@ -10,19 +10,23 @@ The worker tile's result type
 
 ### buckets
 
-> **buckets**: [`Bucket`](../interfaces/Bucket.md)[]
+> **buckets**: `Bucket`[]
 
 ### collisionBoxArray
 
 > **collisionBoxArray**: `CollisionBoxArray`
 
+### dashPositions
+
+> **dashPositions**: `Record`\<`string`, [`DashEntry`](DashEntry.md)\>
+
 ### featureIndex
 
-> **featureIndex**: `FeatureIndex`
+> **featureIndex**: [`FeatureIndex`](../classes/FeatureIndex.md)
 
 ### glyphAtlasImage
 
-> **glyphAtlasImage**: `AlphaImage`
+> **glyphAtlasImage**: [`AlphaImage`](../classes/AlphaImage.md)
 
 ### glyphMap?
 
@@ -38,7 +42,7 @@ The worker tile's result type
 
 ### imageAtlas
 
-> **imageAtlas**: `ImageAtlas`
+> **imageAtlas**: [`ImageAtlas`](../classes/ImageAtlas.md)
 
 ### rawTileData?
 

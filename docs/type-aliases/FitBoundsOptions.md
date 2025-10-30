@@ -4,7 +4,7 @@
 
 > **FitBoundsOptions** = [`FlyToOptions`](FlyToOptions.md) & `object`
 
-Options for [Map#fitBounds](../classes/Map.md#fitbounds) method
+Options for [Map.fitBounds](../classes/Map.md#fitbounds) method
 
 ## Type declaration
 
@@ -12,7 +12,7 @@ Options for [Map#fitBounds](../classes/Map.md#fitbounds) method
 
 > `optional` **linear**: `boolean`
 
-If `true`, the map transitions using [Map#easeTo](../classes/Map.md#easeto). If `false`, the map transitions using [Map#flyTo](../classes/Map.md#flyto).
+If `true`, the map transitions using [Map.easeTo](../classes/Map.md#easeto). If `false`, the map transitions using [Map.flyTo](../classes/Map.md#flyto).
 See those functions and [AnimationOptions](AnimationOptions.md) for information about options available.
 
 #### Default Value

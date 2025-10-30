@@ -13,7 +13,7 @@ The Popup options object
 > `optional` **anchor**: [`PositionAnchor`](PositionAnchor.md)
 
 A string indicating the part of the Popup that should
-be positioned closest to the coordinate set via Popup#setLngLat.
+be positioned closest to the coordinate set via Popup.setLngLat.
 Options are `'center'`, `'top'`, `'bottom'`, `'left'`, `'right'`, `'top-left'`,
 `'top-right'`, `'bottom-left'`, and `'bottom-right'`. If unset the anchor will be
 dynamically set to ensure the popup falls within the map container with a preference

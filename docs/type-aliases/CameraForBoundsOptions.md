@@ -4,7 +4,7 @@
 
 > **CameraForBoundsOptions** = [`CameraOptions`](CameraOptions.md) & `object`
 
-A options object for the [Map#cameraForBounds](../classes/Map.md#cameraforbounds) method
+A options object for the [Map.cameraForBounds](../classes/Map.md#cameraforbounds) method
 
 ## Type declaration
 

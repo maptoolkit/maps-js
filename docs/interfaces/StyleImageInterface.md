@@ -7,7 +7,7 @@ implementers to model: it is not an exported method or class.
 
 Images implementing this interface can be redrawn for every frame. They can be used to animate
 icons and patterns or make them respond to user input. Style images can implement a
-[StyleImageInterface#render](#render) method. The method is called every frame and
+[StyleImageInterface.render](#render) method. The method is called every frame and
 can be used to update the image.
 
 ## See
@@ -63,7 +63,7 @@ let flashingSquare = {
 
 > `optional` **onAdd**: (`map`: `Map$1`, `id`: `string`) => `void`
 
-Optional method called when the layer has been added to the Map with [Map#addImage](../classes/Map.md#addimage).
+Optional method called when the layer has been added to the Map with [Map.addImage](../classes/Map.md#addimage).
 
 #### Parameters
 
@@ -82,7 +82,7 @@ Optional method called when the layer has been added to the Map with [Map#addIma
 
 > `optional` **onRemove**: () => `void`
 
-Optional method called when the icon is removed from the map with [Map#removeImage](../classes/Map.md#removeimage).
+Optional method called when the icon is removed from the map with [Map.removeImage](../classes/Map.md#removeimage).
 This gives the image a chance to clean up resources and event listeners.
 
 #### Returns
@@ -101,7 +101,7 @@ The method can optionally update the image's `data` member with a new image.
 If the method updates the image it must return `true` to commit the change.
 If the method returns `false` or nothing the image is assumed to not have changed.
 
-If updates are infrequent it maybe easier to use [Map#updateImage](../classes/Map.md#updateimage) to update
+If updates are infrequent it maybe easier to use [Map.updateImage](../classes/Map.md#updateimage) to update
 the image instead of implementing this method.
 
 #### Returns

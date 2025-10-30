@@ -20,7 +20,8 @@ Whether or not to cluster
 
 > `optional` **clusterMaxZoom**: `number`
 
-The cluster's max zoom
+The cluster's max zoom.
+Non-integer values are rounded to the closest integer due to supercluster integer value requirements.
 
 ***
 

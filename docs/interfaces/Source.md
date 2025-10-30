@@ -13,7 +13,7 @@ to indicate that the source data has changed, so that any current caches should 
 
 ### abortTile()?
 
-> `optional` **abortTile**(`tile`: `Tile`): `Promise`\<`void`\>
+> `optional` **abortTile**(`tile`: [`Tile`](../classes/Tile.md)): `Promise`\<`void`\>
 
 Allows to abort a tile loading.
 
@@ -21,7 +21,7 @@ Allows to abort a tile loading.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `tile` | `Tile` | The tile to abort |
+| `tile` | [`Tile`](../classes/Tile.md) | The tile to abort |
 
 #### Returns
 
@@ -49,7 +49,7 @@ An ability to fire an event to all the listeners, see Evented
 
 ### hasTile()?
 
-> `optional` **hasTile**(`tileID`: `OverscaledTileID`): `boolean`
+> `optional` **hasTile**(`tileID`: [`OverscaledTileID`](../classes/OverscaledTileID.md)): `boolean`
 
 True is the tile is part of the source, false otherwise.
 
@@ -57,7 +57,7 @@ True is the tile is part of the source, false otherwise.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `tileID` | `OverscaledTileID` | The tile ID |
+| `tileID` | [`OverscaledTileID`](../classes/OverscaledTileID.md) | The tile ID |
 
 #### Returns
 
@@ -91,7 +91,7 @@ True if the source is loaded, false otherwise.
 
 ### loadTile()
 
-> **loadTile**(`tile`: `Tile`): `Promise`\<`void`\>
+> **loadTile**(`tile`: [`Tile`](../classes/Tile.md)): `Promise`\<`void`\>
 
 This method does the heavy lifting of loading a tile.
 In most cases it will defer the work to the relevant worker source.
@@ -100,7 +100,7 @@ In most cases it will defer the work to the relevant worker source.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `tile` | `Tile` | The tile to load |
+| `tile` | [`Tile`](../classes/Tile.md) | The tile to load |
 
 #### Returns
 
@@ -172,7 +172,7 @@ equivalent to this one.
 
 ### unloadTile()?
 
-> `optional` **unloadTile**(`tile`: `Tile`): `Promise`\<`void`\>
+> `optional` **unloadTile**(`tile`: [`Tile`](../classes/Tile.md)): `Promise`\<`void`\>
 
 Allows to unload a tile.
 
@@ -180,7 +180,7 @@ Allows to unload a tile.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `tile` | `Tile` | The tile to unload |
+| `tile` | [`Tile`](../classes/Tile.md) | The tile to unload |
 
 #### Returns
 

@@ -40,7 +40,7 @@ Alternatively, it can be an object mapping string IDs to translations, allowing 
 
 #### Default Value
 
-See [Config](Config.md)
+See Config
 
 ### logoControl?
 

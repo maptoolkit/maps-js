@@ -12,7 +12,7 @@ The Marker options object
 
 > `optional` **anchor**: [`PositionAnchor`](PositionAnchor.md)
 
-A string indicating the part of the Marker that should be positioned closest to the coordinate set via Marker#setLngLat.
+A string indicating the part of the Marker that should be positioned closest to the coordinate set via Marker.setLngLat.
 Options are `'center'`, `'top'`, `'bottom'`, `'left'`, `'right'`, `'top-left'`, `'top-right'`, `'bottom-left'`, and `'bottom-right'`.
 
 #### Default Value

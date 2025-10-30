@@ -4,7 +4,7 @@
 
 > **JumpToOptions** = [`CameraOptions`](CameraOptions.md) & `object`
 
-The options object related to the [Map#jumpTo](../classes/Map.md#jumpto) method
+The options object related to the [Map.jumpTo](../classes/Map.md#jumpto) method
 
 ## Type declaration
 

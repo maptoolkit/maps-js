@@ -30,6 +30,12 @@ All the possible message types that can be sent to and from the worker
 
 ***
 
+### getDashes
+
+> **getDashes**: `"GDA"`
+
+***
+
 ### getData
 
 > **getData**: `"GD"`
@@ -129,6 +135,12 @@ All the possible message types that can be sent to and from the worker
 ### syncRTLPluginState
 
 > **syncRTLPluginState**: `"SRPS"`
+
+***
+
+### updateGlobalState
+
+> **updateGlobalState**: `"UGS"`
 
 ***
 

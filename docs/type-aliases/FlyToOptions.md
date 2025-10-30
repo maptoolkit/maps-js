@@ -4,7 +4,7 @@
 
 > **FlyToOptions** = [`AnimationOptions`](AnimationOptions.md) & [`CameraOptions`](CameraOptions.md) & `object`
 
-The [Map#flyTo](../classes/Map.md#flyto) options object
+The [Map.flyTo](../classes/Map.md#flyto) options object
 
 ## Type declaration
 
@@ -14,7 +14,7 @@ The [Map#flyTo](../classes/Map.md#flyto) options object
 
 The zooming "curve" that will occur along the
 flight path. A high value maximizes zooming for an exaggerated animation, while a low
-value minimizes zooming for an effect closer to [Map#easeTo](../classes/Map.md#easeto). 1.42 is the average
+value minimizes zooming for an effect closer to [Map.easeTo](../classes/Map.md#easeto). 1.42 is the average
 value selected by participants in the user study discussed in
 [van Wijk (2003)](https://www.win.tue.nl/~vanwijk/zoompan.pdf). A value of
 `Math.pow(6, 0.25)` would be equivalent to the root mean squared average velocity. A
@@ -50,7 +50,7 @@ The amount of padding in pixels to add to the given bounds.
 
 > `optional` **screenSpeed**: `number`
 
-The average speed of the animation measured in screenfuls
+The average speed of the animation measured in screenfulls
 per second, assuming a linear timing curve. If `options.speed` is specified, this option is ignored.
 
 ### speed?
@@ -59,7 +59,7 @@ per second, assuming a linear timing curve. If `options.speed` is specified, thi
 
 The average speed of the animation defined in relation to
 `options.curve`. A speed of 1.2 means that the map appears to move along the flight path
-by 1.2 times `options.curve` screenfuls every second. A _screenful_ is the map's visible span.
+by 1.2 times `options.curve` screenfulls every second. A _screenfull_ is the map's visible span.
 It does not correspond to a fixed physical distance, but varies by zoom level.
 
 #### Default Value

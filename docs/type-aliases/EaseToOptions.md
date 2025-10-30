@@ -4,7 +4,7 @@
 
 > **EaseToOptions** = [`AnimationOptions`](AnimationOptions.md) & [`CameraOptions`](CameraOptions.md) & `object`
 
-The [Map#easeTo](../classes/Map.md#easeto) options object
+The [Map.easeTo](../classes/Map.md#easeto) options object
 
 ## Type declaration
 

@@ -2,7 +2,7 @@
 
 # SourceClass()
 
-> **SourceClass** = (`id`: `string`, `specification`: `SourceSpecification` \| [`CanvasSourceSpecification`](CanvasSourceSpecification.md), `dispatcher`: `Dispatcher`, `eventedParent`: `Evented`) => [`Source`](../interfaces/Source.md)
+> **SourceClass** = (`id`: `string`, `specification`: `SourceSpecification` \| [`CanvasSourceSpecification`](CanvasSourceSpecification.md), `dispatcher`: [`Dispatcher`](../classes/Dispatcher.md), `eventedParent`: `Evented`) => [`Source`](../interfaces/Source.md)
 
 A general definition of a [Source](../interfaces/Source.md) class for factory usage
 
@@ -12,7 +12,7 @@ A general definition of a [Source](../interfaces/Source.md) class for factory us
 | ------ | ------ |
 | `id` | `string` |
 | `specification` | `SourceSpecification` \| [`CanvasSourceSpecification`](CanvasSourceSpecification.md) |
-| `dispatcher` | `Dispatcher` |
+| `dispatcher` | [`Dispatcher`](../classes/Dispatcher.md) |
 | `eventedParent` | `Evented` |
 
 ## Returns

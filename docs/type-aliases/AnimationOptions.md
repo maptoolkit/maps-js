@@ -4,8 +4,8 @@
 
 > **AnimationOptions** = `object`
 
-Options common to map movement methods that involve animation, such as [Map#panBy](../classes/Map.md#panby) and
-[Map#easeTo](../classes/Map.md#easeto), controlling the duration and easing function of the animation. All properties
+Options common to map movement methods that involve animation, such as [Map.panBy](../classes/Map.md#panby) and
+[Map.easeTo](../classes/Map.md#easeto), controlling the duration and easing function of the animation. All properties
 are optional.
 
 ## Properties

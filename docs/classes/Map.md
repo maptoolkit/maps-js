@@ -166,7 +166,7 @@ Package version of the library
 
 > **off**\<`T`\>(`type`: `T`, `layer`: `string`, `listener`: (`ev`: [`MapLayerEventType`](../type-aliases/MapLayerEventType.md)\[`T`\] & `Object`) => `void`): `this`
 
-Removes an event listener for events previously added with `Map#on`.
+Removes an event listener for events previously added with `{@link Map.on}`.
 
 ##### Type Parameters
 
@@ -221,7 +221,7 @@ Provide the same layer IDs as to `on` or `once`, when the listener was registere
 
 #### Call Signature
 
-> **off**\<`T`\>(`type`: `T`, `listener`: (`ev`: [`MapEventType`](../type-aliases/MapEventType.md)\[`T`\] & `Object`) => `void`): `this`
+> **off**\<`T`\>(`type`: `T`, `listener`: (`ev`: [`MapEventType`](../interfaces/MapEventType.md)\[`T`\] & `Object`) => `void`): `this`
 
 Overload of the `off` method that allows to remove an event created without specifying a layer.
 
@@ -229,14 +229,14 @@ Overload of the `off` method that allows to remove an event created without spec
 
 | Type Parameter |
 | ------ |
-| `T` *extends* keyof [`MapEventType`](../type-aliases/MapEventType.md) |
+| `T` *extends* keyof [`MapEventType`](../interfaces/MapEventType.md) |
 
 ##### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `type` | `T` | The type of the event. |
-| `listener` | (`ev`: [`MapEventType`](../type-aliases/MapEventType.md)\[`T`\] & `Object`) => `void` | The function previously installed as a listener. |
+| `listener` | (`ev`: [`MapEventType`](../interfaces/MapEventType.md)\[`T`\] & `Object`) => `void` | The function previously installed as a listener. |
 
 ##### Returns
 
@@ -276,7 +276,7 @@ Overload of the `off` method that allows to remove an event created without spec
 > **on**\<`T`\>(`type`: `T`, `layer`: `string`, `listener`: (`ev`: [`MapLayerEventType`](../type-aliases/MapLayerEventType.md)\[`T`\] & `Object`) => `void`): [`Subscription`](../interfaces/Subscription.md)
 
 Adds a listener for events of a specified type, optionally limited to features in a specified style layer(s).
-See [MapEventType](../type-aliases/MapEventType.md) and [MapLayerEventType](../type-aliases/MapLayerEventType.md) for a full list of events and their description.
+See [MapEventType](../interfaces/MapEventType.md) and [MapLayerEventType](../type-aliases/MapLayerEventType.md) for a full list of events and their description.
 
 | Event                  | Compatible with `layerId` |
 |------------------------|---------------------------|
@@ -388,10 +388,10 @@ map.on('click', 'countries', (e) => {
 
 ##### See
 
- - [Display popup on click](https://maplibre.org/maplibre-gl-js/docs/examples/popup-on-click/)
- - [Center the map on a clicked symbol](https://maplibre.org/maplibre-gl-js/docs/examples/center-on-symbol/)
- - [Create a hover effect](https://maplibre.org/maplibre-gl-js/docs/examples/hover-styles/)
- - [Create a draggable marker](https://maplibre.org/maplibre-gl-js/docs/examples/drag-a-point/)
+ - [Display popup on click](https://maplibre.org/maplibre-gl-js/docs/examples/display-a-popup-on-click/)
+ - [Center the map on a clicked symbol](https://maplibre.org/maplibre-gl-js/docs/examples/center-the-map-on-a-clicked-symbol/)
+ - [Create a hover effect](https://maplibre.org/maplibre-gl-js/docs/examples/create-a-hover-effect/)
+ - [Create a draggable marker](https://maplibre.org/maplibre-gl-js/docs/examples/create-a-draggable-point/)
 
 ##### Inherited from
 
@@ -427,7 +427,7 @@ Overload of the `on` method that allows to listen to events specifying multiple 
 
 #### Call Signature
 
-> **on**\<`T`\>(`type`: `T`, `listener`: (`ev`: [`MapEventType`](../type-aliases/MapEventType.md)\[`T`\] & `Object`) => `void`): [`Subscription`](../interfaces/Subscription.md)
+> **on**\<`T`\>(`type`: `T`, `listener`: (`ev`: [`MapEventType`](../interfaces/MapEventType.md)\[`T`\] & `Object`) => `void`): [`Subscription`](../interfaces/Subscription.md)
 
 Overload of the `on` method that allows to listen to events without specifying a layer.
 
@@ -435,14 +435,14 @@ Overload of the `on` method that allows to listen to events without specifying a
 
 | Type Parameter |
 | ------ |
-| `T` *extends* keyof [`MapEventType`](../type-aliases/MapEventType.md) |
+| `T` *extends* keyof [`MapEventType`](../interfaces/MapEventType.md) |
 
 ##### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `type` | `T` | The type of the event. |
-| `listener` | (`ev`: [`MapEventType`](../type-aliases/MapEventType.md)\[`T`\] & `Object`) => `void` | The listener callback. |
+| `listener` | (`ev`: [`MapEventType`](../interfaces/MapEventType.md)\[`T`\] & `Object`) => `void` | The listener callback. |
 
 ##### Returns
 
@@ -537,7 +537,7 @@ Overload of the `once` method that allows to listen to events specifying multipl
 
 #### Call Signature
 
-> **once**\<`T`\>(`type`: `T`, `listener?`: (`ev`: [`MapEventType`](../type-aliases/MapEventType.md)\[`T`\] & `Object`) => `void`): `Promise`\<`any`\> \| `Map`
+> **once**\<`T`\>(`type`: `T`, `listener?`: (`ev`: [`MapEventType`](../interfaces/MapEventType.md)\[`T`\] & `Object`) => `void`): `Promise`\<`any`\> \| `Map`
 
 Overload of the `once` method that allows to listen to events without specifying a layer.
 
@@ -545,14 +545,14 @@ Overload of the `once` method that allows to listen to events without specifying
 
 | Type Parameter |
 | ------ |
-| `T` *extends* keyof [`MapEventType`](../type-aliases/MapEventType.md) |
+| `T` *extends* keyof [`MapEventType`](../interfaces/MapEventType.md) |
 
 ##### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `type` | `T` | The type of the event. |
-| `listener?` | (`ev`: [`MapEventType`](../type-aliases/MapEventType.md)\[`T`\] & `Object`) => `void` | The listener callback. |
+| `listener?` | (`ev`: [`MapEventType`](../interfaces/MapEventType.md)\[`T`\] & `Object`) => `void` | The listener callback. |
 
 ##### Returns
 
@@ -656,8 +656,8 @@ map.addImage('border-image', image.data, {
 
 #### See
 
- - Use `HTMLImageElement`: [Add an icon to the map](https://maplibre.org/maplibre-gl-js/docs/examples/add-image/)
- - Use `ImageData`: [Add a generated icon to the map](https://maplibre.org/maplibre-gl-js/docs/examples/add-image-generated/)
+ - Use `HTMLImageElement`: [Add an icon to the map](https://maplibre.org/maplibre-gl-js/docs/examples/add-an-icon-to-the-map/)
+ - Use `ImageData`: [Add a generated icon to the map](https://maplibre.org/maplibre-gl-js/docs/examples/add-a-generated-icon-to-the-map/)
 
 #### Inherited from
 
@@ -739,7 +739,7 @@ map.addSource('my-data', {
 
 #### See
 
-GeoJSON source: [Add live realtime data](https://maplibre.org/maplibre-gl-js/docs/examples/live-geojson/)
+GeoJSON source: [Add live realtime data](https://maplibre.org/maplibre-gl-js/docs/examples/add-live-realtime-data/)
 
 #### Inherited from
 
@@ -892,7 +892,7 @@ map.jumpTo(cameraOptions);
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `bounds` | [`LngLatBoundsLike`](../type-aliases/LngLatBoundsLike.md) | Calculate the center for these bounds in the viewport and use the highest zoom level up to and including `Map#getMaxZoom()` that fits in the viewport. LngLatBounds represent a box that is always axis-aligned with bearing 0. Bounds will be taken in [sw, ne] order. Southwest point will always be to the left of the northeast point. |
+| `bounds` | [`LngLatBoundsLike`](../type-aliases/LngLatBoundsLike.md) | Calculate the center for these bounds in the viewport and use the highest zoom level up to and including [Map.getMaxZoom](#getmaxzoom) that fits in the viewport. LngLatBounds represent a box that is always axis-aligned with bearing 0. Bounds will be taken in [sw, ne] order. Southwest point will always be to the left of the northeast point. |
 | `options?` | [`CameraForBoundsOptions`](../type-aliases/CameraForBoundsOptions.md) | Options object |
 
 #### Returns
@@ -917,6 +917,38 @@ let newCameraTransform = map.cameraForBounds(bbox, {
 
 ***
 
+### coveringTiles()
+
+> **coveringTiles**(`options`: `CoveringTilesOptions`): [`OverscaledTileID`](OverscaledTileID.md)[]
+
+Returns an array of `OverscaledTileID` objects that cover the current viewport for a given tile size.
+This method is useful for determining which tiles are visible in the current viewport.
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options` | `CoveringTilesOptions` | Options for calculating the covering tiles. |
+
+#### Returns
+
+[`OverscaledTileID`](OverscaledTileID.md)[]
+
+An array of `OverscaledTileID` objects.
+
+#### Example
+
+```ts
+// Get the tiles to cover the view for a 512x512px tile source
+const tiles = map.coveringTiles({tileSize: 512});
+```
+
+#### Inherited from
+
+`maplibreMap.coveringTiles`
+
+***
+
 ### easeTo()
 
 > **easeTo**(`options`: [`EaseToOptions`](../type-aliases/EaseToOptions.md), `eventData?`: `any`): `this`
@@ -925,9 +957,10 @@ Changes any combination of `center`, `zoom`, `bearing`, `pitch`, `roll`, and `pa
 between old and new values. The map will retain its current values for any
 details not specified in `options`.
 
-Note: The transition will happen instantly if the user has enabled
-the `reduced motion` accessibility feature enabled in their operating system,
-unless `options` includes `essential: true`.
+!!! note "Reduced Motion"
+    The transition will happen instantly if the user has enabled
+    the `reduced motion` accessibility feature enabled in their operating system,
+    unless `options` includes `essential: true`.
 
 Triggers the following events: `movestart`, `move`, `moveend`, `zoomstart`, `zoom`, `zoomend`, `pitchstart`,
 `pitch`, `pitchend`, `rollstart`, `roll`, `rollend`, and `rotate`.
@@ -945,7 +978,7 @@ Triggers the following events: `movestart`, `move`, `moveend`, `zoomstart`, `zoo
 
 #### See
 
-[Navigate the map with game-like controls](https://maplibre.org/maplibre-gl-js/docs/examples/game-controls/)
+[Navigate the map with game-like controls](https://maplibre.org/maplibre-gl-js/docs/examples/navigate-the-map-with-game-like-controls/)
 
 #### Inherited from
 
@@ -966,7 +999,7 @@ Triggers the following events: `movestart` and `moveend`.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `bounds` | [`LngLatBoundsLike`](../type-aliases/LngLatBoundsLike.md) | Center these bounds in the viewport and use the highest zoom level up to and including `Map#getMaxZoom()` that fits them in the viewport. Bounds will be taken in [sw, ne] order. Southwest point will always be to the left of the northeast point. |
+| `bounds` | [`LngLatBoundsLike`](../type-aliases/LngLatBoundsLike.md) | Center these bounds in the viewport and use the highest zoom level up to and including [Map.getMaxZoom](#getmaxzoom) that fits them in the viewport. Bounds will be taken in [sw, ne] order. Southwest point will always be to the left of the northeast point. |
 | `options?` | [`FitBoundsOptions`](../type-aliases/FitBoundsOptions.md) | Options supports all properties from [AnimationOptions](../type-aliases/AnimationOptions.md) and [CameraOptions](../type-aliases/CameraOptions.md) in addition to the fields below. |
 | `eventData?` | `any` | Additional properties to be added to event objects of events triggered by this method. |
 
@@ -985,7 +1018,7 @@ map.fitBounds(bbox, {
 
 #### See
 
-[Fit a map to a bounding box](https://maplibre.org/maplibre-gl-js/docs/examples/fitbounds/)
+[Fit a map to a bounding box](https://maplibre.org/maplibre-gl-js/docs/examples/fit-a-map-to-a-bounding-box/)
 
 #### Inherited from
 
@@ -1045,9 +1078,10 @@ Changes any combination of center, zoom, bearing, pitch, and roll, animating the
 evokes flight. The animation seamlessly incorporates zooming and panning to help
 the user maintain her bearings even after traversing a great distance.
 
-Note: The animation will be skipped, and this will behave equivalently to `jumpTo`
-if the user has the `reduced motion` accessibility feature enabled in their operating system,
-unless 'options' includes `essential: true`.
+!!! note "Reduced Motion"
+    The animation will be skipped, and this will behave equivalently to `jumpTo`
+    if the user has the `reduced motion` accessibility feature enabled in their operating system,
+    unless 'options' includes `essential: true`.
 
 Triggers the following events: `movestart`, `move`, `moveend`, `zoomstart`, `zoom`, `zoomend`, `pitchstart`,
 `pitch`, `pitchend`, `rollstart`, `roll`, `rollend`, and `rotate`.
@@ -1082,9 +1116,9 @@ map.flyTo({
 
 #### See
 
- - [Fly to a location](https://maplibre.org/maplibre-gl-js/docs/examples/flyto/)
- - [Slowly fly to a location](https://maplibre.org/maplibre-gl-js/docs/examples/flyto-options/)
- - [Fly to a location based on scroll position](https://maplibre.org/maplibre-gl-js/docs/examples/scroll-fly-to/)
+ - [Fly to a location](https://maplibre.org/maplibre-gl-js/docs/examples/fly-to-a-location/)
+ - [Slowly fly to a location](https://maplibre.org/maplibre-gl-js/docs/examples/slowly-fly-to-a-location/)
+ - [Fly to a location based on scroll position](https://maplibre.org/maplibre-gl-js/docs/examples/fly-to-a-location-based-on-scroll-position/)
 
 #### Inherited from
 
@@ -1107,7 +1141,7 @@ The map's current bearing.
 
 #### See
 
-[Navigate the map with game-like controls](https://maplibre.org/maplibre-gl-js/docs/examples/game-controls/)
+[Navigate the map with game-like controls](https://maplibre.org/maplibre-gl-js/docs/examples/navigate-the-map-with-game-like-controls/)
 
 #### Inherited from
 
@@ -1174,9 +1208,9 @@ The map's `<canvas>` element.
 
 #### See
 
- - [Measure distances](https://maplibre.org/maplibre-gl-js/docs/examples/measure/)
- - [Display a popup on hover](https://maplibre.org/maplibre-gl-js/docs/examples/popup-on-hover/)
- - [Center the map on a clicked symbol](https://maplibre.org/maplibre-gl-js/docs/examples/center-on-symbol/)
+ - [Measure distances](https://maplibre.org/maplibre-gl-js/docs/examples/measure-distances/)
+ - [Display a popup on hover](https://maplibre.org/maplibre-gl-js/docs/examples/display-a-popup-on-hover/)
+ - [Center the map on a clicked symbol](https://maplibre.org/maplibre-gl-js/docs/examples/center-the-map-on-a-clicked-symbol/)
 
 #### Inherited from
 
@@ -1204,7 +1238,7 @@ The container of the map's `<canvas>`.
 
 #### See
 
-[Create a draggable point](https://maplibre.org/maplibre-gl-js/docs/examples/drag-a-point/)
+[Create a draggable point](https://maplibre.org/maplibre-gl-js/docs/examples/create-a-draggable-point/)
 
 #### Inherited from
 
@@ -1304,13 +1338,14 @@ Gets the `state` of a feature.
 A feature's `state` is a set of user-defined key-value pairs that are assigned to a feature at runtime.
 Features are identified by their `feature.id` attribute, which can be any number or string.
 
-_Note: To access the values in a feature's state object for the purposes of styling the feature, use the [`feature-state` expression](https://maplibre.org/maplibre-style-spec/expressions/#feature-state)._
+!!! note
+    To access the values in a feature's state object for the purposes of styling the feature, use the [`feature-state` expression](https://maplibre.org/maplibre-style-spec/expressions/#feature-state).
 
 #### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `feature` | [`FeatureIdentifier`](../type-aliases/FeatureIdentifier.md) | Feature identifier. Feature objects returned from [Map#queryRenderedFeatures](#queryrenderedfeatures) or event handlers can be used as feature identifiers. |
+| `feature` | [`FeatureIdentifier`](../type-aliases/FeatureIdentifier.md) | Feature identifier. Feature objects returned from [Map.queryRenderedFeatures](#queryrenderedfeatures) or event handlers can be used as feature identifiers. |
 
 #### Returns
 
@@ -1364,6 +1399,24 @@ The layer's filter.
 
 ***
 
+### getGlobalState()
+
+> **getGlobalState**(): `Record`\<`string`, `any`\>
+
+Returns the global map state
+
+#### Returns
+
+`Record`\<`string`, `any`\>
+
+The map state object.
+
+#### Inherited from
+
+`maplibreMap.getGlobalState`
+
+***
+
 ### getGlyphs()
 
 > **getGlyphs**(): `null` \| `string`
@@ -1388,7 +1441,7 @@ glyphs Style's glyphs url
 
 Returns an image, specified by ID, currently available in the map.
 This includes both images from the style's original sprite
-and any images that have been added at runtime using [Map#addImage](#addimage).
+and any images that have been added at runtime using [Map.addImage](#addimage).
 
 #### Parameters
 
@@ -1416,7 +1469,7 @@ let coffeeShopIcon = map.getImage("coffee_cup");
 
 ### getLayer()
 
-> **getLayer**(`id`: `string`): `undefined` \| `StyleLayer`
+> **getLayer**(`id`: `string`): `undefined` \| [`StyleLayer`](StyleLayer.md)
 
 Returns the layer with the specified ID in the map's style.
 
@@ -1428,7 +1481,7 @@ Returns the layer with the specified ID in the map's style.
 
 #### Returns
 
-`undefined` \| `StyleLayer`
+`undefined` \| [`StyleLayer`](StyleLayer.md)
 
 The layer with the specified ID, or `undefined`
 if the ID corresponds to no existing layers.
@@ -1441,8 +1494,8 @@ let stateDataLayer = map.getLayer('state-data');
 
 #### See
 
- - [Filter symbols by toggling a list](https://maplibre.org/maplibre-gl-js/docs/examples/filter-markers/)
- - [Filter symbols by text input](https://maplibre.org/maplibre-gl-js/docs/examples/filter-markers-by-input/)
+ - [Filter symbols by toggling a list](https://maplibre.org/maplibre-gl-js/docs/examples/filter-symbols-by-toggling-a-list/)
+ - [Filter symbols by text input](https://maplibre.org/maplibre-gl-js/docs/examples/filter-symbols-by-text-input/)
 
 #### Inherited from
 
@@ -1845,9 +1898,9 @@ let sourceObject = map.getSource('points');
 
 #### See
 
- - [Create a draggable point](https://maplibre.org/maplibre-gl-js/docs/examples/drag-a-point/)
- - [Animate a point](https://maplibre.org/maplibre-gl-js/docs/examples/animate-point-along-line/)
- - [Add live realtime data](https://maplibre.org/maplibre-gl-js/docs/examples/live-geojson/)
+ - [Create a draggable point](https://maplibre.org/maplibre-gl-js/docs/examples/create-a-draggable-point/)
+ - [Animate a point](https://maplibre.org/maplibre-gl-js/docs/examples/animate-a-point/)
+ - [Add live realtime data](https://maplibre.org/maplibre-gl-js/docs/examples/add-live-realtime-data/)
 
 #### Inherited from
 
@@ -2030,7 +2083,7 @@ map.hasControl(navigation);
 
 Check whether or not an image with a specific ID exists in the style. This checks both images
 in the style's original sprite and any images
-that have been added at runtime using [Map#addImage](#addimage).
+that have been added at runtime using [Map.addImage](#addimage).
 
 An [ErrorEvent](ErrorEvent.md) will be fired if the image parameter is invalid.
 
@@ -2226,8 +2279,8 @@ map.jumpTo({
 
 #### See
 
- - [Jump to a series of locations](https://maplibre.org/maplibre-gl-js/docs/examples/jump-to/)
- - [Update a feature in realtime](https://maplibre.org/maplibre-gl-js/docs/examples/live-update-feature/)
+ - [Jump to a series of locations](https://maplibre.org/maplibre-gl-js/docs/examples/jump-to-a-series-of-locations/)
+ - [Update a feature in realtime](https://maplibre.org/maplibre-gl-js/docs/examples/update-a-feature-in-realtime/)
 
 #### Inherited from
 
@@ -2265,7 +2318,7 @@ Returns a true if this instance of Evented or any forwardeed instances of Evente
 
 Returns an Array of strings containing the IDs of all images currently available in the map.
 This includes both images from the style's original sprite
-and any images that have been added at runtime using [Map#addImage](#addimage).
+and any images that have been added at runtime using [Map.addImage](#addimage).
 
 #### Returns
 
@@ -2311,7 +2364,7 @@ A Boolean indicating whether the map is fully loaded.
 
 > **loadImage**(`url`: `string`): `Promise`\<[`GetResourceResponse`](../type-aliases/GetResourceResponse.md)\<`HTMLImageElement` \| `ImageBitmap`\>\>
 
-Load an image from an external URL to be used with [Map#addImage](#addimage). External
+Load an image from an external URL to be used with [Map.addImage](#addimage). External
 domains must support [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS).
 
 #### Parameters
@@ -2337,7 +2390,7 @@ map.addImage('photo', response.data);
 
 #### See
 
-[Add an icon to the map](https://maplibre.org/maplibre-gl-js/docs/examples/add-image/)
+[Add an icon to the map](https://maplibre.org/maplibre-gl-js/docs/examples/add-an-icon-to-the-map/)
 
 #### Inherited from
 
@@ -2392,7 +2445,7 @@ Triggers the following events: `movestart` and `moveend`.
 
 #### See
 
-[Navigate the map with game-like controls](https://maplibre.org/maplibre-gl-js/docs/examples/game-controls/)
+[Navigate the map with game-like controls](https://maplibre.org/maplibre-gl-js/docs/examples/navigate-the-map-with-game-like-controls/)
 
 #### Inherited from
 
@@ -2430,7 +2483,7 @@ map.panTo([-74, 38], {duration: 5000});
 
 #### See
 
-[Update a feature in realtime](https://maplibre.org/maplibre-gl-js/docs/examples/live-update-feature/)
+[Update a feature in realtime](https://maplibre.org/maplibre-gl-js/docs/examples/update-a-feature-in-realtime/)
 
 #### Inherited from
 
@@ -2481,7 +2534,7 @@ representing visible features that satisfy the query parameters.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `geometryOrOptions?` | [`PointLike`](../type-aliases/PointLike.md) \| \[[`PointLike`](../type-aliases/PointLike.md), [`PointLike`](../type-aliases/PointLike.md)\] \| [`QueryRenderedFeaturesOptions`](../type-aliases/QueryRenderedFeaturesOptions.md) | (optional) The geometry of the query region: either a single point or southwest and northeast points describing a bounding box. Omitting this parameter (i.e. calling [Map#queryRenderedFeatures](#queryrenderedfeatures) with zero arguments, or with only a `options` argument) is equivalent to passing a bounding box encompassing the entire map viewport. The geometryOrOptions can receive a [QueryRenderedFeaturesOptions](../type-aliases/QueryRenderedFeaturesOptions.md) only to support a situation where the function receives only one parameter which is the options parameter. |
+| `geometryOrOptions?` | [`PointLike`](../type-aliases/PointLike.md) \| \[[`PointLike`](../type-aliases/PointLike.md), [`PointLike`](../type-aliases/PointLike.md)\] \| [`QueryRenderedFeaturesOptions`](../type-aliases/QueryRenderedFeaturesOptions.md) | (optional) The geometry of the query region: either a single point or southwest and northeast points describing a bounding box. Omitting this parameter (i.e. calling [Map.queryRenderedFeatures](#queryrenderedfeatures) with zero arguments, or with only a `options` argument) is equivalent to passing a bounding box encompassing the entire map viewport. The geometryOrOptions can receive a [QueryRenderedFeaturesOptions](../type-aliases/QueryRenderedFeaturesOptions.md) only to support a situation where the function receives only one parameter which is the options parameter. |
 | `options?` | [`QueryRenderedFeaturesOptions`](../type-aliases/QueryRenderedFeaturesOptions.md) | (optional) Options object. |
 
 #### Returns
@@ -2554,7 +2607,7 @@ let features = map.queryRenderedFeatures({ layers: ['my-layer-name'] });
 
 #### See
 
-[Get features under the mouse pointer](https://maplibre.org/maplibre-gl-js/docs/examples/queryrenderedfeatures/)
+[Get features under the mouse pointer](https://maplibre.org/maplibre-gl-js/docs/examples/get-features-under-the-mouse-pointer/)
 
 #### Inherited from
 
@@ -2582,7 +2635,7 @@ representing features within the specified vector tile or GeoJSON source that sa
 
 An array of MapGeoJSONFeature objects.
 
-In contrast to [Map#queryRenderedFeatures](#queryrenderedfeatures), this function returns all features matching the query parameters,
+In contrast to [Map.queryRenderedFeatures](#queryrenderedfeatures), this function returns all features matching the query parameters,
 whether or not they are rendered by the current style (i.e. visible). The domain of the query includes all currently-loaded
 vector tiles and GeoJSON source tiles: this function does not check tiles outside the currently
 visible viewport.
@@ -2617,7 +2670,7 @@ let features = map.querySourceFeatures('your-source-id', {
 Gets the elevation at a given location, in meters above sea level.
 Returns null if terrain is not enabled.
 If terrain is enabled with some exaggeration value, the value returned here will be reflective of (multiplied by) that exaggeration value.
-This method should be used for proper positioning of custom 3d objects, as explained [here](https://maplibre.org/maplibre-gl-js/docs/examples/add-3d-model-with-terrain/)
+This method should be used for proper positioning of custom 3d objects, as explained [here](https://maplibre.org/maplibre-gl-js/docs/examples/adding-3d-models-using-threejs-on-terrain/)
 
 #### Parameters
 
@@ -2656,6 +2709,35 @@ map.redraw();
 #### Inherited from
 
 `maplibreMap.redraw`
+
+***
+
+### refreshTiles()
+
+> **refreshTiles**(`sourceId`: `string`, `tileIds?`: `object`[]): `void`
+
+Triggers a reload of the selected tiles
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `sourceId` | `string` | The ID of the source |
+| `tileIds?` | `object`[] | An array of tile IDs to be reloaded. If not defined, all tiles will be reloaded. |
+
+#### Returns
+
+`void`
+
+#### Example
+
+```ts
+map.refreshTiles('satellite', [{x:1024, y: 1023, z: 11}, {x:1023, y: 1023, z: 11}]);
+```
+
+#### Inherited from
+
+`maplibreMap.refreshTiles`
 
 ***
 
@@ -2726,7 +2808,7 @@ Features are identified by their `feature.id` attribute, which can be any number
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `target` | [`FeatureIdentifier`](../type-aliases/FeatureIdentifier.md) | Identifier of where to remove state. It can be a source, a feature, or a specific key of feature. Feature objects returned from [Map#queryRenderedFeatures](#queryrenderedfeatures) or event handlers can be used as feature identifiers. |
+| `target` | [`FeatureIdentifier`](../type-aliases/FeatureIdentifier.md) | Identifier of where to remove state. It can be a source, a feature, or a specific key of feature. Feature objects returned from [Map.queryRenderedFeatures](#queryrenderedfeatures) or event handlers can be used as feature identifiers. |
 | `key?` | `string` | (optional) The key in the feature state to reset. |
 
 #### Returns
@@ -2780,7 +2862,7 @@ map.on('mouseleave', 'my-layer', (e) => {
 
 Remove an image from a style. This can be an image from the style's original
 sprite or any images
-that have been added at runtime using [Map#addImage](#addimage).
+that have been added at runtime using [Map.addImage](#addimage).
 
 #### Parameters
 
@@ -3178,13 +3260,14 @@ This method can only be used with sources that have a `feature.id` attribute. Th
 - For vector or GeoJSON sources, using the [`promoteId`](https://maplibre.org/maplibre-style-spec/sources/#promoteid) option at the time the source is defined.
 - For GeoJSON sources, using the [`generateId`](https://maplibre.org/maplibre-style-spec/sources/#generateid) option to auto-assign an `id` based on the feature's index in the source data. If you change feature data using `map.getSource('some id').setData(..)`, you may need to re-apply state taking into account updated `id` values.
 
-_Note: You can use the [`feature-state` expression](https://maplibre.org/maplibre-style-spec/expressions/#feature-state) to access the values in a feature's state object for the purposes of styling._
+!!! note
+    You can use the [`feature-state` expression](https://maplibre.org/maplibre-style-spec/expressions/#feature-state) to access the values in a feature's state object for the purposes of styling.
 
 #### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `feature` | [`FeatureIdentifier`](../type-aliases/FeatureIdentifier.md) | Feature identifier. Feature objects returned from [Map#queryRenderedFeatures](#queryrenderedfeatures) or event handlers can be used as feature identifiers. |
+| `feature` | [`FeatureIdentifier`](../type-aliases/FeatureIdentifier.md) | Feature identifier. Feature objects returned from [Map.queryRenderedFeatures](#queryrenderedfeatures) or event handlers can be used as feature identifiers. |
 | `state` | `any` | A set of key-value pairs. The values should be valid JSON types. |
 
 #### Returns
@@ -3211,7 +3294,7 @@ map.on('mousemove', 'my-layer', (e) => {
 
 #### See
 
-[Create a hover effect](https://maplibre.org/maplibre-gl-js/docs/examples/hover-styles/)
+[Create a hover effect](https://maplibre.org/maplibre-gl-js/docs/examples/create-a-hover-effect/)
 
 #### Inherited from
 
@@ -3264,11 +3347,35 @@ map.setFilter('bike-docks', null);
 
 #### See
 
-[Create a timeline animation](https://maplibre.org/maplibre-gl-js/docs/examples/timeline-animation/)
+[Create a timeline animation](https://maplibre.org/maplibre-gl-js/docs/examples/create-a-time-slider/)
 
 #### Inherited from
 
 `maplibreMap.setFilter`
+
+***
+
+### setGlobalStateProperty()
+
+> **setGlobalStateProperty**(`propertyName`: `string`, `value`: `any`): `this`
+
+Sets a global state property that can be retrieved with the [`global-state` expression](https://maplibre.org/maplibre-style-spec/expressions/#global-state).
+If the value is null, it resets the property to its default value defined in the [`state` style property](https://maplibre.org/maplibre-style-spec/root/#state).
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `propertyName` | `string` | The name of the state property to set. |
+| `value` | `any` | The value of the state property to set. |
+
+#### Returns
+
+`this`
+
+#### Inherited from
+
+`maplibreMap.setGlobalStateProperty`
 
 ***
 
@@ -3310,10 +3417,11 @@ Sets the zoom extent for the specified style layer. The zoom extent includes the
 and [maximum zoom level](https://maplibre.org/maplibre-style-spec/layers/#maxzoom))
 at which the layer will be rendered.
 
-Note: For style layers using vector sources, style layers cannot be rendered at zoom levels lower than the
-minimum zoom level of the _source layer_ because the data does not exist at those zoom levels. If the minimum
-zoom level of the source layer is higher than the minimum zoom level defined in the style layer, the style
-layer will not be rendered at all zoom levels in the zoom range.
+!!! note
+    For style layers using vector sources, style layers cannot be rendered at zoom levels lower than the
+    minimum zoom level of the _source layer_ because the data does not exist at those zoom levels. If the minimum
+    zoom level of the source layer is higher than the minimum zoom level defined in the style layer, the style
+    layer will not be rendered at all zoom levels in the zoom range.
 
 #### Parameters
 
@@ -3621,8 +3729,8 @@ map.setPaintProperty('my-layer', 'fill-color', '#faafee');
 
 #### See
 
- - [Change a layer's color with buttons](https://maplibre.org/maplibre-gl-js/docs/examples/color-switcher/)
- - [Create a draggable point](https://maplibre.org/maplibre-gl-js/docs/examples/drag-a-point/)
+ - [Change a layer's color with buttons](https://maplibre.org/maplibre-gl-js/docs/examples/change-a-layers-color-with-buttons/)
+ - [Create a draggable point](https://maplibre.org/maplibre-gl-js/docs/examples/create-a-draggable-point/)
 
 #### Inherited from
 
@@ -3816,7 +3924,7 @@ map.setSourceTileLodParams(4.0, 3.0, 'terrain');
 
 #### See
 
-[Modify Level of Detail behavior](https://maplibre.org/maplibre-gl-js/docs/examples/lod-control/)
+[Modify Level of Detail behavior](https://maplibre.org/maplibre-gl-js/docs/examples/level-of-detail-control/)
 
 #### Inherited from
 
@@ -3929,9 +4037,44 @@ map.setTerrain({ source: 'terrain' });
 
 ***
 
+### setTransformConstrain()
+
+> **setTransformConstrain**(`constrain?`: `null` \| [`TransformConstrainFunction`](../type-aliases/TransformConstrainFunction.md)): `Map$1`
+
+Sets or clears the callback overriding how the map constrains the viewport's lnglat and zoom to respect the longitude and latitude bounds.
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `constrain?` | `null` \| [`TransformConstrainFunction`](../type-aliases/TransformConstrainFunction.md) | A [TransformConstrainFunction](../type-aliases/TransformConstrainFunction.md) callback defining how the viewport should respect the bounds. `null` clears the callback and reverses the override of the map transform's default constrain function. |
+
+#### Returns
+
+`Map$1`
+
+#### Example
+
+```ts
+function customTransformConstrain(lngLat, zoom) {
+  return {center: lngLat, zoom: zoom ?? 0};
+};
+map.setTransformConstrain(customTransformConstrain);
+```
+
+#### See
+
+[Customize the map transform constrain](https://maplibre.org/maplibre-gl-js/docs/examples/customize-the-map-transform-constrain/)
+
+#### Inherited from
+
+`maplibreMap.setTransformConstrain`
+
+***
+
 ### setTransformRequest()
 
-> **setTransformRequest**(`transformRequest`: [`RequestTransformFunction`](../type-aliases/RequestTransformFunction.md)): `this`
+> **setTransformRequest**(`transformRequest`: `null` \| [`RequestTransformFunction`](../type-aliases/RequestTransformFunction.md)): `this`
 
 Updates the requestManager's transform request with a new function
 
@@ -3939,7 +4082,7 @@ Updates the requestManager's transform request with a new function
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `transformRequest` | [`RequestTransformFunction`](../type-aliases/RequestTransformFunction.md) | A callback run before the Map makes a request for an external URL. The callback can be used to modify the url, set headers, or set the credentials property for cross-origin requests. Expected to return an object with a `url` property and optionally `headers` and `credentials` properties |
+| `transformRequest` | `null` \| [`RequestTransformFunction`](../type-aliases/RequestTransformFunction.md) | A callback run before the Map makes a request for an external URL. The callback can be used to modify the url, set headers, or set the credentials property for cross-origin requests. Expected to return an object with a `url` property and optionally `headers` and `credentials` properties |
 
 #### Returns
 
@@ -4089,8 +4232,8 @@ map.triggerRepaint();
 
 #### See
 
- - [Add a 3D model](https://maplibre.org/maplibre-gl-js/docs/examples/add-3d-model/)
- - [Add an animated icon to the map](https://maplibre.org/maplibre-gl-js/docs/examples/add-image-animated/)
+ - [Add a 3D model](https://maplibre.org/maplibre-gl-js/docs/examples/add-a-3d-model-using-threejs/)
+ - [Add an animated icon to the map](https://maplibre.org/maplibre-gl-js/docs/examples/add-an-animated-icon-to-the-map/)
 
 #### Inherited from
 
@@ -4420,3 +4563,21 @@ If specified, this Camera instance can be used as a stateless component in React
 #### Inherited from
 
 `maplibreMap.transformCameraUpdate`
+
+***
+
+### transformConstrain
+
+> **transformConstrain**: `null` \| [`TransformConstrainFunction`](../type-aliases/TransformConstrainFunction.md)
+
+The map transform's callback that overrides the default constrain function.
+
+#### Default Value
+
+```ts
+null
+```
+
+#### Inherited from
+
+`maplibreMap.transformConstrain`

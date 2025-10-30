@@ -4,7 +4,7 @@
 
 > **UpdateImageOptions** = `object`
 
-The options object for the ImageSource#updateImage method
+The options object for the ImageSource.updateImage method
 
 ## Properties
 

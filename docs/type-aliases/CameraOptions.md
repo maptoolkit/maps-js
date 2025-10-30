@@ -4,7 +4,7 @@
 
 > **CameraOptions** = [`CenterZoomBearing`](CenterZoomBearing.md) & `object`
 
-Options common to [Map#jumpTo](../classes/Map.md#jumpto), [Map#easeTo](../classes/Map.md#easeto), and [Map#flyTo](../classes/Map.md#flyto), controlling the desired location,
+Options common to [Map.jumpTo](../classes/Map.md#jumpto), [Map.easeTo](../classes/Map.md#easeto), and [Map.flyTo](../classes/Map.md#flyto), controlling the desired location,
 zoom, bearing, pitch, and roll of the camera. All properties are optional, and when a property is omitted, the current
 camera value for that property will remain unchanged.
 
@@ -47,7 +47,7 @@ let map = new Map({
 
 ## See
 
- - [Set pitch and bearing](https://maplibre.org/maplibre-gl-js/docs/examples/set-perspective/)
- - [Jump to a series of locations](https://maplibre.org/maplibre-gl-js/docs/examples/jump-to/)
- - [Fly to a location](https://maplibre.org/maplibre-gl-js/docs/examples/flyto/)
- - [Display buildings in 3D](https://maplibre.org/maplibre-gl-js/docs/examples/3d-buildings/)
+ - [Set pitch and bearing](https://maplibre.org/maplibre-gl-js/docs/examples/set-pitch-and-bearing/)
+ - [Jump to a series of locations](https://maplibre.org/maplibre-gl-js/docs/examples/jump-to-a-series-of-locations/)
+ - [Fly to a location](https://maplibre.org/maplibre-gl-js/docs/examples/fly-to-a-location/)
+ - [Display buildings in 3D](https://maplibre.org/maplibre-gl-js/docs/examples/display-buildings-in-3d/)

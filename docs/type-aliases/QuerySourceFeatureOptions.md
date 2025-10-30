@@ -4,7 +4,7 @@
 
 > **QuerySourceFeatureOptions** = `object`
 
-The options object related to the [Map#querySourceFeatures](../classes/Map.md#querysourcefeatures) method
+The options object related to the [Map.querySourceFeatures](../classes/Map.md#querysourcefeatures) method
 
 ## Properties
 

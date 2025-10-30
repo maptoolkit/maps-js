@@ -4,7 +4,7 @@
 
 > **PaddingOptions** = [`RequireAtLeastOne`](RequireAtLeastOne.md)\<\{ `bottom`: `number`; `left`: `number`; `right`: `number`; `top`: `number`; \}\>
 
-Options for setting padding on calls to methods such as [Map#fitBounds](../classes/Map.md#fitbounds), [Map#fitScreenCoordinates](../classes/Map.md#fitscreencoordinates), and [Map#setPadding](../classes/Map.md#setpadding). Adjust these options to set the amount of padding in pixels added to the edges of the canvas. Set a uniform padding on all edges or individual values for each edge. All properties of this object must be
+Options for setting padding on calls to methods such as [Map.fitBounds](../classes/Map.md#fitbounds), [Map.fitScreenCoordinates](../classes/Map.md#fitscreencoordinates), and [Map.setPadding](../classes/Map.md#setpadding). Adjust these options to set the amount of padding in pixels added to the edges of the canvas. Set a uniform padding on all edges or individual values for each edge. All properties of this object must be
 non-negative integers.
 
 ## Examples
