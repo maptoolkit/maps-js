@@ -24,8 +24,8 @@
     <div id="map"></div>
     <script src="./../../dist/maptoolkit.js"></script>
     <script>
-      const map = new maptoolkit.Map({ apiKey: "e140284b-fc55-4c33-aebb-f1bd529c1b51" }).setContainer("map");
-      const ctrl = new maptoolkit.PitchControl();
+      window.map = new maptoolkit.Map({ apiKey: "e140284b-fc55-4c33-aebb-f1bd529c1b51" }).setContainer("map");
+      const ctrl = new maptoolkit.NavigationControl();
       map.addControl(ctrl);
     </script>
   </body>

@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "@maptoolkit/maps-sdk",
-  "version": "11.0.0-alpha.beta",
+  "version": "11.0.0-alpha.beta.1",
   "description": "Maps SDK by Maptoolkit powered by MapLibre GL JS",
   "scripts": {
     "build": "npm run build-js && npm run build-css",
@@ -9,11 +9,13 @@
     "watch-js": "rollup -c -w --environment BUILD:development",
     "build-css": "postcss --use postcss-import -o dist/maptoolkit.css src/index.css",
     "watch-css": "postcss -w --use postcss-import -o dist/maptoolkit.css src/index.css",
-    "test": "node --experimental-vm-modules node_modules/.bin/jest",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
     "lint": "eslint ./src/",
-    "pretty": "prettier ./src/**/*.{ts,js,json,css} ./test/**/*.html --write",
-    "check": "npm run test && npm run lint",
-    "generate-docs": "typedoc"
+    "pretty": "prettier ./src/**/*.{ts,js,json,css} ./examples/**/*.html ./test/**/*.ts --write",
+    "generate-docs": "typedoc",
+    "serve": "http-server . -p 8080 -c-1"
   },
   "author": "Daniel Böck",
   "license": "ISC",
@@ -37,18 +39,22 @@
     "url": "https://github.com/maptoolkit/maptoolkit-js.git"
   },
   "devDependencies": {
+    "@playwright/test": "^1.56.1",
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-replace": "^6.0.2",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.2",
+    "@types/jest": "^30.0.0",
     "@typescript-eslint/eslint-plugin": "^8.32.0",
     "@typescript-eslint/parser": "^8.32.0",
     "eslint": "^9.26.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-import": "^2.31.0",
+    "http-server": "^14.1.1",
     "jest": "^29.7.0",
+    "jest-environment-jsdom": "^30.2.0",
     "postcss": "^8.5.3",
     "postcss-cli": "^11.0.1",
     "postcss-import": "^16.1.0",
@@ -56,6 +62,7 @@
     "rollup": "^4.40.0",
     "rollup-plugin-dts": "^6.2.1",
     "rollup-plugin-esbuild": "^6.2.1",
+    "ts-jest": "^29.4.5",
     "tslib": "^2.8.1",
     "typedoc": "^0.28.3",
     "typedoc-plugin-markdown": "^4.6.3",
@@ -65,12 +72,12 @@
   "dependencies": {
     "@mapbox/mapbox-gl-draw": "^1.5.0",
     "@mapbox/togeojson": "^0.16.2",
-    "@maplibre/maplibre-gl-style-spec": "^23.2.1",
+    "@maplibre/maplibre-gl-style-spec": "^23.3.0",
     "@turf/difference": "^7.2.0",
     "@turf/distance": "^7.2.0",
     "@turf/length": "^7.2.0",
     "@turf/union": "^7.2.0",
-    "maplibre-gl": "^5.6.1",
+    "maplibre-gl": "^5.10.0",
     "pbf": "^4.0.1"
   }
 }
