@@ -33,16 +33,20 @@ import {
  * @param layer - The layer to check.
  * @returns True if the layer is hidden, false otherwise.
  */
-function isLayerHidden(layer: any) {
+function isLayerHidden(layer: any): boolean {
   if (layer) {
-    if (layer.type == "line") {
+    if (layer.type === "line") {
       return layer.paint?.["line-opacity"] <= 0.001;
-    } else if (layer.type == "fill") {
-      return !(layer.paint?.["fill-opacity"] <= 0.001);
-    } else if (layer.type == "symbol") {
-      return layer.layout?.["icon-image"] ? layer.paint?.["icon-opacity"] <= 0.001 : (layer.paint?.["text-opacity"] as number) <= 0.001;
+    } else if (layer.type === "fill") {
+      return layer.paint?.["fill-opacity"] <= 0.001;
+    } else if (layer.type === "symbol") {
+      return layer.layout?.["icon-image"] ? layer.paint?.["icon-opacity"] <= 0.001 : layer.paint?.["text-opacity"] <= 0.001;
+    } else if (layer.type === "circle") {
+      return layer.paint?.["circle-opacity"] <= 0.001;
     }
   }
+
+  return false;
 }
 
 /**
@@ -76,47 +80,6 @@ function isSameFeature(featureA?: maplibreMapGeoJSONFeature, featureB?: maplibre
   const idB = featureB.id === undefined ? createFeatureId(featureB) : featureB.id;
   return idA === idB;
 }
-
-/**
- * Creates a feature state case.
- * @param state - The state.
- * @param valueA - The value for the true case.
- * @param valueB - The value for the false case.
- * @returns The created feature state case.
- */
-function createFeatureStateCase(state: string | number, valueA: any, valueB: any) {
-  return [
-    "case",
-    /* ["==", ["id"], state], */
-    ["boolean", ["feature-state", state], false],
-    typeof valueA === "object" && !maplibreIsExpression(valueA) ? ["literal", valueA] : valueA,
-    typeof valueB === "object" && !maplibreIsExpression(valueB) ? ["literal", valueB] : valueB,
-  ];
-}
-
-export type StateProperty = "paint" | "layout";
-export const StatePropertyList: Array<StateProperty> = ["paint", "layout"];
-
-export type StateSpecification = { [_: string]: any }; // TODO: should use "maplibreLayerSpecification" type instead
-export type StateChildSpecification = { [_: string]: StateSpecification };
-export type StateParentSpecification = { [_: string]: StateChildSpecification };
-export type StateFamilySpecification = {
-  global: StateParentSpecification;
-  feature: StateParentSpecification;
-};
-
-export type GlobalStateActiveSpecification = boolean;
-export type FeatureStateActiveSpecification = maplibreMapGeoJSONFeature;
-export type StateActiveGroupSpecification<Type> = { [_: string]: Type };
-export type StatesActiveSpecification = {
-  global: StateActiveGroupSpecification<GlobalStateActiveSpecification>;
-  feature: StateActiveGroupSpecification<FeatureStateActiveSpecification>;
-};
-
-export type GlobalStatesListSpecification = Array<string>;
-
-export type FeatureState = "select" | "hover";
-export const FeatureStateList: Array<FeatureState> = ["select", "hover"];
 
 export type MapFeatureMouseEvent = maplibreMapMouseEvent & { feature?: maplibreMapGeoJSONFeature };
 export type MapFeatureTouchEvent = maplibreMapTouchEvent & { feature?: maplibreMapGeoJSONFeature };
@@ -174,8 +137,6 @@ export class Map extends maplibreMap {
   _style?: maplibreStyleSpecification;
   _styleId?: string;
   _apiKey?: string;
-  _states: StateFamilySpecification;
-  _statesActive: StatesActiveSpecification;
 
   /**
    * @param options - The {@link MapOptions} object.
@@ -206,10 +167,6 @@ export class Map extends maplibreMap {
 
     this._locale = Object.assign({}, getDefaultLocale(), typeof options.locale === "object" ? options.locale : null);
 
-    this._style = undefined;
-    this._states = { global: {}, feature: {} };
-    this._statesActive = { global: {}, feature: {} };
-
     if (options.attributionControl !== false) {
       this.addControl(new AttributionControl(options.attributionControl));
     }
@@ -217,20 +174,50 @@ export class Map extends maplibreMap {
       this.addControl(new LogoControl(options.logoControl));
     }
 
+    let hoveredFeature: maplibreMapGeoJSONFeature | undefined = undefined;
+
     this.on("mousemove", (ev) => {
       const point = [
         [ev.point.x - 3, ev.point.y - 3],
         [ev.point.x + 3, ev.point.y + 3],
       ] as [maplibrePointLike, maplibrePointLike];
 
-      if ("select" in this._states.feature) {
-        const feature = this._getStateFeature("select", point);
-        this._canvasContainer.style.cursor = feature ? "pointer" : "";
-      }
+      const feature = this._getFeatureAtPoint(point);
 
-      if ("hover" in this._states.feature) {
-        const feature = this._getStateFeature("hover", point);
-        this._setStateFeature("hover", feature, ev);
+      if (feature?.layer?.metadata) {
+        const metadata = feature.layer.metadata as Record<string, any>;
+
+        if (metadata["maptoolkit:clickable"] === true) {
+          this._canvasContainer.style.cursor = "pointer";
+
+          const featureIsSame = isSameFeature(hoveredFeature, feature);
+          if (!featureIsSame) {
+            if (hoveredFeature) {
+              const event = ev as MapFeatureMouseEvent | MapFeatureTouchEvent;
+              event.feature = hoveredFeature;
+
+              this.fire("feature.mouseout", event);
+
+              hoveredFeature = undefined;
+            }
+
+            const event = ev as MapFeatureMouseEvent | MapFeatureTouchEvent;
+            event.feature = hoveredFeature = feature;
+
+            this.fire("feature.mouseover", event);
+          }
+        } else {
+          this._canvasContainer.style.cursor = "";
+
+          if (hoveredFeature) {
+            const event = ev as MapFeatureMouseEvent | MapFeatureTouchEvent;
+            event.feature = hoveredFeature;
+
+            this.fire("feature.mouseout", event);
+
+            hoveredFeature = undefined;
+          }
+        }
       }
     });
 
@@ -239,8 +226,19 @@ export class Map extends maplibreMap {
         [ev.point.x - 3, ev.point.y - 3],
         [ev.point.x + 3, ev.point.y + 3],
       ] as [maplibrePointLike, maplibrePointLike];
-      const feature = this._getStateFeature("select", point);
-      this._setStateFeature("select", feature, ev);
+
+      const feature = this._getFeatureAtPoint(point);
+
+      if (feature?.layer?.metadata) {
+        const metadata = feature.layer.metadata as Record<string, any>;
+
+        if (metadata["maptoolkit:clickable"] === true) {
+          const event = ev as MapFeatureMouseEvent | MapFeatureTouchEvent;
+          event.feature = feature;
+
+          this.fire("feature.click", event);
+        }
+      }
     });
 
     if (options.container) {
@@ -248,178 +246,13 @@ export class Map extends maplibreMap {
     }
   }
 
-  set selectedFeature(feature: maplibreMapGeoJSONFeature | null) {
-    this._setStateFeature("select", !feature ? undefined : feature);
-  }
-  get selectedFeature(): maplibreMapGeoJSONFeature | null {
-    return this._statesActive.feature.select;
-  }
-
-  set hoveredFeature(feature: maplibreMapGeoJSONFeature | null) {
-    this._setStateFeature("hover", !feature ? undefined : feature);
-  }
-  get hoveredFeature(): maplibreMapGeoJSONFeature | undefined {
-    return this._statesActive.feature.hover;
-  }
-
   /**
    * Get active feature for given point and state.
    * @private
    */
-  private _getStateFeature(state: string, point: maplibrePointLike | [maplibrePointLike, maplibrePointLike]): maplibreMapGeoJSONFeature | undefined {
-    if (state in this._states.global || state in this._states.feature) {
-      const ids = Object.keys(this._states.global[state] || this._states.feature[state]);
-      const feature = this.queryRenderedFeatures(point, { layers: ids }).filter((f) => !isLayerHidden(f.layer))[0];
-      return feature;
-    }
-  }
-
-  /**
-   * Get active feature for given state.
-   * @private
-   */
-  private _setStateFeature(state: string, feature: maplibreMapGeoJSONFeature | undefined, event?: MapFeatureMouseEvent | MapFeatureTouchEvent) {
-    const stateEvents: any = {
-      hover: { enable: ["mouseover"], disable: ["mouseout"] },
-      select: { enable: ["select"], disable: ["deselect"] },
-    };
-    const featureIsSame = isSameFeature(feature, this._statesActive.feature[state]);
-    if (this._statesActive.feature[state] && !featureIsSame) {
-      if (this._statesActive.feature[state].id !== undefined) {
-        this.setFeatureState(this._statesActive.feature[state], { [state]: false }); // TODO: improvate feature states (currently replacing feature id with .setStyle)
-      }
-      if (event) {
-        const ev = event as MapFeatureMouseEvent | MapFeatureTouchEvent;
-        ev.feature = this._statesActive.feature[state];
-        if (stateEvents[state] && stateEvents[state].disable) {
-          for (const eventName of stateEvents[state].disable) {
-            this.fire(`feature.${eventName}`, ev);
-          }
-        }
-      }
-      delete this._statesActive.feature[state];
-    }
-    if (feature && !isLayerHidden(feature.layer) && !featureIsSame) {
-      if (feature.id !== undefined) {
-        this.setFeatureState(feature, { [state]: true }); // TODO: improvate feature states (currently replacing feature id with .setStyle)
-      } else {
-        const prefix = feature.layer ? `${feature.layer.id}: ` : "";
-        console.warn(`${prefix}Feature state '${state}' couldn't be set, source feature must provide an id.`);
-      }
-      this._statesActive.feature[state] = feature;
-      if (event) {
-        const ev = event as MapFeatureMouseEvent | MapFeatureTouchEvent;
-        ev.feature = feature;
-        if (stateEvents[state] && stateEvents[state].enable) {
-          for (const eventName of stateEvents[state].enable) {
-            this.fire(`feature.${eventName}`, ev);
-          }
-        }
-      }
-    }
-    this._applyStates();
-  }
-
-  /**
-   * Parses the states from the style.
-   * @private
-   */
-  private _parseStates(): void {
-    const style = this.style.serialize();
-
-    if (style) {
-      this._truncateStates();
-
-      for (const layer of style.layers) {
-        const metadata: any = layer.metadata;
-        if (metadata) {
-          const maptoolkitStates = metadata["maptoolkit:states"] || metadata["mtk:states"];
-          if (maptoolkitStates) {
-            for (const state in maptoolkitStates) {
-              const states = !FeatureStateList.includes(state as FeatureState) ? this._states.global : this._states.feature;
-              if (!states[state]) {
-                states[state] = {} as StateChildSpecification;
-              }
-              states[state][layer.id] = maptoolkitStates[state];
-            }
-          }
-        }
-      }
-    }
-  }
-
-  /**
-   * Truncate parsed states
-   * @private
-   */
-  private _truncateStates(): void {
-    this._states = { global: {} as StateParentSpecification, feature: {} as StateParentSpecification };
-  }
-
-  /**
-   * Applies the parsed states to the style.
-   * @private
-   */
-  private _applyStates(): void {
-    const style = JSON.parse(JSON.stringify(this._style));
-
-    for (const state in this._states.global) {
-      if (this._statesActive.global[state] !== true) {
-        continue;
-      }
-      for (const layer of style.layers) {
-        if (layer.id in this._states.global[state]) {
-          for (const prop in this._states.global[state][layer.id]) {
-            if (prop === "metadata") {
-              continue;
-            }
-            if (!StatePropertyList.includes(prop as StateProperty)) {
-              layer[prop] = this._states.global[state][layer.id][prop];
-            } else {
-              if (!(prop in layer)) {
-                layer[prop] = {};
-              }
-              for (const lapa in this._states.global[state][layer.id][prop]) {
-                layer[prop][lapa] = this._states.global[state][layer.id][prop][lapa];
-              }
-            }
-          }
-        }
-      }
-    }
-
-    for (const state in this._states.feature) {
-      for (let i = 0; i < style.layers.length; ++i) {
-        if (style.layers[i].id in this._states.feature[state]) {
-          for (const prop of StatePropertyList) {
-            for (const lapa in this._states.feature[state][style.layers[i].id][prop]) {
-              const isDataDriven = maplibreSupportsPropertyExpression(maplibreV8[`${prop}_${style.layers[i].type}`][lapa]);
-              const supportsFeatureState = maplibreV8[`${prop}_${style.layers[i].type}`][lapa].expression.parameters.includes("feature-state");
-              if (!isDataDriven) {
-                console.error(`layers[${i}].${style.layers[i].type}.${prop}.${lapa} doesn't support data expressions and can't use feature states.`);
-                delete this._states.feature[state][style.layers[i].id][prop][lapa];
-                continue;
-              } else if (!supportsFeatureState) {
-                console.error(`layers[${i}].${style.layers[i].type}.${prop}.${lapa}: doesn't support "feature-state" data expressions.`);
-                delete this._states.feature[state][style.layers[i].id][prop][lapa];
-                continue;
-              }
-              const defaultValue = maplibreV8[`${prop}_${style.layers[i].type}`][lapa].default;
-              const currentValue = style.layers[i][prop][lapa];
-              const stateValue = this._states.feature[state][style.layers[i].id][prop][lapa];
-              style.layers[i][prop][lapa] = createFeatureStateCase(
-                /* this._statesActive.feature[state]?.id || "" */ state,
-                stateValue,
-                currentValue === undefined ? defaultValue : currentValue,
-              );
-            }
-          }
-        }
-      }
-    }
-
-    this.setStyle(style, {}, true);
-    this.redraw();
+  private _getFeatureAtPoint(point: maplibrePointLike | [maplibrePointLike, maplibrePointLike]): maplibreMapGeoJSONFeature | undefined {
+    const feature = this.queryRenderedFeatures(point).filter((f) => !isLayerHidden(f.layer))[0];
+    return feature;
   }
 
   /**
@@ -460,32 +293,6 @@ export class Map extends maplibreMap {
   }
 
   /**
-   * Gets the list of active global states.
-   * @returns The list of active global states.
-   */
-  getStates(): GlobalStatesListSpecification {
-    return this._statesActive.global ? Object.keys(this._statesActive.global).filter((s) => this._statesActive.global[s] === true) : [];
-  }
-
-  /**
-   * Sets the active global states.
-   * @param statesActive - The list of states to activate.
-   * @returns The map instance.
-   */
-  setStates(statesActive: GlobalStatesListSpecification): this {
-    this._statesActive.global = {};
-    if (Array.isArray(statesActive)) {
-      for (const state of statesActive) {
-        this._statesActive.global[state] = true;
-      }
-    }
-    if (this.style._loaded) {
-      this._applyStates();
-    }
-    return this;
-  }
-
-  /**
    * Sets the style of the map.
    * @param style - The style to set.
    * @param options - Additional options for the style.
@@ -495,71 +302,8 @@ export class Map extends maplibreMap {
     if (update !== true) {
       this.fire("style.set", { style });
     }
-    super.setStyle(style, options);
-    if (update !== true) {
-      this._truncateStates();
-      this._styleId = getStringChecksum(typeof style === "string" ? style : JSON.stringify(style));
-      this.once("styledata", () => {
-        this._parseStates();
-        this._style = this.style ? this.style.serialize() : undefined;
-        this._applyStates();
-      });
-    }
-    return this;
-  }
 
-  /**
-   * Adds a layer to the map.
-   * @param layer - The layer or layers to add.
-   * @param beforeId - The ID of an existing layer to insert the new layer before.
-   * @returns The map instance.
-   */
-  addLayer(layer: maplibreAddLayerObject | Array<maplibreAddLayerObject>, beforeId?: string): this {
-    const layers = Array.isArray(layer) ? layer : [layer];
-    this._lazyInitEmptyStyle();
-    for (const l of layers) {
-      this.style.addLayer(l, beforeId);
-    }
-    this._update(true);
-
-    this._parseStates();
-    this._style = this.style ? this.style.serialize() : undefined;
-    this._applyStates();
-
-    return this;
-  }
-
-  /**
-   * Adds a layer to the map.
-   * @param id - The layer's ID.
-   * @returns The map instance.
-   */
-  removeLayer(id: string): this {
-    this.style.removeLayer(id);
-    this._update(true);
-
-    this._parseStates();
-    this._style = this.style ? this.style.serialize() : undefined;
-    this._applyStates();
-
-    return this;
-  }
-
-  /**
-   * Moves a layer to a different z-position.
-   * @param layer - The ID of the layer to move.
-   * @param beforeId - The ID of an existing layer to insert the new layer before.
-   * @returns The map instance.
-   */
-  moveLayer(id: string, beforeId?: string): this {
-    this.style.moveLayer(id, beforeId);
-    this._update(true);
-
-    this._parseStates();
-    this._style = this.style ? this.style.serialize() : undefined;
-    this._applyStates();
-
-    return this;
+    return super.setStyle(style, options);
   }
 
   /**
