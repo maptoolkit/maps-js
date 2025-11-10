@@ -2,7 +2,7 @@ import "./js/core/protocols"; // Register custom protocols
 
 import { version } from "../package.json";
 
-import { Map, MapOptions, DataConnectorOptions } from "./js/core/map";
+import { Map, MapOptions } from "./js/core/map";
 import { config } from "./js/core/config";
 import { locale } from "./js/core/locale";
 import { STYLES } from "./js/core/styles";
@@ -169,7 +169,6 @@ export {
 
 export type {
   MapOptions,
-  DataConnectorOptions,
   IControl,
   ControlPosition,
   LogoControlOptions,

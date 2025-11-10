@@ -84,14 +84,6 @@ function isSameFeature(featureA?: maplibreMapGeoJSONFeature, featureB?: maplibre
 export type MapFeatureMouseEvent = maplibreMapMouseEvent & { feature?: maplibreMapGeoJSONFeature };
 export type MapFeatureTouchEvent = maplibreMapTouchEvent & { feature?: maplibreMapGeoJSONFeature };
 
-export type DataConnectorOptions = {
-  name: string;
-  layers: Omit<maplibreLayerSpecification, "id" | "source" | "source-layer">[];
-  query?: string;
-  ids?: Array<string | number>;
-  filter?: maplibreExpressionFilterSpecification;
-};
-
 /**
  * The {@link Map} options object.
  */

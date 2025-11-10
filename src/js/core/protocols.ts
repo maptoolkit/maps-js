@@ -23,8 +23,8 @@ maplibreAddProtocol("maptoolkit", (params, abortController) => {
       } else {
         requestUrl = new URL(`/${path.slice(1).join("/")}`, config[`${service}CdnHost`]);
       }
-    } else if (service === "dataconnector") {
-      requestUrl = new URL(`/${account}/${name}.json`, config.dataconnectorHost);
+    } else if (service === "data") {
+      requestUrl = new URL(`/${account}/${name}.json`, config.dataHost);
     }
 
     if (requestUrl) {

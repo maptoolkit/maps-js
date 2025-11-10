@@ -194,26 +194,26 @@ class Config extends Evented {
    * @private
    * The base URL for the Maptoolkit data connector service.
    * @type {string}
-   * @default "https://dataconnector.maptoolkit.net"
+   * @default "https://data.maptoolkit.net"
    */
-  private _dataconnectorHost: string = "https://dataconnector.maptoolkit.net";
+  private _dataHost: string = "https://data.maptoolkit.net";
 
   /**
    * Gets the base URL for the Maptoolkit data connector service.
    * @returns {string} The base data connector host URL.
    */
-  get dataconnectorHost(): string {
-    return this._dataconnectorHost;
+  get dataHost(): string {
+    return this._dataHost;
   }
 
   /**
    * Sets the base URL for the Maptoolkit data connector service.
    * @param {string} value - The new data connector host URL to set.
-   * @fires config.dataconnectorHost.set
+   * @fires config.dataHost.set
    */
-  set dataconnectorHost(value: string) {
-    this._dataconnectorHost = value;
-    this.fire("config.dataconnectorHost.set");
+  set dataHost(value: string) {
+    this._dataHost = value;
+    this.fire("config.dataHost.set");
   }
 
   /**
