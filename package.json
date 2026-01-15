@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "@maptoolkit/maps-sdk",
-  "version": "11.0.0-alpha.beta.4",
+  "version": "11.0.0-alpha.beta.5",
   "description": "Maps SDK by Maptoolkit powered by MapLibre GL JS",
   "scripts": {
     "build": "npm run build-js && npm run build-css",
