@@ -30,8 +30,8 @@ jobs:
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
           npm publish --access public
 
-      - name: Publish to npm
-        run: |
-          echo "registry=https://registry.npmjs.org/" > .npmrc
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
-          npm publish
+      #- name: Publish to npm
+      #  run: |
+      #    echo "registry=https://registry.npmjs.org/" > .npmrc
+      #    echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
+      #    npm publish --access public
