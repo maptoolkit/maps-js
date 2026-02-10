@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./../dist/maptoolkit.css" />
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      #map {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="map"></div>
+    <script src="./../dist/maptoolkit.js"></script>
+    <script>
+      window.map = new maptoolkit.Map({ apiKey: "e140284b-fc55-4c33-aebb-f1bd529c1b51" }).setContainer("map");
+
+      const routing = new maptoolkit.RoutingService();
+      map.on("load", () => {
+        routing
+          .route({
+            points: [
+              [47.2682, 11.3933],
+              [48.2082, 16.3738],
+            ],
+            routeType: "car",
+          })
+          .then((result) => {
+            map.addSource("route", { type: "geojson", data: result.toGeoJSON() });
+            map.addLayer({
+              id: "route-line",
+              type: "line",
+              source: "route",
+              layout: { "line-join": "round", "line-cap": "round" },
+              paint: { "line-color": "#1a73e8", "line-width": 4 },
+            });
+            map.fitBounds(result.bbox, { padding: 60 });
+          });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,128 @@
+.maptoolkit-ctrl-geocoder {
+  position: relative;
+  width: 300px;
+  max-width: calc(100vw - 60px);
+  background: #fff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.maptoolkit-ctrl-geocoder-search {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23333'%3E%3Cpath d='M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3C/svg%3E");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.maptoolkit-ctrl-geocoder-input {
+  flex: 1;
+  min-width: 0;
+  height: 36px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: transparent;
+  padding: 0 4px 0 0;
+}
+
+.maptoolkit-ctrl-geocoder-clear {
+  display: none;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  margin-right: 4px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23999'%3E%3Cpath d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/%3E%3C/svg%3E");
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 50%;
+}
+
+.maptoolkit-ctrl-geocoder-has-value .maptoolkit-ctrl-geocoder-clear {
+  display: block;
+}
+
+@media (hover: hover) {
+  .maptoolkit-ctrl-geocoder-clear:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+}
+
+/* Collapsed mode */
+.maptoolkit-ctrl-geocoder-collapsed {
+  width: 36px;
+}
+.maptoolkit-ctrl-geocoder-collapsed .maptoolkit-ctrl-geocoder-input,
+.maptoolkit-ctrl-geocoder-collapsed .maptoolkit-ctrl-geocoder-clear {
+  display: none;
+}
+
+/* Results dropdown */
+.maptoolkit-ctrl-geocoder-results {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin: 4px 0 0 0;
+  padding: 0;
+  list-style: none;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  max-height: 260px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.maptoolkit-ctrl-geocoder-results-open {
+  display: block;
+}
+
+.maptoolkit-ctrl-geocoder-result {
+  padding: 8px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  line-height: 1.3;
+  color: #333;
+}
+
+.maptoolkit-ctrl-geocoder-result-empty {
+  cursor: default;
+  color: #999;
+  font-style: italic;
+}
+
+.maptoolkit-ctrl-geocoder-result:first-child {
+  border-radius: 10px 10px 0 0;
+}
+
+.maptoolkit-ctrl-geocoder-result:last-child {
+  border-radius: 0 0 10px 10px;
+}
+
+.maptoolkit-ctrl-geocoder-result:first-child:last-child {
+  border-radius: 10px;
+}
+
+@media (hover: hover) {
+  .maptoolkit-ctrl-geocoder-result:not(.maptoolkit-ctrl-geocoder-result-empty):hover,
+  .maptoolkit-ctrl-geocoder-result-active {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+}
+
+.maptoolkit-ctrl-geocoder-result-active {
+  background-color: rgba(0, 0, 0, 0.05);
+}

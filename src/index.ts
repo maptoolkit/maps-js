@@ -18,6 +18,11 @@ import { TerrainControl, TerrainControlOptions } from "./js/control/terrain_cont
 import { NavigationControl, NavigationControlOptions } from "./js/control/navigation_control";
 import { StyleControl, StyleControlOptions } from "./js/control/style_control";
 import { IsochroneControl, IsochroneControlOptions } from "./js/control/isochrone_control";
+import { GeocoderControl, GeocoderControlOptions } from "./js/control/geocoder_control";
+import { DirectionsControl, DirectionsControlOptions } from "./js/control/directions_control";
+
+import { GeocodingService, GeocodingResult, GeocodingAddress, GeocodingForwardOptions, GeocodingReverseOptions } from "./js/service/geocoding_service";
+import { RoutingService, RoutingResult, RoutingInstruction, RoutingOptions, MatchOptions, RouteType } from "./js/service/routing_service";
 
 import maplibregl from "maplibre-gl";
 export type * from "maplibre-gl";
@@ -165,6 +170,10 @@ export {
   NavigationControl,
   StyleControl,
   IsochroneControl,
+  GeocoderControl,
+  DirectionsControl,
+  GeocodingService,
+  RoutingService,
 };
 
 export type {
@@ -179,4 +188,15 @@ export type {
   NavigationControlOptions,
   StyleControlOptions,
   IsochroneControlOptions,
+  GeocoderControlOptions,
+  DirectionsControlOptions,
+  GeocodingResult,
+  GeocodingAddress,
+  GeocodingForwardOptions,
+  GeocodingReverseOptions,
+  RoutingResult,
+  RoutingInstruction,
+  RoutingOptions,
+  MatchOptions,
+  RouteType,
 };

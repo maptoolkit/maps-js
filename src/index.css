@@ -11,3 +11,5 @@
 @import "./css/control/terrain_control.css";
 @import "./css/control/style_control.css";
 @import "./css/control/isochrone_control.css";
+@import "./css/control/geocoder_control.css";
+@import "./css/control/directions_control.css";
