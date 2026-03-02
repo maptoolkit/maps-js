@@ -244,6 +244,58 @@ class Config extends Evented {
 
   /**
    * @private
+   * The base URL for the Maptoolkit data connector service.
+   * @type {string}
+   * @default "https://dataconnector.maptoolkit.net"
+   */
+  private _dataconnectorHost: string = "https://dataconnector.maptoolkit.net";
+
+  /**
+   * Gets the base URL for the Maptoolkit data connector service.
+   * @returns {string} The base data connector host URL.
+   */
+  get dataconnectorHost(): string {
+    return this._dataconnectorHost;
+  }
+
+  /**
+   * Sets the base URL for the Maptoolkit data connector service.
+   * @param {string} value - The new data connector host URL to set.
+   * @fires config.dataconnectorHost.set
+   */
+  set dataconnectorHost(value: string) {
+    this._dataconnectorHost = value;
+    this.fire("config.dataconnectorHost.set");
+  }
+
+  /**
+   * @private
+   * The base URL for the Maptoolkit data connector service.
+   * @type {string}
+   * @default "https://dataconnector.maptoolkit.net"
+   */
+  private _dataconnectorCdnHost: string = "https://dataconnector-cdn.maptoolkit.net";
+
+  /**
+   * Gets the base URL for the Maptoolkit data connector service.
+   * @returns {string} The base data connector host URL.
+   */
+  get dataconnectorCdnHost(): string {
+    return this._dataconnectorCdnHost;
+  }
+
+  /**
+   * Sets the base URL for the Maptoolkit data connector service.
+   * @param {string} value - The new data connector host URL to set.
+   * @fires config.dataconnectorHost.set
+   */
+  set dataconnectorCdnHost(value: string) {
+    this._dataconnectorCdnHost = value;
+    this.fire("config.dataconnectorCdnHost.set");
+  }
+
+  /**
+   * @private
    * The base URL for the Maptoolkit static map service.
    * @type {string}
    * @default "https://staticmap.maptoolkit.net"

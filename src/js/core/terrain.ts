@@ -11,8 +11,8 @@ import { SourceSpecification as maplibreSourceSpecification } from "maplibre-gl"
  */
 export const TERRAIN: maplibreSourceSpecification = {
   type: "raster-dem",
-  tiles: [`${config.vtcCdnHost}/terrain/{z}/{x}/{y}.webp`],
-  encoding: "mapbox",
+  tiles: [`${config.dataconnectorCdnHost}/maptoolkit/terrainrgb/{z}/{x}/{y}.webp`],
+  encoding: "terrarium",
   minzoom: 5,
   maxzoom: 12,
 };
