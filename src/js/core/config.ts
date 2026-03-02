@@ -244,6 +244,32 @@ class Config extends Evented {
 
   /**
    * @private
+   * The base URL for the Maptoolkit geocoding service.
+   * @type {string}
+   * @default "https://geocoder.maptoolkit.net"
+   */
+  private _geocoderHost: string = "https://geocoder.maptoolkit.net";
+
+  /**
+   * Gets the base URL for the Maptoolkit geocoding service.
+   * @returns {string} The base geocoding host URL.
+   */
+  get geocoderHost(): string {
+    return this._geocoderHost;
+  }
+
+  /**
+   * Sets the base URL for the Maptoolkit geocoding service.
+   * @param {string} value - The new geocoding host URL to set.
+   * @fires config.geocoderHost.set
+   */
+  set geocoderHost(value: string) {
+    this._geocoderHost = value;
+    this.fire("config.geocoderHost.set");
+  }
+
+  /**
+   * @private
    * The base URL for the Maptoolkit data connector service.
    * @type {string}
    * @default "https://dataconnector.maptoolkit.net"
