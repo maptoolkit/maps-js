@@ -1,8 +1,8 @@
 {
   "type": "module",
-  "name": "@maptoolkit/maps-sdk",
+  "name": "@maptoolkit/maps",
   "version": "11.0.0-alpha.beta.7",
-  "description": "Maps SDK by Maptoolkit powered by MapLibre GL JS",
+  "description": "Maps JS by Maptoolkit powered by MapLibre GL JS",
   "scripts": {
     "build": "npm run build-js && npm run build-css",
     "build-js": "rollup -c --environment BUILD:production",
@@ -36,7 +36,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/maptoolkit/maptoolkit-js.git"
+    "url": "https://github.com/maptoolkit/maps-js.git"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.1",
