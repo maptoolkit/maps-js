@@ -72,9 +72,9 @@
 - [MapMouseEvent](#mapmouseevent)
 - [MapTouchEvent](#maptouchevent)
 - [MapWheelEvent](#mapwheelevent)
-- [MapEventType](#mapeventtype)
 - [MapContextEvent](#mapcontextevent)
 - [MapDataEvent](#mapdataevent)
+- [MapEventType](#mapeventtype)
 - [MapLayerEventType](#maplayereventtype)
 - [MapLayerMouseEvent](#maplayermouseevent)
 - [MapLayerTouchEvent](#maplayertouchevent)
@@ -1936,7 +1936,7 @@ Check whether or not an image with a specific ID exists in the style. This check
 in the style's original sprite and any images
 that have been added at runtime using [Map.addImage](#addimage).
 
-An ErrorEvent will be fired if the image parameter is invalid.
+An ErrorEvent will be fired if the image ID is missing.
 
 ##### Parameters
 
@@ -2006,7 +2006,7 @@ map.isRotating();
 Returns a Boolean indicating whether the source is loaded. Returns `true` if the source with
 the given ID in the map's style has no outstanding network requests, otherwise `false`.
 
-A ErrorEvent event will be fired if there is no source wit the specified ID.
+A ErrorEvent event will be fired if there is no source with the specified ID.
 
 ##### Parameters
 
@@ -2533,11 +2533,11 @@ The map instance.
 
 #### removeControl()
 
-> **removeControl**(`control`: `IControl`): `Map`
+> **removeControl**(`control`: `IControl`): `this`
 
 Removes the control from the map.
 
-An ErrorEvent will be fired if the image parameter is invalid.
+An ErrorEvent will be fired if the control is invalid.
 
 ##### Parameters
 
@@ -2547,7 +2547,7 @@ An ErrorEvent will be fired if the image parameter is invalid.
 
 ##### Returns
 
-`Map`
+`this`
 
 ##### Example
 
@@ -2654,7 +2654,7 @@ if (map.hasImage('cat')) map.removeImage('cat');
 
 Removes the layer with the given ID from the map's style.
 
-An ErrorEvent will be fired if the image parameter is invalid.
+An ErrorEvent will be fired if no such layer exists.
 
 ##### Parameters
 
@@ -2677,7 +2677,7 @@ if (map.getLayer('state-data')) map.removeLayer('state-data');
 
 #### removeSource()
 
-> **removeSource**(`id`: `string`): `Map`
+> **removeSource**(`id`: `string`): `this`
 
 Removes a source from the map's style.
 
@@ -2689,7 +2689,7 @@ Removes a source from the map's style.
 
 ##### Returns
 
-`Map`
+`this`
 
 ##### Example
 
@@ -2768,7 +2768,7 @@ Triggers the following events: `movestart`, `move`, `moveend`, `pitchstart`, `pi
 
 #### resize()
 
-> **resize**(`eventData?`: `any`, `constrainTransform?`: `boolean`): `Map`
+> **resize**(`eventData?`: `any`, `constrainTransform?`: `boolean`): `this`
 
 Resizes the map according to the dimensions of its
 `container` element.
@@ -2788,7 +2788,7 @@ Triggers the following events: `movestart`, `move`, `moveend`, and `resize`.
 
 ##### Returns
 
-`Map`
+`this`
 
 ##### Example
 
@@ -2825,7 +2825,7 @@ Triggers the following events: `movestart`, `moveend`, and `rotate`.
 
 #### setAnisotropicFilterPitch()
 
-> **setAnisotropicFilterPitch**(`anisotropicFilterPitch?`: `number` \| `null`): `Map`
+> **setAnisotropicFilterPitch**(`anisotropicFilterPitch?`: `number` \| `null`): `this`
 
 Sets the map's anisotropic filter pitch or reverts it to its default.
 
@@ -2839,7 +2839,7 @@ A ErrorEvent event will be fired if anisotropicFilterPitch is out of bounds.
 
 ##### Returns
 
-`Map`
+`this`
 
 ##### Example
 
@@ -3229,7 +3229,7 @@ let layerVisibility = map.getLayoutProperty('my-layer', 'visibility');
 
 #### setMaxBounds()
 
-> **setMaxBounds**(`bounds?`: [`LngLatBoundsLike`](#lnglatboundslike) \| `null`): `Map`
+> **setMaxBounds**(`bounds?`: [`LngLatBoundsLike`](#lnglatboundslike) \| `null`): `this`
 
 Sets or clears the map's geographical bounds.
 
@@ -3248,7 +3248,7 @@ remaining within the bounds.
 
 ##### Returns
 
-`Map`
+`this`
 
 ##### Example
 
@@ -3265,7 +3265,7 @@ map.setMaxBounds(bounds);
 
 #### setMaxPitch()
 
-> **setMaxPitch**(`maxPitch?`: `number` \| `null`): `Map`
+> **setMaxPitch**(`maxPitch?`: `number` \| `null`): `this`
 
 Sets or clears the map's maximum pitch.
 If the map's current pitch is higher than the new maximum,
@@ -3282,13 +3282,13 @@ A ErrorEvent event will be fired if maxPitch is out of bounds.
 
 ##### Returns
 
-`Map`
+`this`
 
 ***
 
 #### setMaxZoom()
 
-> **setMaxZoom**(`maxZoom?`: `number` \| `null`): `Map`
+> **setMaxZoom**(`maxZoom?`: `number` \| `null`): `this`
 
 Sets or clears the map's maximum zoom level.
 If the map's current zoom level is higher than the new maximum,
@@ -3305,7 +3305,7 @@ A ErrorEvent event will be fired if minZoom is out of bounds.
 
 ##### Returns
 
-`Map`
+`this`
 
 ##### Example
 
@@ -3317,7 +3317,7 @@ map.setMaxZoom(18.75);
 
 #### setMinPitch()
 
-> **setMinPitch**(`minPitch?`: `number` \| `null`): `Map`
+> **setMinPitch**(`minPitch?`: `number` \| `null`): `this`
 
 Sets or clears the map's minimum pitch.
 If the map's current pitch is lower than the new minimum,
@@ -3334,13 +3334,13 @@ A ErrorEvent event will be fired if minPitch is out of bounds.
 
 ##### Returns
 
-`Map`
+`this`
 
 ***
 
 #### setMinZoom()
 
-> **setMinZoom**(`minZoom?`: `number` \| `null`): `Map`
+> **setMinZoom**(`minZoom?`: `number` \| `null`): `this`
 
 Sets or clears the map's minimum zoom level.
 If the map's current zoom level is lower than the new minimum,
@@ -3362,7 +3362,7 @@ A ErrorEvent event will be fired if minZoom is out of bounds.
 
 ##### Returns
 
-`Map`
+`this`
 
 ##### Example
 
@@ -3497,7 +3497,7 @@ Sets the ProjectionSpecification.
 
 #### setRenderWorldCopies()
 
-> **setRenderWorldCopies**(`renderWorldCopies?`: `boolean` \| `null`): `Map`
+> **setRenderWorldCopies**(`renderWorldCopies?`: `boolean` \| `null`): `this`
 
 Sets the state of `renderWorldCopies`.
 
@@ -3509,7 +3509,7 @@ Sets the state of `renderWorldCopies`.
 
 ##### Returns
 
-`Map`
+`this`
 
 ##### Example
 
@@ -3674,7 +3674,7 @@ map.setTerrain({ source: 'terrain' });
 
 #### setTransformConstrain()
 
-> **setTransformConstrain**(`constrain?`: [`TransformConstrainFunction`](#transformconstrainfunction) \| `null`): `Map`
+> **setTransformConstrain**(`constrain?`: [`TransformConstrainFunction`](#transformconstrainfunction) \| `null`): `this`
 
 Sets or clears the callback overriding how the map constrains the viewport's lnglat and zoom to respect the longitude and latitude bounds.
 
@@ -3686,7 +3686,7 @@ Sets or clears the callback overriding how the map constrains the viewport's lng
 
 ##### Returns
 
-`Map`
+`this`
 
 ##### Example
 
@@ -4163,13 +4163,13 @@ The [Map](#map) options object.
 
 #### apiKey? <img src="https://static.maptoolkit.net/admin/app/images/o-logo.svg" width="22" height="32" style="display:inline;width:22px;height:32px;margin:0" alt="Maptoolkit" />
 
-> `optional` **apiKey**: `string`
+> `optional` **apiKey?**: `string`
 
 Maptoolkit API key.
 
 #### attributionControl? <img src="https://static.maptoolkit.net/admin/app/images/o-logo.svg" width="22" height="32" style="display:inline;width:22px;height:32px;margin:0" alt="Maptoolkit" />
 
-> `optional` **attributionControl**: `false` \| [`AttributionControlOptions`](#attributioncontroloptions)
+> `optional` **attributionControl?**: `false` \| [`AttributionControlOptions`](#attributioncontroloptions)
 
 [AttributionControlOptions](#attributioncontroloptions) for the map's default [AttributionControl](#attributioncontrol). Pass `false` to disable.
 
@@ -4179,14 +4179,14 @@ See [AttributionControlOptions](#attributioncontroloptions).
 
 #### container? <img src="https://static.maptoolkit.net/admin/app/images/o-logo.svg" width="22" height="32" style="display:inline;width:22px;height:32px;margin:0" alt="Maptoolkit" />
 
-> `optional` **container**: `HTMLElement` \| `string`
+> `optional` **container?**: `HTMLElement` \| `string`
 
 The HTML element in which the map will be rendered, or the element's string `id`. The specified element must have no children.
 Alternatively the container can be set using the [Map.setContainer](#setcontainer) method after initialization.
 
 #### locale? <img src="https://static.maptoolkit.net/admin/app/images/o-logo.svg" width="22" height="32" style="display:inline;width:22px;height:32px;margin:0" alt="Maptoolkit" />
 
-> `optional` **locale**: [`LocaleSpecification`](#localespecification) \| `string`
+> `optional` **locale?**: [`LocaleSpecification`](#localespecification) \| `string`
 
 A locale string that specifies the language for string translations. Currently supported locales are `en` and `de`.
 Alternatively, it can be an object mapping string IDs to translations, allowing you to override or add to the default localization table.
@@ -4197,7 +4197,7 @@ See [Config](#config)
 
 #### logoControl? <img src="https://static.maptoolkit.net/admin/app/images/o-logo.svg" width="22" height="32" style="display:inline;width:22px;height:32px;margin:0" alt="Maptoolkit" />
 
-> `optional` **logoControl**: `false` \| [`LogoControlOptions`](#logocontroloptions)
+> `optional` **logoControl?**: `false` \| [`LogoControlOptions`](#logocontroloptions)
 
 [LogoControlOptions](#logocontroloptions) for the map's default [LogoControl](#logocontrol). Pass `false` to disable.
 
@@ -4398,7 +4398,7 @@ map.addControl(new FullscreenControl({container: document.querySelector('body')}
 
 ### See
 
-[View a fullscreen map](https://maplibre.org/maplibre-gl-js/docs/examples/fullscreen/)
+[View a fullscreen map](https://maplibre.org/maplibre-gl-js/docs/examples/view-a-fullscreen-map/)
 
 **Event** `fullscreenstart` of type Event will be fired when fullscreen mode has started.
 
@@ -4951,7 +4951,7 @@ map.on('load', () => {
 
 ### Properties
 
-#### \_onSuccess()
+#### \_onSuccess
 
 > **\_onSuccess**: (`position`: `GeolocationPosition`) => `void`
 
@@ -4969,7 +4969,7 @@ When the Geolocation API returns a new location, update the `GeolocateControl`.
 
 ***
 
-#### \_updateCamera()
+#### \_updateCamera
 
 > **\_updateCamera**: (`position`: `GeolocationPosition`) => `void`
 
@@ -4987,7 +4987,7 @@ Update the camera location to center on the current position
 
 ***
 
-#### \_updateMarker()
+#### \_updateMarker
 
 > **\_updateMarker**: (`position?`: `GeolocationPosition` \| `null`) => `void`
 
@@ -5030,7 +5030,8 @@ let map = new Map()
 
 ### See
 
-[Display a globe with a fill extrusion layer](https://maplibre.org/maplibre-gl-js/docs/examples/display-a-globe-with-a-fill-extrusion-layer/)
+ - [Display a globe with a fill extrusion layer](https://maplibre.org/maplibre-gl-js/docs/examples/display-a-globe-with-a-fill-extrusion-layer/)
+ - [Sky, Fog, Terrain](https://maplibre.org/maplibre-gl-js/docs/examples/sky-fog-terrain/)
 
 ### Methods
 
@@ -5491,7 +5492,7 @@ internally.
 
 ### Properties
 
-#### setUnit()
+#### setUnit
 
 > **setUnit**: (`unit`: `Unit`) => `void`
 
@@ -5748,9 +5749,9 @@ internally.
 
 ### Properties
 
-#### getDefaultPosition()?
+#### getDefaultPosition?
 
-> `readonly` `optional` **getDefaultPosition**: () => [`ControlPosition`](#controlposition)
+> `readonly` `optional` **getDefaultPosition?**: () => [`ControlPosition`](#controlposition)
 
 Optionally provide a default position for this control. If this method
 is implemented and [Map#addControl](#addcontrol) is called without the `position`
@@ -5773,7 +5774,7 @@ Options for configuring the [AttributionControl](#attributioncontrol).
 
 #### scale?
 
-> `optional` **scale**: `false` \| [`ScaleControlOptions`](#scalecontroloptions)
+> `optional` **scale?**: `false` \| [`ScaleControlOptions`](#scalecontroloptions)
 
 Options for configuring the [ScaleControl](#scalecontrol).
 Set to `false` to disable.
@@ -5805,7 +5806,7 @@ The [FullscreenControl](#fullscreencontrol) options object
 
 #### container?
 
-> `optional` **container**: `HTMLElement`
+> `optional` **container?**: `HTMLElement`
 
 `container` is the [compatible DOM element](https://developer.mozilla.org/en-US/docs/Web/API/Element/requestFullScreen#Compatible_elements) which should be made full screen. By default, the map container element will be made full screen.
 
@@ -5813,7 +5814,7 @@ The [FullscreenControl](#fullscreencontrol) options object
 
 #### pseudo?
 
-> `optional` **pseudo**: `boolean`
+> `optional` **pseudo?**: `boolean`
 
 If `true`, the fullscreen control will always use pseudo fullscreen mode (CSS-based, expanding to browser viewport) instead of native fullscreen API.
 This can be useful for faster transitions and to allow multiple maps to be "fullscreen" simultaneously in different browser windows.
@@ -5834,7 +5835,7 @@ The [GeolocateControl](#geolocatecontrol) options object
 
 #### fitBoundsOptions?
 
-> `optional` **fitBoundsOptions**: [`FitBoundsOptions`](#fitboundsoptions)
+> `optional` **fitBoundsOptions?**: [`FitBoundsOptions`](#fitboundsoptions)
 
 A options object to use when the map is panned and zoomed to the user's location. The default is to use a `maxZoom` of 15 to limit how far the map will zoom in for very accurate locations.
 
@@ -5842,7 +5843,7 @@ A options object to use when the map is panned and zoomed to the user's location
 
 #### positionOptions?
 
-> `optional` **positionOptions**: `PositionOptions`
+> `optional` **positionOptions?**: `PositionOptions`
 
 A Geolocation API [PositionOptions](https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions) object.
 
@@ -5854,7 +5855,7 @@ A Geolocation API [PositionOptions](https://developer.mozilla.org/en-US/docs/Web
 
 #### showAccuracyCircle?
 
-> `optional` **showAccuracyCircle**: `boolean`
+> `optional` **showAccuracyCircle?**: `boolean`
 
 By default, if `showUserLocation` is `true`, a transparent circle will be drawn around the user location indicating the accuracy (95% confidence level) of the user's location. Set to `false` to disable. Always disabled when `showUserLocation` is `false`.
 
@@ -5868,7 +5869,7 @@ true
 
 #### showUserLocation?
 
-> `optional` **showUserLocation**: `boolean`
+> `optional` **showUserLocation?**: `boolean`
 
 By default a dot will be shown on the map at the user's location. Set to `false` to disable.
 
@@ -5882,7 +5883,7 @@ true
 
 #### trackUserLocation?
 
-> `optional` **trackUserLocation**: `boolean`
+> `optional` **trackUserLocation?**: `boolean`
 
 If `true` the `GeolocateControl` becomes a toggle button and when active the map will receive updates to the user's location as it changes.
 
@@ -5902,7 +5903,7 @@ Options for configuring the [IsochroneControl](#isochronecontrol).
 
 #### fitBounds?
 
-> `optional` **fitBounds**: `boolean` \| [`FitBoundsOptions`](#fitboundsoptions)
+> `optional` **fitBounds?**: `boolean` \| [`FitBoundsOptions`](#fitboundsoptions)
 
 Whether the map bounds should fit the isochrone area. Alternatively accepts [FitBoundsOptions](#fitboundsoptions) object.
 
@@ -5914,7 +5915,7 @@ Whether the map bounds should fit the isochrone area. Alternatively accepts [Fit
 
 #### range?
 
-> `optional` **range**: `number`
+> `optional` **range?**: `number`
 
 Time used for isochrone calculation. Value in minutes.
 
@@ -5926,7 +5927,7 @@ Time used for isochrone calculation. Value in minutes.
 
 #### type?
 
-> `optional` **type**: [`IsochroneType`](#isochronetype)
+> `optional` **type?**: [`IsochroneType`](#isochronetype)
 
 Routing type used for isochrone request. Default value is `foot`.
 
@@ -5962,7 +5963,7 @@ Options for configuring the [PitchControl](#pitchcontrol).
 
 #### autoHide?
 
-> `optional` **autoHide**: `boolean`
+> `optional` **autoHide?**: `boolean`
 
 If set to `true`, the control will hide when the map's pitch is 0, with a delay of 400 ms.
 
@@ -5974,7 +5975,7 @@ If set to `true`, the control will hide when the map's pitch is 0, with a delay 
 
 #### knobSize?
 
-> `optional` **knobSize**: `number`
+> `optional` **knobSize?**: `number`
 
 The slider control's knob size in pixels.
 
@@ -5986,7 +5987,7 @@ The slider control's knob size in pixels.
 
 #### sliderSize?
 
-> `optional` **sliderSize**: `number`
+> `optional` **sliderSize?**: `number`
 
 The slider control's vertical size in pixels.
 
@@ -6004,7 +6005,7 @@ The [ScaleControl](#scalecontrol) options object
 
 #### maxWidth?
 
-> `optional` **maxWidth**: `number`
+> `optional` **maxWidth?**: `number`
 
 The maximum length of the scale control in pixels.
 
@@ -6018,7 +6019,7 @@ The maximum length of the scale control in pixels.
 
 #### unit?
 
-> `optional` **unit**: `Unit`
+> `optional` **unit?**: `Unit`
 
 Unit of the distance (`'imperial'`, `'metric'` or `'nautical'`).
 
@@ -6050,7 +6051,7 @@ Options for configuring the [TerrainControl](#terraincontrol).
 
 #### globe?
 
-> `optional` **globe**: `boolean`
+> `optional` **globe?**: `boolean`
 
 Globe projection used on toggle.
 
@@ -6062,7 +6063,7 @@ Globe projection used on toggle.
 
 #### pitch?
 
-> `optional` **pitch**: `number`
+> `optional` **pitch?**: `number`
 
 Pitch value used on toggle.
 
@@ -6091,10 +6092,20 @@ let marker = new Marker({
   .addTo(map);
 ```
 
+```css
+.maplibregl-marker-covered {
+    pointer-events: none;
+    cursor: default;
+}
+```
+
 ### See
 
+ - [Add a default marker](https://maplibre.org/maplibre-gl-js/docs/examples/add-a-default-marker/)
  - [Add custom icons with Markers](https://maplibre.org/maplibre-gl-js/docs/examples/add-custom-icons-with-markers/)
  - [Create a draggable Marker](https://maplibre.org/maplibre-gl-js/docs/examples/create-a-draggable-marker/)
+ - [Animate a marker](https://maplibre.org/maplibre-gl-js/docs/examples/animate-a-marker/)
+ - [Attach a popup to a marker instance](https://maplibre.org/maplibre-gl-js/docs/examples/attach-a-popup-to-a-marker-instance/)
 
 **Event** `dragstart` of type Event will be fired when dragging starts.
 
@@ -6103,6 +6114,12 @@ let marker = new Marker({
 **Event** `dragend` of type Event will be fired when the marker is finished being dragged.
 
 **Event** `click` of type Event will be fired when the marker is clicked.
+
+### CSS Classes
+
+**CSS class** `maplibregl-marker-covered` is toggled on the marker element when the marker
+is hidden behind 3D terrain or on the back of a globe.
+Use this class to apply custom styles to covered markers.
 
 #### Constructor
 
@@ -6525,7 +6542,7 @@ Sets the offset of the marker
 
 #### setOpacity()
 
-> **setOpacity**(`opacity?`: `string`, `opacityWhenCovered?`: `string`): `this`
+> **setOpacity**(`opacity?`: `string` \| `number`, `opacityWhenCovered?`: `string` \| `number`): `this`
 
 Sets the `opacity` and `opacityWhenCovered` properties of the marker.
 When called without arguments, resets opacity and opacityWhenCovered to defaults
@@ -6534,8 +6551,8 @@ When called without arguments, resets opacity and opacityWhenCovered to defaults
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `opacity?` | `string` | Sets the `opacity` property of the marker. |
-| `opacityWhenCovered?` | `string` | Sets the `opacityWhenCovered` property of the marker. |
+| `opacity?` | `string` \| `number` | Sets the `opacity` property of the marker. |
+| `opacityWhenCovered?` | `string` \| `number` | Sets the `opacityWhenCovered` property of the marker. |
 
 ##### Returns
 
@@ -6766,6 +6783,7 @@ let popup = new Popup({offset: popupOffsets, className: 'my-class'})
  - [Display a popup on hover](https://maplibre.org/maplibre-gl-js/docs/examples/display-a-popup-on-hover/)
  - [Display a popup on click](https://maplibre.org/maplibre-gl-js/docs/examples/display-a-popup-on-click/)
  - [Attach a popup to a marker instance](https://maplibre.org/maplibre-gl-js/docs/examples/attach-a-popup-to-a-marker-instance/)
+ - [Show polygon information on click](https://maplibre.org/maplibre-gl-js/docs/examples/show-polygon-information-on-click/)
 
 **Event** `open` of type Event will be fired when the popup is opened manually or programmatically.
 
@@ -7293,7 +7311,7 @@ let popup = new Popup({ closeOnClick: false, closeButton: false })
 
 ### Properties
 
-#### \_updateOpacity()
+#### \_updateOpacity
 
 > **\_updateOpacity**: () => `void`
 
@@ -7305,7 +7323,7 @@ Add opacity to popup if in globe projection and location is behind view
 
 ***
 
-#### remove()
+#### remove
 
 > **remove**: () => `this`
 
@@ -7346,7 +7364,7 @@ The [Marker](#marker) options object
 
 #### anchor?
 
-> `optional` **anchor**: `PositionAnchor`
+> `optional` **anchor?**: `PositionAnchor`
 
 A string indicating the part of the Marker that should be positioned closest to the coordinate set via [Marker.setLngLat](#setlnglat).
 Options are `'center'`, `'top'`, `'bottom'`, `'left'`, `'right'`, `'top-left'`, `'top-right'`, `'bottom-left'`, and `'bottom-right'`.
@@ -7361,7 +7379,7 @@ Options are `'center'`, `'top'`, `'bottom'`, `'left'`, `'right'`, `'top-left'`, 
 
 #### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
 Space-separated CSS class names to add to marker element.
 
@@ -7369,7 +7387,7 @@ Space-separated CSS class names to add to marker element.
 
 #### clickTolerance?
 
-> `optional` **clickTolerance**: `number`
+> `optional` **clickTolerance?**: `number`
 
 The max number of pixels a user can shift the mouse pointer during a click on the marker for it to be considered a valid click (as opposed to a marker drag). The default is to inherit map's clickTolerance.
 
@@ -7383,7 +7401,7 @@ The max number of pixels a user can shift the mouse pointer during a click on th
 
 #### color?
 
-> `optional` **color**: `string`
+> `optional` **color?**: `string`
 
 The color to use for the default marker if options.element is not provided. The default is light blue.
 
@@ -7397,7 +7415,7 @@ The color to use for the default marker if options.element is not provided. The 
 
 #### draggable?
 
-> `optional` **draggable**: `boolean`
+> `optional` **draggable?**: `boolean`
 
 A boolean indicating whether or not a marker is able to be dragged to a new position on the map.
 
@@ -7411,7 +7429,7 @@ false
 
 #### element?
 
-> `optional` **element**: `HTMLElement`
+> `optional` **element?**: `HTMLElement`
 
 DOM element to use as a marker. The default is a light blue, droplet-shaped SVG marker.
 
@@ -7419,7 +7437,7 @@ DOM element to use as a marker. The default is a light blue, droplet-shaped SVG 
 
 #### offset?
 
-> `optional` **offset**: [`PointLike`](#pointlike)
+> `optional` **offset?**: [`PointLike`](#pointlike)
 
 The offset in pixels as a [PointLike](#pointlike) object to apply relative to the element's center. Negatives indicate left and up.
 
@@ -7427,9 +7445,10 @@ The offset in pixels as a [PointLike](#pointlike) object to apply relative to th
 
 #### opacity?
 
-> `optional` **opacity**: `string`
+> `optional` **opacity?**: `string` \| `number`
 
 Marker's opacity when it's in clear view (not behind 3d terrain)
+Accepts any valid CSS opacity value as a number or string.
 
 ##### Default Value
 
@@ -7441,9 +7460,10 @@ Marker's opacity when it's in clear view (not behind 3d terrain)
 
 #### opacityWhenCovered?
 
-> `optional` **opacityWhenCovered**: `string`
+> `optional` **opacityWhenCovered?**: `string` \| `number`
 
 Marker's opacity when it's behind 3d terrain
+Accepts any valid CSS opacity value as a number or string.
 
 ##### Default Value
 
@@ -7455,7 +7475,7 @@ Marker's opacity when it's behind 3d terrain
 
 #### pitchAlignment?
 
-> `optional` **pitchAlignment**: `Alignment`
+> `optional` **pitchAlignment?**: `Alignment`
 
 `map` aligns the `Marker` to the plane of the map. `viewport` aligns the `Marker` to the plane of the viewport. `auto` automatically matches the value of `rotationAlignment`.
 
@@ -7469,7 +7489,7 @@ Marker's opacity when it's behind 3d terrain
 
 #### rotation?
 
-> `optional` **rotation**: `number`
+> `optional` **rotation?**: `number`
 
 The rotation angle of the marker in degrees, relative to its respective `rotationAlignment` setting. A positive value will rotate the marker clockwise.
 
@@ -7483,7 +7503,7 @@ The rotation angle of the marker in degrees, relative to its respective `rotatio
 
 #### rotationAlignment?
 
-> `optional` **rotationAlignment**: `Alignment`
+> `optional` **rotationAlignment?**: `Alignment`
 
 `map` aligns the `Marker`'s rotation relative to the map, maintaining a bearing as the map rotates. `viewport` aligns the `Marker`'s rotation relative to the viewport, agnostic to map rotations. `auto` is equivalent to `viewport`.
 
@@ -7497,7 +7517,7 @@ The rotation angle of the marker in degrees, relative to its respective `rotatio
 
 #### scale?
 
-> `optional` **scale**: `number`
+> `optional` **scale?**: `number`
 
 The scale to use for the default marker if options.element is not provided. The default scale corresponds to a height of `41px` and a width of `27px`.
 
@@ -7511,7 +7531,7 @@ The scale to use for the default marker if options.element is not provided. The 
 
 #### subpixelPositioning?
 
-> `optional` **subpixelPositioning**: `boolean`
+> `optional` **subpixelPositioning?**: `boolean`
 
 If `true`, rounding is disabled for placement of the marker, allowing for
 subpixel positioning and smoother movement when the marker is translated.
@@ -7532,7 +7552,7 @@ The [Popup](#popup) options object
 
 #### anchor?
 
-> `optional` **anchor**: `PositionAnchor`
+> `optional` **anchor?**: `PositionAnchor`
 
 A string indicating the part of the Popup that should
 be positioned closest to the coordinate set via [Popup.setLngLat](#setlnglat).
@@ -7545,7 +7565,7 @@ for `'bottom'`.
 
 #### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
 Space-separated CSS class names to add to popup container
 
@@ -7553,7 +7573,7 @@ Space-separated CSS class names to add to popup container
 
 #### closeButton?
 
-> `optional` **closeButton**: `boolean`
+> `optional` **closeButton?**: `boolean`
 
 If `true`, a close button will appear in the top right corner of the popup.
 
@@ -7567,7 +7587,7 @@ true
 
 #### closeOnClick?
 
-> `optional` **closeOnClick**: `boolean`
+> `optional` **closeOnClick?**: `boolean`
 
 If `true`, the popup will closed when the map is clicked.
 
@@ -7581,7 +7601,7 @@ true
 
 #### closeOnMove?
 
-> `optional` **closeOnMove**: `boolean`
+> `optional` **closeOnMove?**: `boolean`
 
 If `true`, the popup will closed when the map moves.
 
@@ -7595,7 +7615,7 @@ false
 
 #### focusAfterOpen?
 
-> `optional` **focusAfterOpen**: `boolean`
+> `optional` **focusAfterOpen?**: `boolean`
 
 If `true`, the popup will try to focus the first focusable element inside the popup.
 
@@ -7609,7 +7629,7 @@ true
 
 #### locationOccludedOpacity?
 
-> `optional` **locationOccludedOpacity**: `number` \| `string`
+> `optional` **locationOccludedOpacity?**: `number` \| `string`
 
 Optional opacity when the location is behind the globe.
 Note that if a number is provided, it will be converted to a string.
@@ -7624,7 +7644,7 @@ undefined
 
 #### maxWidth?
 
-> `optional` **maxWidth**: `string`
+> `optional` **maxWidth?**: `string`
 
 A string that sets the CSS property of the popup's maximum width, eg `'300px'`.
 To ensure the popup resizes to fit its content, set this property to `'none'`.
@@ -7640,7 +7660,7 @@ Available values can be found here: https://developer.mozilla.org/en-US/docs/Web
 
 #### offset?
 
-> `optional` **offset**: `Offset`
+> `optional` **offset?**: `Offset`
 
 A pixel offset applied to the popup's location
 
@@ -7648,7 +7668,7 @@ A pixel offset applied to the popup's location
 
 #### padding?
 
-> `optional` **padding**: [`PaddingOptions`](#paddingoptions)
+> `optional` **padding?**: [`PaddingOptions`](#paddingoptions)
 
 A pixel padding applied to the popup's positioning constraints.
 The popup will be positioned to avoid being placed within this padding area
@@ -7664,7 +7684,7 @@ undefined
 
 #### subpixelPositioning?
 
-> `optional` **subpixelPositioning**: `boolean`
+> `optional` **subpixelPositioning?**: `boolean`
 
 If `true`, rounding is disabled for placement of the popup, allowing for
 subpixel positioning and smoother movement when the popup is translated.
@@ -7915,7 +7935,7 @@ The minimum zoom level for the source.
 
 ***
 
-#### pause()
+#### pause
 
 > **pause**: () => `void`
 
@@ -7927,7 +7947,7 @@ Disables animation. The map will display a static copy of the canvas image.
 
 ***
 
-#### play()
+#### play
 
 > **play**: () => `void`
 
@@ -9626,7 +9646,7 @@ True if the source is loaded, false otherwise.
 
 #### loadTile()
 
-> **loadTile**(`tile`: `Tile`): `Promise`\<`void`\>
+> **loadTile**(`tile`: `Tile`): `Promise`\<`void` \| `LoadTileResult`\>
 
 This method does the heavy lifting of loading a tile.
 In most cases it will defer the work to the relevant worker source.
@@ -9639,7 +9659,7 @@ In most cases it will defer the work to the relevant worker source.
 
 ##### Returns
 
-`Promise`\<`void`\>
+`Promise`\<`void` \| `LoadTileResult`\>
 
 ***
 
@@ -10038,18 +10058,6 @@ The listener will be called first time the event fires after the listener is reg
 
 ***
 
-#### onRemove()
-
-> **onRemove**(): `void`
-
-This method is called when the source is removed from the map.
-
-##### Returns
-
-`void`
-
-***
-
 #### pause()
 
 > **pause**(): `void`
@@ -10223,7 +10231,7 @@ on top of the map and having the vanishing point shift as UI elements resize.
 
 > **getCenter**(`width`: `number`, `height`: `number`): [`Point`](#point-1)
 
-Utility method that computes the new apprent center or vanishing point after applying insets.
+Utility method that computes the new apparent center or vanishing point after applying insets.
 This is in pixels and with the top left being (0.0) and +y being downwards.
 
 ##### Parameters
@@ -10243,7 +10251,7 @@ the point
 
 #### interpolate()
 
-> **interpolate**(`start`: [`PaddingOptions`](#paddingoptions) \| `EdgeInsets`, `target`: [`PaddingOptions`](#paddingoptions), `t`: `number`): `EdgeInsets`
+> **interpolate**(`start`: [`PaddingOptions`](#paddingoptions) \| `EdgeInsets`, `target`: [`PaddingOptions`](#paddingoptions), `t`: `number`): `this`
 
 Interpolates the inset in-place.
 This maintains the current inset value for any inset not present in `target`.
@@ -10258,7 +10266,7 @@ This maintains the current inset value for any inset not present in `target`.
 
 ##### Returns
 
-`EdgeInsets`
+`this`
 
 the insets
 
@@ -10346,9 +10354,7 @@ ll.lng; // = -123.9749
 
 ### See
 
- - [Get coordinates of the mouse pointer](https://maplibre.org/maplibre-gl-js/docs/examples/mouse-position/)
- - [Display a popup](https://maplibre.org/maplibre-gl-js/docs/examples/popup/)
- - [Create a timeline animation](https://maplibre.org/maplibre-gl-js/docs/examples/timeline-animation/)
+[Get coordinates of the mouse pointer](https://maplibre.org/maplibre-gl-js/docs/examples/get-coordinates-of-the-mouse-pointer/)
 
 #### Constructor
 
@@ -10527,7 +10533,7 @@ defined by its southwest and northeast points in longitude and latitude.
 
 If no arguments are provided to the constructor, a `null` bounding box is created.
 
-Note that any Mapbox GL method that accepts a `LngLatBounds` object as an argument or option
+Note that any MapLibre GL method that accepts a `LngLatBounds` object as an argument or option
 can also accept an `Array` of two [LngLatLike](#lnglatlike) constructs and will perform an implicit conversion.
 This flexible type is documented as [LngLatBoundsLike](#lnglatboundslike).
 
@@ -10539,15 +10545,19 @@ let ne = new LngLat(-73.9397, 40.8002);
 let llb = new LngLatBounds(sw, ne);
 ```
 
+### See
+
+[Fit to the bounds of a LineString](https://maplibre.org/maplibre-gl-js/docs/examples/fit-to-the-bounds-of-a-linestring/)
+
 #### Constructor
 
-> **new LngLatBounds**(`sw?`: [`LngLatLike`](#lnglatlike) \| \[`number`, `number`, `number`, `number`\] \| \[[`LngLatLike`](#lnglatlike), [`LngLatLike`](#lnglatlike)\], `ne?`: [`LngLatLike`](#lnglatlike)): `LngLatBounds`
+> **new LngLatBounds**(`sw?`: \[`number`, `number`, `number`, `number`\] \| [`LngLatLike`](#lnglatlike) \| \[[`LngLatLike`](#lnglatlike), [`LngLatLike`](#lnglatlike)\], `ne?`: [`LngLatLike`](#lnglatlike)): `LngLatBounds`
 
 ##### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `sw?` | [`LngLatLike`](#lnglatlike) \| \[`number`, `number`, `number`, `number`\] \| \[[`LngLatLike`](#lnglatlike), [`LngLatLike`](#lnglatlike)\] | The southwest corner of the bounding box. OR array of 4 numbers in the order of west, south, east, north OR array of 2 LngLatLike: [sw,ne] |
+| `sw?` | \[`number`, `number`, `number`, `number`\] \| [`LngLatLike`](#lnglatlike) \| \[[`LngLatLike`](#lnglatlike), [`LngLatLike`](#lnglatlike)\] | The southwest corner of the bounding box. OR array of 4 numbers in the order of west, south, east, north OR array of 2 LngLatLike: [sw,ne] |
 | `ne?` | [`LngLatLike`](#lnglatlike) | The northeast corner of the bounding box. |
 
 ##### Returns
@@ -10629,7 +10639,7 @@ console.log(llb.contains(ll)); // = true
 
 #### extend()
 
-> **extend**(`obj`: [`LngLatLike`](#lnglatlike) \| [`LngLatBoundsLike`](#lnglatboundslike)): `this`
+> **extend**(`obj`: [`LngLatBoundsLike`](#lnglatboundslike) \| [`LngLatLike`](#lnglatlike)): `this`
 
 Extend the bounds to include a given LngLatLike or LngLatBoundsLike.
 
@@ -10637,7 +10647,7 @@ Extend the bounds to include a given LngLatLike or LngLatBoundsLike.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `obj` | [`LngLatLike`](#lnglatlike) \| [`LngLatBoundsLike`](#lnglatboundslike) | object to extend to |
+| `obj` | [`LngLatBoundsLike`](#lnglatboundslike) \| [`LngLatLike`](#lnglatlike) | object to extend to |
 
 ##### Returns
 
@@ -10933,13 +10943,13 @@ LngLatBounds.fromLngLat(100).toArray(); // = [[-73.97501862141328, 40.7735101684
 
 #### Constructor
 
-> **new LngLatBounds**(`sw?`: [`LngLatLike`](#lnglatlike) \| \[`number`, `number`, `number`, `number`\] \| \[[`LngLatLike`](#lnglatlike), [`LngLatLike`](#lnglatlike)\], `ne?`: [`LngLatLike`](#lnglatlike)): `LngLatBounds`
+> **new LngLatBounds**(`sw?`: \[`number`, `number`, `number`, `number`\] \| [`LngLatLike`](#lnglatlike) \| \[[`LngLatLike`](#lnglatlike), [`LngLatLike`](#lnglatlike)\], `ne?`: [`LngLatLike`](#lnglatlike)): `LngLatBounds`
 
 ##### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `sw?` | [`LngLatLike`](#lnglatlike) \| \[`number`, `number`, `number`, `number`\] \| \[[`LngLatLike`](#lnglatlike), [`LngLatLike`](#lnglatlike)\] | The southwest corner of the bounding box. OR array of 4 numbers in the order of west, south, east, north OR array of 2 LngLatLike: [sw,ne] |
+| `sw?` | \[`number`, `number`, `number`, `number`\] \| [`LngLatLike`](#lnglatlike) \| \[[`LngLatLike`](#lnglatlike), [`LngLatLike`](#lnglatlike)\] | The southwest corner of the bounding box. OR array of 4 numbers in the order of west, south, east, north OR array of 2 LngLatLike: [sw,ne] |
 | `ne?` | [`LngLatLike`](#lnglatlike) | The northeast corner of the bounding box. |
 
 ##### Returns
@@ -11008,7 +11018,9 @@ let nullIsland = new MercatorCoordinate(0.5, 0.5, 0);
 
 ### See
 
-[Add a custom style layer](https://maplibre.org/maplibre-gl-js/docs/examples/custom-style-layer/)
+ - [Add a custom style layer](https://maplibre.org/maplibre-gl-js/docs/examples/add-a-custom-style-layer/)
+ - [Add a 3D model using three.js](https://maplibre.org/maplibre-gl-js/docs/examples/add-a-3d-model-using-threejs/)
+ - [Add a simple custom layer on a globe](https://maplibre.org/maplibre-gl-js/docs/examples/add-a-simple-custom-layer-on-a-globe/)
 
 #### Constructor
 
@@ -12169,7 +12181,69 @@ The event type.
 
 `MapWheelEvent`
 
+## MapContextEvent
+
+> **MapContextEvent** = `object`
+
+An event related to the web gl context
+
+## MapDataEvent
+
+> **MapDataEvent** = `object`
+
+A `MapDataEvent` object is emitted with the `data`
+and `dataloading` events. Possible values for
+`dataType`s are:
+
+- `'source'`: The non-tile data associated with any source
+- `'style'`: The [style](https://maplibre.org/maplibre-style-spec/) used by the map
+
+Possible values for `sourceDataType`s are:
+
+- `'metadata'`: indicates that any necessary source metadata has been loaded (such as TileJSON) and it is ok to start loading tiles
+- `'content'`: indicates the source data has changed (such as when source.setData() has been called on GeoJSONSource)
+- `'visibility'`: send when the source becomes used when at least one of its layers becomes visible in style sense (inside the layer's zoom range and with layout.visibility set to 'visible')
+- `'idle'`: indicates that no new source data has been fetched (but the source has done loading)
+
+### Example
+
+```ts
+// The sourcedata event is an example of MapDataEvent.
+// Set up an event listener on the map.
+map.on('sourcedata', (e) => {
+   if (e.isSourceLoaded) {
+       // Do something when the source has finished loading
+   }
+});
+```
+
+### Properties
+
+#### dataType
+
+> **dataType**: `string`
+
+The type of data that has changed. One of `'source'`, `'style'`.
+
+***
+
+#### sourceDataType
+
+> **sourceDataType**: `MapSourceDataType`
+
+Included if the event has a `dataType` of `source` and the event signals that internal data has been received or changed. Possible values are `metadata`, `content`, `visibility` and `idle`.
+
+***
+
+#### type
+
+> **type**: `string`
+
+The event type.
+
 ## MapEventType
+
+> **MapEventType** = `object`
 
 `MapEventType` - a mapping between the event name and the event value.
 These events are used with the [Map.on](#on) method.
@@ -12237,7 +12311,7 @@ Fired when the right button of the mouse is clicked or the context menu key is p
 
 #### cooperativegestureprevented
 
-> **cooperativegestureprevented**: [`MapLibreEvent`](#maplibreevent)\<`TouchEvent` \| `WheelEvent`\> & `object`
+> **cooperativegestureprevented**: [`MapLibreEvent`](#maplibreevent)\<`WheelEvent` \| `TouchEvent`\> & `object`
 
 Fired whenever the cooperativeGestures option prevents a gesture from being handled by the map.
 This is useful for showing your own UI when this happens.
@@ -12704,66 +12778,6 @@ as the result of either user interaction or methods such as [Map.flyTo](#flyto).
 Fired just before the map begins a transition from one zoom level to another,
 as the result of either user interaction or methods such as [Map.flyTo](#flyto).
 
-## MapContextEvent
-
-> **MapContextEvent** = `object`
-
-An event related to the web gl context
-
-## MapDataEvent
-
-> **MapDataEvent** = `object`
-
-A `MapDataEvent` object is emitted with the `data`
-and `dataloading` events. Possible values for
-`dataType`s are:
-
-- `'source'`: The non-tile data associated with any source
-- `'style'`: The [style](https://maplibre.org/maplibre-style-spec/) used by the map
-
-Possible values for `sourceDataType`s are:
-
-- `'metadata'`: indicates that any necessary source metadata has been loaded (such as TileJSON) and it is ok to start loading tiles
-- `'content'`: indicates the source data has changed (such as when source.setData() has been called on GeoJSONSource)
-- `'visibility'`: send when the source becomes used when at least one of its layers becomes visible in style sense (inside the layer's zoom range and with layout.visibility set to 'visible')
-- `'idle'`: indicates that no new source data has been fetched (but the source has done loading)
-
-### Example
-
-```ts
-// The sourcedata event is an example of MapDataEvent.
-// Set up an event listener on the map.
-map.on('sourcedata', (e) => {
-   if (e.isSourceLoaded) {
-       // Do something when the source has finished loading
-   }
-});
-```
-
-### Properties
-
-#### dataType
-
-> **dataType**: `string`
-
-The type of data that has changed. One of `'source'`, `'style'`.
-
-***
-
-#### sourceDataType
-
-> **sourceDataType**: `MapSourceDataType`
-
-Included if the event has a `dataType` of `source` and the event signals that internal data has been received or changed. Possible values are `metadata`, `content`, `visibility` and `idle`.
-
-***
-
-#### type
-
-> **type**: `string`
-
-The event type.
-
 ## MapLayerEventType
 
 > **MapLayerEventType** = `object`
@@ -12954,7 +12968,7 @@ An event from the mouse relevant to a specific layer.
 
 #### features?
 
-> `optional` **features**: `MapGeoJSONFeature`[]
+> `optional` **features?**: `MapGeoJSONFeature`[]
 
 ## MapLayerTouchEvent
 
@@ -12966,7 +12980,7 @@ An event from a touch device relevant to a specific layer.
 
 #### features?
 
-> `optional` **features**: `MapGeoJSONFeature`[]
+> `optional` **features?**: `MapGeoJSONFeature`[]
 
 ## MapLibreEvent\<TOrig\>
 
@@ -13055,7 +13069,7 @@ The [style spec representation of the source](https://maplibre.org/maplibre-styl
 
 #### sourceDataChanged?
 
-> `optional` **sourceDataChanged**: `boolean`
+> `optional` **sourceDataChanged?**: `boolean`
 
 #### sourceDataType
 
@@ -14005,6 +14019,56 @@ Returns a Boolean indicating whether the "drag to pitch" interaction is enabled.
 
 `true` if the "drag to pitch" interaction is enabled.
 
+***
+
+#### setZoomRate()
+
+> **setZoomRate**(`zoomRate?`: `number`): `void`
+
+Sets the zoom rate of touch gestures.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `zoomRate?` | `number` | 1 The rate used to scale touch movement to a zoom value. Set to `undefined` to restore the default. |
+
+##### Returns
+
+`void`
+
+##### Example
+
+Slow down touch zoom
+```ts
+map.touchZoomRotate.setZoomRate(0.5);
+```
+
+***
+
+#### setZoomThreshold()
+
+> **setZoomThreshold**(`zoomThreshold?`: `number`): `void`
+
+Sets the threshold before a pinch gesture starts zooming.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `zoomThreshold?` | `number` | 0.1 The minimum zoom delta before the pinch gesture becomes active. Set to `undefined` to restore the default. |
+
+##### Returns
+
+`void`
+
+##### Example
+
+Make pinch zoom less sensitive
+```ts
+map.touchZoomRotate.setZoomThreshold(0.3);
+```
+
 ## TwoFingersTouchZoomRotateHandler
 
 The `TwoFingersTouchZoomRotateHandler` allows the user to zoom and rotate the map by
@@ -14122,6 +14186,56 @@ Returns a Boolean indicating whether the "pinch to rotate and zoom" interaction 
 
 `true` if the "pinch to rotate and zoom" interaction is enabled.
 
+***
+
+#### setZoomRate()
+
+> **setZoomRate**(`zoomRate?`: `number`): `void`
+
+Sets the zoom rate of touch gestures.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `zoomRate?` | `number` | 1 The rate used to scale touch movement to a zoom value. Set to `undefined` to restore the default. |
+
+##### Returns
+
+`void`
+
+##### Example
+
+Slow down touch zoom
+```ts
+map.touchZoomRotate.setZoomRate(0.5);
+```
+
+***
+
+#### setZoomThreshold()
+
+> **setZoomThreshold**(`zoomThreshold?`: `number`): `void`
+
+Sets the threshold before a pinch gesture starts zooming.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `zoomThreshold?` | `number` | 0.1 The minimum zoom delta before the pinch gesture becomes active. Set to `undefined` to restore the default. |
+
+##### Returns
+
+`void`
+
+##### Example
+
+Make pinch zoom less sensitive
+```ts
+map.touchZoomRotate.setZoomThreshold(0.3);
+```
+
 ## DragPanOptions
 
 > **DragPanOptions** = `object`
@@ -14132,7 +14246,7 @@ A [DragPanHandler](#dragpanhandler) options object
 
 #### deceleration?
 
-> `optional` **deceleration**: `number`
+> `optional` **deceleration?**: `number`
 
 the maximum value of the drag velocity.
 
@@ -14144,9 +14258,9 @@ the maximum value of the drag velocity.
 
 ***
 
-#### easing()?
+#### easing?
 
-> `optional` **easing**: (`t`: `number`) => `number`
+> `optional` **easing?**: (`t`: `number`) => `number`
 
 easing function applied to `map.panTo` when applying the drag.
 
@@ -14170,7 +14284,7 @@ bezier(0, 0, 0.3, 1)
 
 #### linearity?
 
-> `optional` **linearity**: `number`
+> `optional` **linearity?**: `number`
 
 factor used to scale the drag velocity
 
@@ -14184,7 +14298,7 @@ factor used to scale the drag velocity
 
 #### maxSpeed?
 
-> `optional` **maxSpeed**: `number`
+> `optional` **maxSpeed?**: `number`
 
 the rate at which the speed reduces after the pan ends.
 
@@ -15012,7 +15126,7 @@ A unique layer id.
 
 #### prerender?
 
-> `optional` **prerender**: `CustomRenderMethod`
+> `optional` **prerender?**: `CustomRenderMethod`
 
 Optional method called during a render frame to allow a layer to prepare resources or render into a texture.
 
@@ -15043,7 +15157,7 @@ may want to change the blend function to
 
 #### renderingMode?
 
-> `optional` **renderingMode**: `"2d"` \| `"3d"`
+> `optional` **renderingMode?**: `"2d"` \| `"3d"`
 
 Either `"2d"` or `"3d"`. Defaults to `"2d"`.
 
@@ -15114,9 +15228,9 @@ let flashingSquare = {
 
 ### Properties
 
-#### onAdd()?
+#### onAdd?
 
-> `optional` **onAdd**: (`map`: `Map`, `id`: `string`) => `void`
+> `optional` **onAdd?**: (`map`: `Map`, `id`: `string`) => `void`
 
 Optional method called when the layer has been added to the Map with [Map.addImage](#addimage).
 
@@ -15133,9 +15247,9 @@ Optional method called when the layer has been added to the Map with [Map.addIma
 
 ***
 
-#### onRemove()?
+#### onRemove?
 
-> `optional` **onRemove**: () => `void`
+> `optional` **onRemove?**: () => `void`
 
 Optional method called when the icon is removed from the map with [Map.removeImage](#removeimage).
 This gives the image a chance to clean up resources and event listeners.
@@ -15146,9 +15260,9 @@ This gives the image a chance to clean up resources and event listeners.
 
 ***
 
-#### render()?
+#### render?
 
-> `optional` **render**: () => `boolean`
+> `optional` **render?**: () => `boolean`
 
 This method is called once before every frame where the icon will be used.
 The method can optionally update the image's `data` member with a new image.
@@ -15177,7 +15291,7 @@ are optional.
 
 #### animate?
 
-> `optional` **animate**: `boolean`
+> `optional` **animate?**: `boolean`
 
 If `false`, no animation will occur.
 
@@ -15185,15 +15299,15 @@ If `false`, no animation will occur.
 
 #### duration?
 
-> `optional` **duration**: `number`
+> `optional` **duration?**: `number`
 
 The animation's duration, measured in milliseconds.
 
 ***
 
-#### easing()?
+#### easing?
 
-> `optional` **easing**: (`_`: `number`) => `number`
+> `optional` **easing?**: (`_`: `number`) => `number`
 
 A function taking a time in the range 0..1 and returning a number where 0 is
 the initial state and 1 is the final state.
@@ -15212,7 +15326,7 @@ the initial state and 1 is the final state.
 
 #### essential?
 
-> `optional` **essential**: `boolean`
+> `optional` **essential?**: `boolean`
 
 If `true`, then the animation is considered essential and will not be affected by
 [`prefers-reduced-motion`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion).
@@ -15221,7 +15335,7 @@ If `true`, then the animation is considered essential and will not be affected b
 
 #### freezeElevation?
 
-> `optional` **freezeElevation**: `boolean`
+> `optional` **freezeElevation?**: `boolean`
 
 Default false. Needed in 3D maps to let the camera stay in a constant
 height based on sea-level. After the animation finished the zoom-level will be recalculated in respect of
@@ -15231,7 +15345,7 @@ the distance from the camera to the center-coordinate-altitude.
 
 #### offset?
 
-> `optional` **offset**: [`PointLike`](#pointlike)
+> `optional` **offset?**: [`PointLike`](#pointlike)
 
 of the target center relative to real map container center at the end of animation.
 
@@ -15259,13 +15373,13 @@ A options object for the [Map.cameraForBounds](#cameraforbounds) method
 
 #### maxZoom?
 
-> `optional` **maxZoom**: `number`
+> `optional` **maxZoom?**: `number`
 
 The maximum zoom level to allow when the camera would transition to the specified bounds.
 
 #### offset?
 
-> `optional` **offset**: [`PointLike`](#pointlike)
+> `optional` **offset?**: [`PointLike`](#pointlike)
 
 The center of the given bounds relative to the map's center, measured in pixels.
 
@@ -15277,7 +15391,7 @@ The center of the given bounds relative to the map's center, measured in pixels.
 
 #### padding?
 
-> `optional` **padding**: `number` \| [`PaddingOptions`](#paddingoptions)
+> `optional` **padding?**: `number` \| [`PaddingOptions`](#paddingoptions)
 
 The amount of padding in pixels to add to the given bounds.
 
@@ -15293,13 +15407,13 @@ camera value for that property will remain unchanged.
 
 #### elevation?
 
-> `optional` **elevation**: `number`
+> `optional` **elevation?**: `number`
 
 The elevation of the center point in meters above sea level.
 
 #### pitch?
 
-> `optional` **pitch**: `number`
+> `optional` **pitch?**: `number`
 
 The desired pitch in degrees. The pitch is the angle towards the horizon
 measured in degrees with a range between 0 and 60 degrees. For example, pitch: 0 provides the appearance
@@ -15308,7 +15422,7 @@ Increasing the pitch value is often used to display 3D objects.
 
 #### roll?
 
-> `optional` **roll**: `number`
+> `optional` **roll?**: `number`
 
 The desired roll in degrees. The roll is the angle about the camera boresight.
 
@@ -15333,7 +15447,7 @@ let map = new Map({
  - [Fly to a location](https://maplibre.org/maplibre-gl-js/docs/examples/fly-to-a-location/)
  - [Display buildings in 3D](https://maplibre.org/maplibre-gl-js/docs/examples/display-buildings-in-3d/)
 
-## CameraUpdateTransformFunction()
+## CameraUpdateTransformFunction
 
 > **CameraUpdateTransformFunction** = (`next`: `object`) => `object`
 
@@ -15357,27 +15471,27 @@ A callback hook that allows manipulating the camera and being notified about cam
 
 #### bearing?
 
-> `optional` **bearing**: `number`
+> `optional` **bearing?**: `number`
 
 #### center?
 
-> `optional` **center**: [`LngLat`](#lnglat)
+> `optional` **center?**: [`LngLat`](#lnglat)
 
 #### elevation?
 
-> `optional` **elevation**: `number`
+> `optional` **elevation?**: `number`
 
 #### pitch?
 
-> `optional` **pitch**: `number`
+> `optional` **pitch?**: `number`
 
 #### roll?
 
-> `optional` **roll**: `number`
+> `optional` **roll?**: `number`
 
 #### zoom?
 
-> `optional` **zoom**: `number`
+> `optional` **zoom?**: `number`
 
 ## CoveringTilesOptions
 
@@ -15389,7 +15503,7 @@ CoveringTilesOptions
 
 #### maxzoom?
 
-> `optional` **maxzoom**: `number`
+> `optional` **maxzoom?**: `number`
 
 Largest allowed tile zoom.
 
@@ -15397,7 +15511,7 @@ Largest allowed tile zoom.
 
 #### minzoom?
 
-> `optional` **minzoom**: `number`
+> `optional` **minzoom?**: `number`
 
 Smallest allowed tile zoom.
 
@@ -15405,7 +15519,7 @@ Smallest allowed tile zoom.
 
 #### roundZoom?
 
-> `optional` **roundZoom**: `boolean`
+> `optional` **roundZoom?**: `boolean`
 
 Whether to round or floor the target zoom level. If true, the value will be rounded to the closest integer. Otherwise the value will be floored.
 
@@ -15427,25 +15541,25 @@ The [Map.easeTo](#easeto) options object
 
 #### around?
 
-> `optional` **around**: [`LngLatLike`](#lnglatlike)
+> `optional` **around?**: [`LngLatLike`](#lnglatlike)
 
 If `zoom` is specified, `around` determines the point around which the zoom is centered.
 
 #### delayEndEvents?
 
-> `optional` **delayEndEvents**: `number`
+> `optional` **delayEndEvents?**: `number`
 
 #### easeId?
 
-> `optional` **easeId**: `string`
+> `optional` **easeId?**: `string`
 
 #### noMoveStart?
 
-> `optional` **noMoveStart**: `boolean`
+> `optional` **noMoveStart?**: `boolean`
 
 #### padding?
 
-> `optional` **padding**: `number` \| [`PaddingOptions`](#paddingoptions)
+> `optional` **padding?**: `number` \| [`PaddingOptions`](#paddingoptions)
 
 ## FitBoundsOptions
 
@@ -15457,7 +15571,7 @@ Options for [Map.fitBounds](#fitbounds) method
 
 #### linear?
 
-> `optional` **linear**: `boolean`
+> `optional` **linear?**: `boolean`
 
 If `true`, the map transitions using [Map.easeTo](#easeto). If `false`, the map transitions using [Map.flyTo](#flyto).
 See those functions and [AnimationOptions](#animationoptions) for information about options available.
@@ -15470,13 +15584,13 @@ false
 
 #### maxZoom?
 
-> `optional` **maxZoom**: `number`
+> `optional` **maxZoom?**: `number`
 
 The maximum zoom level to allow when the map view transitions to the specified bounds.
 
 #### offset?
 
-> `optional` **offset**: [`PointLike`](#pointlike)
+> `optional` **offset?**: [`PointLike`](#pointlike)
 
 The center of the given bounds relative to the map's center, measured in pixels.
 
@@ -15496,7 +15610,7 @@ The [Map.flyTo](#flyto) options object
 
 #### curve?
 
-> `optional` **curve**: `number`
+> `optional` **curve?**: `number`
 
 The zooming "curve" that will occur along the
 flight path. A high value maximizes zooming for an exaggerated animation, while a low
@@ -15514,34 +15628,34 @@ value of 1 would produce a circular motion.
 
 #### maxDuration?
 
-> `optional` **maxDuration**: `number`
+> `optional` **maxDuration?**: `number`
 
 The animation's maximum duration, measured in milliseconds.
 If duration exceeds maximum duration, it resets to 0.
 
 #### minZoom?
 
-> `optional` **minZoom**: `number`
+> `optional` **minZoom?**: `number`
 
 The zero-based zoom level at the peak of the flight path. If
 `options.curve` is specified, this option is ignored.
 
 #### padding?
 
-> `optional` **padding**: `number` \| [`PaddingOptions`](#paddingoptions)
+> `optional` **padding?**: `number` \| [`PaddingOptions`](#paddingoptions)
 
 The amount of padding in pixels to add to the given bounds.
 
 #### screenSpeed?
 
-> `optional` **screenSpeed**: `number`
+> `optional` **screenSpeed?**: `number`
 
 The average speed of the animation measured in screenfulls
 per second, assuming a linear timing curve. If `options.speed` is specified, this option is ignored.
 
 #### speed?
 
-> `optional` **speed**: `number`
+> `optional` **speed?**: `number`
 
 The average speed of the animation defined in relation to
 `options.curve`. A speed of 1.2 means that the map appears to move along the flight path
@@ -15564,7 +15678,7 @@ The options object related to the [Map.jumpTo](#jumpto) method
 
 #### padding?
 
-> `optional` **padding**: [`PaddingOptions`](#paddingoptions)
+> `optional` **padding?**: [`PaddingOptions`](#paddingoptions)
 
 Dimensions in pixels applied on each side of the viewport for shifting the vanishing point.
 
@@ -15606,7 +15720,7 @@ Options to pass to query the map for the rendered features
 
 #### availableImages?
 
-> `optional` **availableImages**: `string`[]
+> `optional` **availableImages?**: `string`[]
 
 An array of string representing the available images
 
@@ -15614,7 +15728,7 @@ An array of string representing the available images
 
 #### filter?
 
-> `optional` **filter**: `FilterSpecification`
+> `optional` **filter?**: `FilterSpecification`
 
 A [filter](https://maplibre.org/maplibre-style-spec/layers/#filter) to limit query results.
 
@@ -15622,7 +15736,7 @@ A [filter](https://maplibre.org/maplibre-style-spec/layers/#filter) to limit que
 
 #### layers?
 
-> `optional` **layers**: `string`[] \| `Set`\<`string`\>
+> `optional` **layers?**: `string`[] \| `Set`\<`string`\>
 
 An array or set of [style layer IDs](https://maplibre.org/maplibre-style-spec/#layer-id) for the query to inspect.
 Only features within these layers will be returned. If this parameter is undefined, all layers will be checked.
@@ -15631,7 +15745,7 @@ Only features within these layers will be returned. If this parameter is undefin
 
 #### validate?
 
-> `optional` **validate**: `boolean`
+> `optional` **validate?**: `boolean`
 
 Whether to check if the [options.filter] conforms to the MapLibre Style Specification. Disabling validation is a performance optimization that should only be used if you have previously validated the values you will be passing to this function.
 
@@ -15645,7 +15759,7 @@ The options object related to the [Map.querySourceFeatures](#querysourcefeatures
 
 #### filter?
 
-> `optional` **filter**: `FilterSpecification`
+> `optional` **filter?**: `FilterSpecification`
 
 A [filter](https://maplibre.org/maplibre-style-spec/layers/#filter)
 to limit query results.
@@ -15654,7 +15768,7 @@ to limit query results.
 
 #### sourceLayer?
 
-> `optional` **sourceLayer**: `string`
+> `optional` **sourceLayer?**: `string`
 
 The name of the source layer to query. *For vector tile sources, this parameter is required.* For GeoJSON sources, it is ignored.
 
@@ -15662,7 +15776,7 @@ The name of the source layer to query. *For vector tile sources, this parameter 
 
 #### validate?
 
-> `optional` **validate**: `boolean`
+> `optional` **validate?**: `boolean`
 
 Whether to check if the [parameters.filter] conforms to the MapLibre Style Specification. Disabling validation is a performance optimization that should only be used if you have previously validated the values you will be passing to this function.
 
@@ -15697,7 +15811,7 @@ transformRequest: function(url, resourceType) {
 
 #### body?
 
-> `optional` **body**: `string`
+> `optional` **body?**: `string`
 
 Request body.
 
@@ -15705,7 +15819,7 @@ Request body.
 
 #### cache?
 
-> `optional` **cache**: `RequestCache`
+> `optional` **cache?**: `RequestCache`
 
 Parameters supported only by browser fetch API. Property of the Request interface contains the cache mode of the request. It controls how the request will interact with the browser's HTTP cache. (https://developer.mozilla.org/en-US/docs/Web/API/Request/cache)
 
@@ -15713,7 +15827,7 @@ Parameters supported only by browser fetch API. Property of the Request interfac
 
 #### collectResourceTiming?
 
-> `optional` **collectResourceTiming**: `boolean`
+> `optional` **collectResourceTiming?**: `boolean`
 
 If `true`, Resource Timing API information will be collected for these transformed requests and returned in a resourceTiming property of relevant data events.
 
@@ -15721,7 +15835,7 @@ If `true`, Resource Timing API information will be collected for these transform
 
 #### credentials?
 
-> `optional` **credentials**: `"same-origin"` \| `"include"`
+> `optional` **credentials?**: `"same-origin"` \| `"include"`
 
 `'same-origin'|'include'` Use 'include' to send cookies with cross-origin requests.
 
@@ -15729,7 +15843,7 @@ If `true`, Resource Timing API information will be collected for these transform
 
 #### headers?
 
-> `optional` **headers**: `any`
+> `optional` **headers?**: `any`
 
 The headers to be sent with the request.
 
@@ -15737,15 +15851,23 @@ The headers to be sent with the request.
 
 #### method?
 
-> `optional` **method**: `"GET"` \| `"POST"` \| `"PUT"`
+> `optional` **method?**: `"GET"` \| `"POST"` \| `"PUT"`
 
 Request method `'GET' | 'POST' | 'PUT'`.
 
 ***
 
+#### referrerPolicy?
+
+> `optional` **referrerPolicy?**: `ReferrerPolicy`
+
+The referrer policy to use for the request. Controls how much referrer information is sent. (https://developer.mozilla.org/en-US/docs/Web/API/Request/referrerPolicy)
+
+***
+
 #### type?
 
-> `optional` **type**: `"string"` \| `"json"` \| `"arrayBuffer"` \| `"image"`
+> `optional` **type?**: `"string"` \| `"json"` \| `"arrayBuffer"` \| `"image"`
 
 Response body type to be returned.
 
@@ -15757,11 +15879,11 @@ Response body type to be returned.
 
 The URL to be requested.
 
-## RequestTransformFunction()
+## RequestTransformFunction
 
-> **RequestTransformFunction** = (`url`: `string`, `resourceType?`: `ResourceType`) => [`RequestParameters`](#requestparameters) \| `undefined`
+> **RequestTransformFunction** = (`url`: `string`, `resourceType?`: `ResourceType`) => [`RequestParameters`](#requestparameters) \| `Promise`\<[`RequestParameters`](#requestparameters)\> \| `undefined`
 
-This function is used to tranform a request.
+This function is used to transform a request.
 It is used just before executing the relevant request.
 
 ### Parameters
@@ -15773,7 +15895,7 @@ It is used just before executing the relevant request.
 
 ### Returns
 
-[`RequestParameters`](#requestparameters) \| `undefined`
+[`RequestParameters`](#requestparameters) \| `Promise`\<[`RequestParameters`](#requestparameters)\> \| `undefined`
 
 ## SetClusterOptions
 
@@ -15785,7 +15907,7 @@ The cluster options to set
 
 #### cluster?
 
-> `optional` **cluster**: `boolean`
+> `optional` **cluster?**: `boolean`
 
 Whether or not to cluster
 
@@ -15793,7 +15915,7 @@ Whether or not to cluster
 
 #### clusterMaxZoom?
 
-> `optional` **clusterMaxZoom**: `number`
+> `optional` **clusterMaxZoom?**: `number`
 
 The cluster's max zoom.
 Non-integer values are rounded to the closest integer due to supercluster integer value requirements.
@@ -15802,7 +15924,7 @@ Non-integer values are rounded to the closest integer due to supercluster intege
 
 #### clusterRadius?
 
-> `optional` **clusterRadius**: `number`
+> `optional` **clusterRadius?**: `number`
 
 The cluster's radius
 
@@ -15816,7 +15938,7 @@ The options object related to the [Map](#map)'s style related methods
 
 #### localIdeographFontFamily?
 
-> `optional` **localIdeographFontFamily**: `string` \| `false`
+> `optional` **localIdeographFontFamily?**: `string` \| `false`
 
 Defines a CSS
 font-family for locally overriding generation of Chinese, Japanese, and Korean characters.
@@ -15828,7 +15950,7 @@ Forces a full update.
 
 #### validate?
 
-> `optional` **validate**: `boolean`
+> `optional` **validate?**: `boolean`
 
 If false, style validation will be skipped. Useful in production environment.
 
@@ -15842,7 +15964,7 @@ Supporting type to add validation to another style related type
 
 #### validate?
 
-> `optional` **validate**: `boolean`
+> `optional` **validate?**: `boolean`
 
 Whether to check if the filter conforms to the MapLibre Style Specification. Disabling validation is a performance optimization that should only be used if you have previously validated the values you will be passing to this function.
 
@@ -15856,7 +15978,7 @@ The options object related to the [Map](#map)'s style related methods
 
 #### diff?
 
-> `optional` **diff**: `boolean`
+> `optional` **diff?**: `boolean`
 
 If false, force a 'full' update, removing the current style
 and building the given one instead of attempting a diff-based update.
@@ -15865,12 +15987,12 @@ and building the given one instead of attempting a diff-based update.
 
 #### transformStyle?
 
-> `optional` **transformStyle**: `TransformStyleFunction`
+> `optional` **transformStyle?**: `TransformStyleFunction`
 
 TransformStyleFunction is a convenience function
 that allows to modify a style after it is fetched but before it is committed to the map state. Refer to TransformStyleFunction.
 
-## TransformConstrainFunction()
+## TransformConstrainFunction
 
 > **TransformConstrainFunction** = (`lngLat`: [`LngLat`](#lnglat), `zoom`: `number`) => `object`
 
@@ -15909,7 +16031,7 @@ The options object for the [ImageSource.updateImage](#updateimage) method
 
 #### coordinates?
 
-> `optional` **coordinates**: `Coordinates`
+> `optional` **coordinates?**: `Coordinates`
 
 The image coordinates
 
@@ -15966,6 +16088,13 @@ addProtocol('custom2', async (params, abortController) => {
      throw new Error('someErrorMessage');
 });
 ```
+
+### See
+
+ - [Add a COG raster source](https://maplibre.org/maplibre-gl-js/docs/examples/add-a-cog-raster-source/)
+ - [Add Contour Lines](https://maplibre.org/maplibre-gl-js/docs/examples/add-contour-lines/)
+ - [PMTiles source and protocol](https://maplibre.org/maplibre-gl-js/docs/examples/pmtiles-source-and-protocol/)
+ - [Use addProtocol to Transform Feature Properties](https://maplibre.org/maplibre-gl-js/docs/examples/use-addprotocol-to-transform-feature-properties/)
 
 ## addSourceType()
 
@@ -16230,7 +16359,8 @@ setRTLTextPlugin('https://unpkg.com/@mapbox/mapbox-gl-rtl-text@0.3.0/dist/mapbox
 
 ### See
 
-[Add support for right-to-left scripts](https://maplibre.org/maplibre-gl-js/docs/examples/mapbox-gl-rtl-text/)
+ - [Add support for right-to-left scripts](https://maplibre.org/maplibre-gl-js/docs/examples/add-support-for-right-to-left-scripts/)
+ - [Display and style rich text labels](https://maplibre.org/maplibre-gl-js/docs/examples/display-and-style-rich-text-labels/)
 
 ## setWorkerCount()
 
