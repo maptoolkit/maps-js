@@ -8,6 +8,7 @@ import { SourceSpecification as maplibreSourceSpecification } from "maplibre-gl"
 
 /**
  * Terrain source specification.
+ * @maptoolkit
  */
 export const TERRAIN: maplibreSourceSpecification = {
   type: "raster-dem",

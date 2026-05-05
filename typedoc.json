@@ -1,12 +1,12 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "name": "Maptoolkit JS",
+  "name": "Maptoolkit Maps JS",
   "entryPoints": ["./src/index.ts"],
   "entryPointStrategy": "expand",
   "out": "docs/",
-  "plugin": ["typedoc-plugin-markdown"],
+  "plugin": ["typedoc-plugin-markdown", "./typedoc-plugin.js"],
   "readme": "none",
-  "groupOrder": ["Main", "Markers and Controls", "Geography and Geometry", "Handlers", "Sources", "Event Related"],
+  "groupOrder": ["Map", "Controls", "Markers and Popups", "Sources", "Coordinates", "Events", "User Interaction Handlers", "Configuration", "Properties and Options"],
   "excludeExternals": true,
   "externalPattern": ["**/node_modules/(?!maplibre-gl)"],
   "excludeInternal": true,
@@ -17,6 +17,17 @@
   "includeVersion": true,
   "cleanOutputDir": true,
   "disableSources": true,
+  "blockTags": [
+    "@defaultValue", "@deprecated", "@example", "@jsx", "@param", "@privateRemarks",
+    "@remarks", "@returns", "@see", "@throws", "@typeParam", "@author",
+    "@callback", "@category", "@categoryDescription", "@default", "@document",
+    "@extends", "@augments", "@yields", "@group", "@groupDescription",
+    "@import", "@inheritDoc", "@license", "@module", "@mergeModuleWith",
+    "@prop", "@property", "@return", "@satisfies", "@since", "@sortStrategy",
+    "@template", "@this", "@type", "@typedef", "@summary", "@preventInline",
+    "@inlineType", "@preventExpand", "@expandType",
+    "@fires", "@maptoolkit"
+  ],
   /* typedoc-plugin-markdown */
   "hidePageHeader": true,
   "indexFormat": "list",

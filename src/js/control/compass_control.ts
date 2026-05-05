@@ -5,6 +5,7 @@ import { ControlPosition as maplibreControlPosition, Listener as maplibreListene
 
 /**
  * Options for configuring the {@link CompassControl}.
+ * @maptoolkit
  */
 export type CompassControlOptions = {};
 
@@ -17,6 +18,7 @@ export const defaultCompassControlOptions: CompassControlOptions = {};
  * Provides an interactable compass for the map's bearing.
  *
  * Used by the {@link NavigationControl} class.
+ * @maptoolkit
  */
 export class CompassControl implements IControl {
   options: CompassControlOptions;

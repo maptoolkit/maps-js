@@ -10,6 +10,7 @@ import {
 
 /**
  * Options for configuring the {@link TerrainControl}.
+ * @maptoolkit
  */
 export type TerrainControlOptions = {
   /**
@@ -37,6 +38,7 @@ export const defaultTerrainControlOptions: TerrainControlOptions = {
  * Provides a button to toggle the map's terrain.
  *
  * Used by the {@link NavigationControl} class.
+ * @maptoolkit
  */
 export class TerrainControl implements IControl {
   options: TerrainControlOptions;

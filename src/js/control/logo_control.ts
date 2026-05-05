@@ -6,6 +6,7 @@ import { ControlPosition as maplibreControlPosition } from "maplibre-gl";
 
 /**
  * Options for configuring the {@link LogoControl}.
+ * @maptoolkit
  */
 export type LogoControlOptions = {};
 
@@ -16,6 +17,7 @@ export const defaultLogoControlOptions: LogoControlOptions = {};
 
 /**
  * Displays the Maptoolkit watermark.
+ * @maptoolkit
  */
 export class LogoControl implements IControl {
   options: LogoControlOptions;

@@ -11,6 +11,10 @@ import {
   Listener as maplibreListener,
 } from "maplibre-gl";
 
+/**
+ * Options for configuring the {@link NavigationControl}.
+ * @maptoolkit
+ */
 export type NavigationControlOptions = {
   navigationControl?: maplibreNavigationControlOptions;
   terrainControl?: false | TerrainControlOptions;
@@ -23,6 +27,10 @@ export const defaultNavigationControlOptions: NavigationControlOptions = {
   pitchControl: { autoHide: true },
 };
 
+/**
+ * Composite control combining navigation, terrain, pitch, and compass controls.
+ * @maptoolkit
+ */
 export class NavigationControl implements IControl {
   options: NavigationControlOptions;
   _map?: Map;

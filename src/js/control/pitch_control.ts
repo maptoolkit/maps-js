@@ -5,6 +5,7 @@ import { ControlPosition as maplibreControlPosition, Listener as maplibreListene
 
 /**
  * Options for configuring the {@link PitchControl}.
+ * @maptoolkit
  */
 export type PitchControlOptions = {
   /**
@@ -37,6 +38,7 @@ export const defaultPitchControlOptions: PitchControlOptions = {
  * Provides an interactable slider for the map's pitch.
  *
  * Used by the {@link NavigationControl} class.
+ * @maptoolkit
  */
 export class PitchControl implements IControl {
   options: PitchControlOptions;

@@ -14,6 +14,7 @@ export function createStaticImage(accountName: string, styleName: string) {
 
 /**
  * Collection of pre-defined map styles.
+ * @maptoolkit
  */
 export const STYLES = {
   TERRAIN: "maptoolkit://styles/toursprung/terrain",

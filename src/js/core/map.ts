@@ -5,28 +5,17 @@ import { AttributionControl, AttributionControlOptions } from "../control/attrib
 import { LogoControl, LogoControlOptions } from "../control/logo_control";
 import { STYLES } from "./styles";
 
-import { getStringChecksum } from "./utils";
-
 import type {
   MapOptions as maplibreMapOptions,
   StyleSpecification as maplibreStyleSpecification,
   StyleSwapOptions as maplibreStyleSwapOptions,
   StyleOptions as maplibreStyleOptions,
-  AddLayerObject as maplibreAddLayerObject,
   PointLike as maplibrePointLike,
   MapGeoJSONFeature as maplibreMapGeoJSONFeature,
-  LayerSpecification as maplibreLayerSpecification,
-  ExpressionFilterSpecification as maplibreExpressionFilterSpecification,
   ControlPosition as maplibreControlPosition,
 } from "maplibre-gl";
 
 import { Map as maplibreMap, MapMouseEvent as maplibreMapMouseEvent, MapTouchEvent as maplibreMapTouchEvent, IControl as maplibreIControl } from "maplibre-gl";
-
-import {
-  v8 as maplibreV8,
-  supportsPropertyExpression as maplibreSupportsPropertyExpression,
-  isExpression as maplibreIsExpression,
-} from "@maplibre/maplibre-gl-style-spec";
 
 /**
  * Determines if a layer is hidden using very low opacity values.
@@ -91,26 +80,31 @@ export type MapOptions = Omit<maplibreMapOptions, "container" | "attributionCont
   /**
    * The HTML element in which the map will be rendered, or the element's string `id`. The specified element must have no children.
    * Alternatively the container can be set using the {@link Map.setContainer} method after initialization.
+   * @maptoolkit
    */
   container?: HTMLElement | string;
   /**
    * Maptoolkit API key.
+   * @maptoolkit
    */
   apiKey?: string;
   /**
    * {@link AttributionControlOptions} for the map's default {@link AttributionControl}. Pass `false` to disable.
    * @defaultValue See {@link AttributionControlOptions}.
+   * @maptoolkit
    */
   attributionControl?: false | AttributionControlOptions;
   /**
    * {@link LogoControlOptions} for the map's default {@link LogoControl}. Pass `false` to disable.
    * @defaultValue See {@link LogoControlOptions}.
+   * @maptoolkit
    */
   logoControl?: false | LogoControlOptions;
   /**
    * A locale string that specifies the language for string translations. Currently supported locales are `en` and `de`.
    * Alternatively, it can be an object mapping string IDs to translations, allowing you to override or add to the default localization table.
    * @defaultValue See {@link Config}
+   * @maptoolkit
    */
   locale?: LocaleSpecification | string;
 };
@@ -251,6 +245,7 @@ export class Map extends maplibreMap {
    * Sets the container for the map.
    * @param container - The container element or the ID of the container element.
    * @returns The map instance.
+   * @maptoolkit
    */
   setContainer(container: HTMLElement | string): this {
     if (typeof container === "string") {
@@ -277,6 +272,7 @@ export class Map extends maplibreMap {
   /**
    * Removes the map from its parent container.
    * @returns The map instance.
+   * @maptoolkit
    */
   remove(): this {
     this._container.remove();
@@ -289,7 +285,10 @@ export class Map extends maplibreMap {
    * @param style - The style to set.
    * @param options - Additional options for the style.
    * @returns The map instance.
+   * @maptoolkit
    */
+  setStyle(style: maplibreStyleSpecification | string, options?: maplibreStyleSwapOptions & maplibreStyleOptions): this;
+  
   setStyle(style: maplibreStyleSpecification | string, options?: maplibreStyleSwapOptions & maplibreStyleOptions, update?: boolean): this {
     if (update !== true) {
       this.fire("style.set", { style });
@@ -325,6 +324,7 @@ export class Map extends maplibreMap {
    * @param control - The control to add.
    * @param position - The position to add the control.
    * @returns The map instance.
+   * @maptoolkit
    */
   addControl(control: IControl, position?: ControlPosition): this {
     super.addControl(control as maplibreIControl, position as maplibreControlPosition);

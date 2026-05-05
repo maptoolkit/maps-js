@@ -4,6 +4,7 @@ export type LocaleSpecification = { [_: string]: { [_: string]: string } };
 
 /**
  * Locale translations for the application.
+ * @maptoolkit
  */
 export const locale: LocaleSpecification = {
   de: {

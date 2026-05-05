@@ -4,6 +4,7 @@ import { Map } from "../core/map";
 /**
  * A position defintion for the control to be placed.
  * When two or more controls are placed in the same location they are stacked.
+ * @maptoolkit
  */
 export type ControlPosition = maplibreControlPosition | "top-center" | "bottom-center";
 

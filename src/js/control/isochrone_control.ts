@@ -11,10 +11,15 @@ import {
   PointLike as maplibrePointLike,
 } from "maplibre-gl";
 
+/**
+ * The isochrone routing type.
+ * @maptoolkit
+ */
 export type IsochroneType = "foot" | "bike" | "car";
 
 /**
  * Options for configuring the {@link IsochroneControl}.
+ * @maptoolkit
  */
 export type IsochroneControlOptions = {
   /**
@@ -47,6 +52,7 @@ export const defaultIsochroneControlOptions: IsochroneControlOptions = {
  * Provides an draggable isochrone control.
  *
  * Used by the {@link NavigationControl} class.
+ * @maptoolkit
  */
 export class IsochroneControl implements IControl {
   options: IsochroneControlOptions;

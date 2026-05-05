@@ -7,10 +7,18 @@ import { STYLES, createStaticImage } from "../core/styles";
 
 import { getStringChecksum } from "../core/utils";
 
+/**
+ * Options for configuring the {@link StyleControl}.
+ * @maptoolkit
+ */
 export type StyleControlOptions = {
   styles?: Array<StyleDefSpecification>;
 };
 
+/**
+ * A style definition for use with the {@link StyleControl}.
+ * @maptoolkit
+ */
 export type StyleDefSpecification = {
   id: string;
   value: string | maplibreStyleSpecification;
@@ -27,6 +35,10 @@ export const defaultStyleControlOptions: StyleControlOptions = {
     { id: "Winter", value: STYLES.WINTER },
   ],
 };
+/**
+ * Provides a style switcher control for the map.
+ * @maptoolkit
+ */
 export class StyleControl implements IControl {
   options: StyleControlOptions;
   _map?: Map;

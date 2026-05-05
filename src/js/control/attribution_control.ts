@@ -11,6 +11,7 @@ import {
 
 /**
  * Options for configuring the {@link AttributionControl}.
+ * @maptoolkit
  */
 export type AttributionControlOptions = maplibreAttributionControlOptions & {
   /**
@@ -30,6 +31,7 @@ export const defaultAttributionControlOptions: AttributionControlOptions = {
 
 /**
  * Presents the map's attribution information and optionally its current scale.
+ * @maptoolkit
  */
 export class AttributionControl implements IControl {
   options: AttributionControlOptions;

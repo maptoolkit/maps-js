@@ -3,8 +3,9 @@ import { Evented } from "maplibre-gl";
 /**
  * The `Config` class manages configuration settings for the whole library.
  * It provides access to settings such as API key, locale, and host URLs for various services.
+ * @maptoolkit
  */
-class Config extends Evented {
+export class Config extends Evented {
   /**
    * @private
    * The current locale.
@@ -425,4 +426,16 @@ class Config extends Evented {
   }
 }
 
+/**
+ * The global configuration instance for the Maptoolkit SDK.
+ *
+ * Use this singleton to set the API key, locale, and service host URLs.
+ *
+ * @example
+ * ```ts
+ * import { config } from "@maptoolkit/maps";
+ * config.apiKey = "YOUR_API_KEY";
+ * ```
+ * @maptoolkit
+ */
 export const config = new Config();

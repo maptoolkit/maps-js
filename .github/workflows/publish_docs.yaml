@@ -1,0 +1,33 @@
+name: Publish Docs
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "docs/API.md"
+
+jobs:
+  publish-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout maps-js
+        uses: actions/checkout@v4
+
+      - name: Read files
+        id: read
+        run: |
+          {
+            echo 'api_md<<EOF'
+            sed -e 's|# API Reference|---\ntitle: "API Reference"\nweight: 1\n---\n|g' docs/API.md
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Trigger docs workflow
+        run: |
+          gh workflow run update-maps-js-docs.yml \
+            --repo maptoolkit/docs \
+            --field api_md="${{ steps.read.outputs.api_md }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
