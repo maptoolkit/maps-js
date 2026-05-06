@@ -13,6 +13,19 @@ jobs:
     steps:
       - name: Checkout maps-js
         uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate docs
+        run: npm run generate-docs
 
       - name: Checkout docs repo
         uses: actions/checkout@v4
@@ -24,11 +37,12 @@ jobs:
       - name: Write files
         run: |
           sed 's|# API Reference|---\ntitle: "API Reference"\nweight: 1\n---\n|g' docs/API.md > docs-repo/docs/content/maps-js/api-reference.md
+
       - name: Commit and push
         working-directory: docs-repo
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/content/maps-js/api-reference.md
-          git diff --cached --quiet || git commit -m "chore: update maps-js docs"
+          git add docs/content/maps-js/
+          git diff --cached --quiet || git commit -m "chore: update maps-js docs (${{ github.ref_name }})"
           git push
