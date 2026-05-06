@@ -3,8 +3,18 @@ import dts from "rollup-plugin-dts";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
+import pkg from "./package.json" with { type: "json" };
 
 const isProduction = process.env.BUILD === "production";
+
+const banner = `
+/**
+ * Maptoolkit Maps JS v${pkg.version}
+ * Copyright (c) 2026 Maptoolkit - Toursprung GmbH
+ * @license BSD-3-Clause
+ * Full license text: https://github.com/maptoolkit/maps-js/blob/main/LICENSE
+ */
+`;
 
 export default [
   // UMD module
@@ -18,6 +28,7 @@ export default [
       indent: false,
       minifyInternalExports: isProduction,
       sourcemap: true,
+      banner,
     },
   },
   // ES module
@@ -29,6 +40,7 @@ export default [
       file: "dist/maptoolkit.mjs",
       sourcemap: true,
       minifyInternalExports: isProduction,
+      banner,
     },
   },
   // Types
@@ -37,6 +49,7 @@ export default [
     output: {
       file: "dist/maptoolkit.d.ts",
       format: "es",
+      banner,
     },
     input: "src/index.ts",
   },

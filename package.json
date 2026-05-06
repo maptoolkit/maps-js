@@ -3,6 +3,8 @@
   "name": "@maptoolkit/maps",
   "version": "11.0.0-beta.1",
   "description": "Maps JS by Maptoolkit powered by MapLibre GL JS",
+  "author": "Maptoolkit - Toursprung GmbH",
+  "license": "BSD-3-Clause",
   "scripts": {
     "build": "npm run build-js && npm run build-css",
     "build-js": "rollup -c --environment BUILD:production",
@@ -17,8 +19,6 @@
     "generate-docs": "typedoc",
     "serve": "http-server . -p 8080 -c-1"
   },
-  "author": "Daniel Böck",
-  "license": "ISC",
   "files": [
     "dist/*"
   ],
