@@ -1,27 +1,34 @@
 name: Publish Docs
 
 on:
-  workflow_run:
-    workflows: ["Generate API Docs"]
-    branches: [main]
-    types: [completed]
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+      - "v[0-9]+.[0-9]+.[0-9]+-beta.*" # beta should be removed once first stable released
 
 jobs:
   publish-docs:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout maps-js
         uses: actions/checkout@v4
 
-      - name: Trigger docs workflow
+      - name: Checkout docs repo
+        uses: actions/checkout@v4
+        with:
+          repository: maptoolkit/docs
+          path: docs-repo
+          token: ${{ secrets.DOCS_REPO_TOKEN }}
+
+      - name: Write files
         run: |
-          jq -n \
-            --rawfile api_md <(sed 's|# API Reference|---\ntitle: "API Reference"\nweight: 1\n---\n|g' docs/API.md) \
-            '{api_md: $api_md}' \
-          | gh workflow run update-maps-js-docs.yml \
-              --repo maptoolkit/docs \
-              --json
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          sed 's|# API Reference|---\ntitle: "API Reference"\nweight: 1\n---\n|g' docs/API.md > docs-repo/docs/content/maps-js/api-reference.md
+      - name: Commit and push
+        working-directory: docs-repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/content/maps-js/api-reference.md
+          git diff --cached --quiet || git commit -m "chore: update maps-js docs"
+          git push
