@@ -23,3 +23,11 @@ const map = new Map({
 ```
 
 See the [API Reference](./docs/API.md) for the full list of classes, options, and events.
+
+
+## 🔑 API Key Required
+While this SDK is open-source under the BSD 3-Clause License, using the underlying geospatial services (APIs) requires a valid API key.
+
+[Get your API Key here](https://www.maptoolkit.com/)
+
+[Read the Developer Documentation](https://docs.maptoolkit.net/)
