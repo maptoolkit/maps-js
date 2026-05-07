@@ -462,6 +462,9 @@ export function load(app) {
         // Strip breadcrumb line
         content = content.replace(/^\[.+?\]\(.+?\)\s*\/\s*.+\n+/, "");
 
+        // Strip the "Compatible with layerId" event table inherited from MapLibre's on()
+        content = content.replace(/\| Event\s+\| Compatible with `layerId`[^\n]*\n\|[-| ]+\n(?:\|[^\n]+\n)+\n?/gm, "");
+
         // Strip "Extends" / "Implements" sections
         content = content.replace(/^#{1,6} Extends\n\n(?:- .+\n)+\n?/gm, "");
         content = content.replace(/^#{1,6} Implements\n\n(?:- .+\n)+\n?/gm, "");
