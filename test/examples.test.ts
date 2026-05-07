@@ -34,7 +34,7 @@ test.describe("examples", () => {
         pageErrors.push(error);
       });
 
-      await page.goto(`/examples/${fileName}`);
+      await page.goto(`/examples/${fileName}?apiKey=${process.env.MAPTOOLKIT_API_KEY}`);
       await page.waitForFunction(
         () => {
           return window.map !== undefined;

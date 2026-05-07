@@ -12,6 +12,7 @@ export default defineConfig({
     baseURL: "http://localhost:8080",
     trace: "on-first-retry",
     screenshot: "on",
+    userAgent: process.env.MAPTOOLKIT_USER_AGENT,
   },
   projects: [
     {
