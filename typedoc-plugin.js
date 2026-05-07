@@ -464,10 +464,6 @@ export function load(app) {
         // Strip class-level @param sections (redundant with constructor parameters table)
         content = content.replace(/^#{1,6} Param\n\n.+\n\n?/gm, "");
 
-        // Strip Returns sections that contain only a type (no prose description).
-        // Keep them when a descriptive line follows (e.g. getter return descriptions).
-        content = content.replace(/^#{1,6} Returns\n\n[^\n]+\n\n?/gm, "");
-
         // Strip ## headings that duplicate top-level group names
         content = content.replace(/^## (.+)\n/gm, (match, heading) => {
           return groupNames.has(heading.trim()) ? "" : match;
