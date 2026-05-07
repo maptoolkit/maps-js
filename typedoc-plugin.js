@@ -372,6 +372,40 @@ export function load(app) {
 
     const groupNames = new Set(Object.values(GROUP_MAP));
 
+    /** Split a parameter string at top-level commas (ignoring commas inside nested parens). */
+    function splitTopLevelParams(/** @type {string} */ str) {
+      const parts = [];
+      let depth = 0, start = 0;
+      for (let i = 0; i < str.length; i++) {
+        if (str[i] === "(") depth++;
+        else if (str[i] === ")") depth--;
+        else if (str[i] === "," && depth === 0) { parts.push(str.slice(start, i)); start = i + 1; }
+      }
+      parts.push(str.slice(start));
+      return parts;
+    }
+
+    /** Strip parameter type annotations from call-signature blockquote lines, keeping names and return type. */
+    function simplifyCallSignatures(/** @type {string} */ content) {
+      return content.split("\n").map((/** @type {string} */ line) => {
+        if (!/^> \*\*/.test(line)) return line;
+        // Skip past optional \<...\> generic before locating the parameter list '('
+        const sigMatch = line.match(/^(> \*\*[^*]+\*\*)(?:\\<.*?\\>)?(\([\s\S]*)$/);
+        if (!sigMatch) return line;
+        const prefix = sigMatch[1];
+        const rest = sigMatch[2]; // starts with '('
+        let depth = 0, parenEnd = -1;
+        for (let i = 0; i < rest.length; i++) {
+          if (rest[i] === "(") depth++;
+          else if (rest[i] === ")" && --depth === 0) { parenEnd = i; break; }
+        }
+        if (parenEnd === -1) return line;
+        const names = splitTopLevelParams(rest.slice(1, parenEnd))
+          .map(p => p.trim().match(/^(`[^`]+`\??)/)?.[1] ?? p.trim());
+        return prefix + "(" + names.join(", ") + rest.slice(parenEnd);
+      }).join("\n");
+    }
+
     /** Rewrite markdown links to in-page hash anchors. */
     function rewriteLinks(/** @type {string} */ markdown) {
       return markdown.replace(/(?<!!)\[([^\]]+)\]\(([^)]+)\)/g, (/** @type {string} */ match, /** @type {string} */ text, /** @type {string} */ href) => {
@@ -430,6 +464,10 @@ export function load(app) {
         // Strip class-level @param sections (redundant with constructor parameters table)
         content = content.replace(/^#{1,6} Param\n\n.+\n\n?/gm, "");
 
+        // Strip Returns sections that contain only a type (no prose description).
+        // Keep them when a descriptive line follows (e.g. getter return descriptions).
+        content = content.replace(/^#{1,6} Returns\n\n[^\n]+\n\n?/gm, "");
+
         // Strip ## headings that duplicate top-level group names
         content = content.replace(/^## (.+)\n/gm, (match, heading) => {
           return groupNames.has(heading.trim()) ? "" : match;
@@ -458,6 +496,8 @@ export function load(app) {
             },
           )
           .join("\n");
+
+        content = simplifyCallSignatures(content);
 
         // Rewrite all cross-file links to in-page hash anchors
         content = rewriteLinks(content);
