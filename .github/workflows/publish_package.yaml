@@ -30,7 +30,7 @@ jobs:
           MAPTOOLKIT_API_KEY: ${{ secrets.MAPTOOLKIT_API_KEY }}
           MAPTOOLKIT_USER_AGENT: ${{ secrets.MAPTOOLKIT_USER_AGENT }}
 
-  publish-github:
+  publish:
     runs-on: ubuntu-latest
     needs: test
 
