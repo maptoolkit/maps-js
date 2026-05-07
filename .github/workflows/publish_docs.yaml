@@ -5,6 +5,11 @@ on:
     tags:
       - "v[0-9]+.[0-9]+.[0-9]+"
       - "v[0-9]+.[0-9]+.[0-9]+-beta.*" # beta should be removed once first stable released
+    branches:
+      - main
+    paths:
+      - "typedoc-plugin.js"
+      - "typedoc.json"
 
 jobs:
   publish-docs:
