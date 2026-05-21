@@ -1,5 +1,3 @@
-import { config } from "./config";
-
 /**
  * @module Terrain
  */
@@ -12,7 +10,7 @@ import { SourceSpecification as maplibreSourceSpecification } from "maplibre-gl"
  */
 export const TERRAIN: maplibreSourceSpecification = {
   type: "raster-dem",
-  tiles: [`${config.dataconnectorCdnHost}/maptoolkit/terrainrgb/{z}/{x}/{y}.webp`],
+  tiles: ["maptoolkit://connector/maptoolkit/terrainrgb/{z}/{x}/{y}.webp"],
   encoding: "terrarium",
   minzoom: 5,
   maxzoom: 12,

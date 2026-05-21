@@ -9,7 +9,9 @@ maplibreAddProtocol("maptoolkit", (params, abortController) => {
     let requestUrl: URL | null = null;
     const [service, account, name] = path;
 
-    if (service === "styles") {
+    if (service === "connector") {
+      requestUrl = new URL(path.slice(1).join("/"), config.dataconnectorCdnHost);
+    } else if (service === "styles") {
       requestUrl = new URL(`/${account}/${name}.json`, config.stylesHost);
     } else if (service === "icons") {
       const ratio = config.pixelRatio > 1 ? `@${Math.min(Math.ceil(config.pixelRatio), 4)}x` : "";
