@@ -120,12 +120,15 @@ jobs:
       - name: Commit and push dist files
         run: |
           VERSION="${{ needs.publish.outputs.version }}"
+          MAJOR=$(echo "$VERSION" | cut -d. -f1)
           TARGET="files/mtk/v${VERSION}"
           mkdir -p "static-repo/${TARGET}"
           cp dist/* "static-repo/${TARGET}/"
+          ln -sfn "v${VERSION}" "static-repo/files/mtk/v${MAJOR}"
           cd static-repo
           git config user.name "maptoolkit-ops"
           git config user.email "technik@maptoolkit.com"
-          git add "${TARGET}"
+          git add "${TARGET}" "files/mtk/v${MAJOR}"
+          git diff --cached --quiet && exit 0
           git commit -m "chore: add maps-js dist files for ${VERSION}"
           git push
