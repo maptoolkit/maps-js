@@ -23,7 +23,7 @@ export default [
     plugins: [esbuild({ minify: isProduction }), resolve(), commonjs(), json()],
     output: {
       format: "umd",
-      name: "maps",
+      name: "maptoolkit",
       file: "dist/maps.js",
       indent: false,
       minifyInternalExports: isProduction,
