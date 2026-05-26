@@ -1,4 +1,4 @@
-name: Publish to npm and GitHub Packages
+name: Test, Publish & Deploy
 
 on:
   push:
@@ -99,7 +99,7 @@ jobs:
           name: dist
           path: dist/
 
-  push-to-static:
+  deploy:
     runs-on: ubuntu-latest
     needs: publish
 
@@ -117,7 +117,7 @@ jobs:
           token: ${{ secrets.STATIC_REPO_TOKEN }}
           path: static-repo
 
-      - name: Commit and push dist files
+      - name: Push dist files to static
         run: |
           VERSION="${{ needs.publish.outputs.version }}"
           MAJOR=$(echo "$VERSION" | cut -d. -f1)
