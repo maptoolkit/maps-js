@@ -23,8 +23,8 @@ export default [
     plugins: [esbuild({ minify: isProduction }), resolve(), commonjs(), json()],
     output: {
       format: "umd",
-      name: "maptoolkit",
-      file: "dist/maptoolkit.js",
+      name: "maps",
+      file: "dist/maps.js",
       indent: false,
       minifyInternalExports: isProduction,
       sourcemap: true,
@@ -37,7 +37,7 @@ export default [
     plugins: [esbuild({ minify: isProduction }), resolve(), commonjs(), json()],
     output: {
       format: "es",
-      file: "dist/maptoolkit.mjs",
+      file: "dist/maps.mjs",
       sourcemap: true,
       minifyInternalExports: isProduction,
       banner,
@@ -47,7 +47,7 @@ export default [
   {
     plugins: [json(), dts()],
     output: {
-      file: "dist/maptoolkit.d.ts",
+      file: "dist/maps.d.ts",
       format: "es",
       banner,
     },

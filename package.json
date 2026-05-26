@@ -9,8 +9,8 @@
     "build": "npm run build-js && npm run build-css",
     "build-js": "rollup -c --environment BUILD:production",
     "watch-js": "rollup -c -w --environment BUILD:development",
-    "build-css": "postcss --use postcss-import -o dist/maptoolkit.css src/index.css",
-    "watch-css": "postcss -w --use postcss-import -o dist/maptoolkit.css src/index.css",
+    "build-css": "postcss --use postcss-import -o dist/maps.css src/index.css",
+    "watch-css": "postcss -w --use postcss-import -o dist/maps.css src/index.css",
     "test": "playwright test",
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
@@ -22,16 +22,16 @@
   "files": [
     "dist/*"
   ],
-  "main": "dist/maptoolkit.mjs",
-  "types": "dist/maptoolkit.d.ts",
-  "style": "dist/maptoolkit.css",
+  "main": "dist/maps.mjs",
+  "types": "dist/maps.d.ts",
+  "style": "dist/maps.css",
   "exports": {
     ".": {
-      "import": "./dist/maptoolkit.mjs",
-      "types": "./dist/maptoolkit.d.ts"
+      "import": "./dist/maps.mjs",
+      "types": "./dist/maps.d.ts"
     },
     "./css": {
-      "import": "./dist/maptoolkit.css"
+      "import": "./dist/maps.css"
     }
   },
   "repository": {
