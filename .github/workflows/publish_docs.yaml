@@ -47,8 +47,8 @@ jobs:
       - name: Commit and push
         working-directory: docs-repo
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "maptoolkit-ops"
+          git config user.email "technik@maptoolkit.com"
           git add docs/content/maps-js/
           git diff --cached --quiet || git commit -m "chore: update maps-js docs (${{ github.ref_name }})"
           git push
