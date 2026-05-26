@@ -3,7 +3,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="./../dist/maptoolkit.css" />
+    <link rel="stylesheet" href="./../dist/maps.css" />
     <style>
       html,
       body {
@@ -22,7 +22,7 @@
 
   <body>
     <div id="map"></div>
-    <script src="./../dist/maptoolkit.js"></script>
+    <script src="./../dist/maps.js"></script>
     <script>
       window.map = new maptoolkit.Map({ logoControl: false, attributionControl: false, apiKey: new URLSearchParams(location.search).get("apiKey") }).setContainer("map");
       const ctrl = new maptoolkit.LogoControl();
